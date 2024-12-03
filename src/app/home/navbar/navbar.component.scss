@@ -4,4 +4,16 @@ nav {
     gap: 15px;
     height: 100vh;
     background-color: #2a3647;
+    box-shadow: 0px 0px 4px 0px #0000001a;
+
+    .nav-links,
+    .legal-links {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .legal-links {
+        margin-left: 56px;
+        gap: 8px;
+    }
 }

@@ -1,9 +1,25 @@
 a {
-    font-family: "Inter", Arial, Helvetica, sans-serif;
-    font-size: 1rem;
-    color: white;
-    text-decoration: none;
-
     display: flex;
     gap: 8px;
+    cursor: pointer;
+    padding: 8px 56px;
+    align-items: center;
+
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    color: #cdcdcd;
+    text-decoration: none;
+
+    &:hover {
+        &.link--active {
+            cursor: default;
+        }
+
+        background-color: var(--dark-hover-blue);
+    }
+
+    &.link--active {
+        color: #ffffff;
+        background-color: #091931;
+    }
 }

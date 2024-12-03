@@ -1,0 +1,10 @@
+a {
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+    color: var(--greyA8);
+    text-decoration: none;
+    padding: 8px;
+
+    &:hover {
+        color: var(--lightblue);
+    }
+}
