@@ -10,6 +10,12 @@ a {
     color: #cdcdcd;
     text-decoration: none;
 
+    @media (orientation: portrait) {
+        flex-direction: column;
+        padding: 15px;
+        border-radius: 8px;
+    }
+
     &:hover {
         &.link--active {
             cursor: default;
