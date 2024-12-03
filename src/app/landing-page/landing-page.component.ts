@@ -11,4 +11,10 @@ import { ButtonSymbol } from '../shared/components/button/button.component';
 })
 export class LandingPageComponent {
   ButtonSymbol = ButtonSymbol;
+  BASE_URL: string = 'https://pokeapi.co/api/v2/pokemon/';
+
+  async readData() {
+    let response = await fetch(this.BASE_URL);
+    console.log(await response.json());
+  }
 }

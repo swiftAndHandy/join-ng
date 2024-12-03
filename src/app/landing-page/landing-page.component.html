@@ -1,4 +1,8 @@
 <p>landing-page works!</p>
-<join-button [primary]="true" [bold]="true" [add]="ButtonSymbol.checkmark"
+<join-button
+  (click)="readData()"
+  [primary]="true"
+  [bold]="true"
+  [add]="ButtonSymbol.checkmark"
   >Buttontext</join-button
 >
