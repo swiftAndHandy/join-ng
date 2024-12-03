@@ -1,6 +1,4 @@
 import { Routes } from '@angular/router';
-import { LandingPageComponent } from './landing-page/landing-page.component';
-import { HomeComponent } from './home/home.component';
 
 export const routes: Routes = [
   {
@@ -15,10 +13,31 @@ export const routes: Routes = [
       import('./home/home.component').then((m) => m.HomeComponent),
     children: [
       {
+        path: 'summary',
+        loadComponent: () =>
+          import('./home/summary/summary.component').then(
+            (m) => m.SummaryComponent
+          ),
+      },
+      {
         path: 'dashboard',
         loadComponent: () =>
           import('./home/dashboard/dashboard.component').then(
             (m) => m.DashboardComponent
+          ),
+      },
+      {
+        path: 'new-task',
+        loadComponent: () =>
+          import('./home/generate-task/generate-task.component').then(
+            (m) => m.GenerateTaskComponent
+          ),
+      },
+      {
+        path: 'contacts',
+        loadComponent: () =>
+          import('./home/contacts/contacts.component').then(
+            (m) => m.ContactsComponent
           ),
       },
     ],
