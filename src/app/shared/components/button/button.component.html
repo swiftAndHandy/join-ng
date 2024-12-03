@@ -1,6 +1,12 @@
 <button
   [type]="type"
-  [ngClass]="style == 'primary' ? 'button--primary' : 'button--secondary'"
+  [ngClass]="[
+    primary ? 'button--primary' : 'button--secondary',
+    bold ? 'font--bold' : 'font--regular'
+  ]"
 >
   <ng-content></ng-content>
+  @if (icon != 'unset') {
+  <img src="/assets/icons/{{ icon }}.svg" alt="" srcset="" />
+  }
 </button>

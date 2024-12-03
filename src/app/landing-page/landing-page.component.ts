@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ButtonComponent } from '../shared/components/button/button.component';
+import { ButtonSymbol } from '../shared/components/button/button.component';
 
 @Component({
   selector: 'app-landing-page',
@@ -8,4 +9,6 @@ import { ButtonComponent } from '../shared/components/button/button.component';
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.scss',
 })
-export class LandingPageComponent {}
+export class LandingPageComponent {
+  ButtonSymbol = ButtonSymbol;
+}
