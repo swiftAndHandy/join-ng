@@ -1,19 +1,32 @@
 nav {
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
     gap: 15px;
     height: 100vh;
     background-color: #2a3647;
     box-shadow: 0px 0px 4px 0px #0000001a;
 
-    .nav-links,
-    .legal-links {
+    .inner {
+        max-height: 1080px;
         display: flex;
         flex-direction: column;
-    }
+        justify-content: space-between;
+        flex: 1;
+        margin: 64px 0;
 
-    .legal-links {
-        margin-left: 56px;
-        gap: 8px;
+        .upper-bar {
+        }
+
+        .nav-links,
+        .legal-links {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .legal-links {
+            margin-left: 56px;
+            gap: 8px;
+        }
     }
 }

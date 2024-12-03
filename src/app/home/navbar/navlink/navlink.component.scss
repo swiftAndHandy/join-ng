@@ -21,5 +21,8 @@ a {
     &.link--active {
         color: #ffffff;
         background-color: #091931;
+        > img {
+            filter: brightness(0) invert(1);
+        }
     }
 }
