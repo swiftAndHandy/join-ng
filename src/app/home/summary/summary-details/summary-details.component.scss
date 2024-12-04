@@ -1,0 +1,36 @@
+.summary-grid {
+    display: grid;
+    grid-template-areas:
+        "a a a b b b"
+        "c c c c c c"
+        "d d e e f f";
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+
+    max-width: 560px;
+    max-height: 562px;
+}
+
+.card-a {
+    grid-area: a;
+}
+
+.card-b {
+    grid-area: b;
+}
+
+.card-c {
+    grid-area: c;
+}
+
+.card-d {
+    grid-area: d;
+}
+
+.card-e {
+    grid-area: e;
+}
+
+.card-f {
+    grid-area: f;
+}

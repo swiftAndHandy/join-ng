@@ -1,4 +1,4 @@
 <a [routerLink]="target" routerLinkActive="link--active">
   @if (icon != '') {<img src="/assets/icons/{{ icon }}" alt="" />}
-  <ng-content></ng-content>
+  <span><ng-content></ng-content></span>
 </a>

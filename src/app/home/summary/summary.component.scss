@@ -1,0 +1,65 @@
+.summary__headline {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    @media (orientation: portrait) {
+        flex-direction: column;
+        gap: 15px;
+        align-items: unset;
+    }
+
+    height: 100%;
+
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+
+    h1 {
+        font-size: clamp(1.25rem, 7.5vw, 3.8rem);
+        @media (orientation: portrait) {
+            margin-block: 0;
+        }
+    }
+
+    .subtitle {
+        font-size: clamp(1rem, 6vw, 1.69rem);
+    }
+
+    .divider {
+        &--landscape {
+            display: none;
+            @media (orientation: landscape) {
+                display: unset;
+                border: 1.5px solid var(--lightblue);
+                height: 56px;
+            }
+        }
+
+        &--portrait {
+            display: none;
+            @media (orientation: portrait) {
+                display: unset;
+                border: 1.5px solid var(--lightblue);
+                width: 90px;
+            }
+        }
+    }
+}
+
+.summary__body {
+    display: flex;
+    align-items: center;
+
+    > .summary__cards {
+        flex: 1;
+        @media (orientation: portrait) {
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+    > .summary__greeting {
+        @media (orientation: portrait) {
+            display: none;
+        }
+    }
+}

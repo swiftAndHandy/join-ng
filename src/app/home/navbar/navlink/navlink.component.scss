@@ -9,6 +9,7 @@ a {
     font-size: 1rem;
     color: #cdcdcd;
     text-decoration: none;
+    text-align: center;
 
     @media (orientation: portrait) {
         flex-direction: column;
@@ -29,6 +30,12 @@ a {
         background-color: #091931;
         > img {
             filter: brightness(0) invert(1);
+        }
+    }
+
+    span {
+        @media (max-width: 380px) {
+            display: none;
         }
     }
 }
