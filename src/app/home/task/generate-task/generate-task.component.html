@@ -1,9 +1,54 @@
-<div class="priority">
-  @for (priorityLevel of priorityLevels; track $index) {
-  <prio-button
-    [level]="priorityLevel"
-    [active]="$index == currentPriority"
-    (click)="setPriorityTo($index)"
-  ></prio-button>
-  }
-</div>
+<section class="task-view">
+  <h1 class="title">Add Task</h1>
+  <div class="task-view__body">
+    <div class="task-view__body__left">
+      <div class="section">
+        <span class="subtitle required">Title</span>
+        <input type="text" name="" id="" class="input" />
+      </div>
+      <div class="section">
+        <span class="subtitle">Description</span>
+        <textarea name="" id="" class="input textarea"></textarea>
+      </div>
+      <div class="section">
+        <span class="subtitle">Assigned to</span>
+        <user-selector></user-selector>
+      </div>
+    </div>
+    <div class="task-view__body__right">
+      <div class="section">
+        <span class="subtitle required">Due date</span>
+        <date-picker></date-picker>
+      </div>
+      <div class="section">
+        <span class="subtitle">Prio</span>
+        <div class="priorities">
+          @for (priorityLevel of priorityLevels; track $index) {
+          <prio-button
+            [level]="priorityLevel"
+            [active]="$index == currentPriority"
+            (click)="setPriorityTo($index)"
+          ></prio-button>
+          }
+        </div>
+      </div>
+      <div class="section">
+        <span class="subtitle required">Category</span>
+        <tag-selector></tag-selector>
+      </div>
+      <div class="section">
+        <span class="subtitle required">Subtasks</span>
+        <subtask-form></subtask-form>
+      </div>
+    </div>
+  </div>
+  <div class="task-view__footer">
+    <span class="required description">This field is required</span>
+    <div class="footer-buttons">
+      <join-button type="reset" [primary]="false" [add]="ButtonSymbol.cancel"
+        >Clear</join-button
+      >
+      <join-button [add]="ButtonSymbol.checkmark">Create Task</join-button>
+    </div>
+  </div>
+</section>
