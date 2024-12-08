@@ -29,7 +29,7 @@ export const routes: Routes = [
       {
         path: 'new-task',
         loadComponent: () =>
-          import('./home/generate-task/generate-task.component').then(
+          import('./home/task/generate-task/generate-task.component').then(
             (m) => m.GenerateTaskComponent
           ),
       },

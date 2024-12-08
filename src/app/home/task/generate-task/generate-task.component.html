@@ -1,0 +1,9 @@
+<div class="priority">
+  @for (priorityLevel of priorityLevels; track $index) {
+  <prio-button
+    [level]="priorityLevel"
+    [active]="$index == currentPriority"
+    (click)="setPriorityTo($index)"
+  ></prio-button>
+  }
+</div>
