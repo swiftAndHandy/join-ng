@@ -2,16 +2,31 @@
     position: relative;
     background-color: #fff;
     box-shadow: 4px 0px 6px 0px #00000014;
+    height: 100%;
 
-    .add-contact-button {
-        &.portrait {
-            @media (orientation: landscape) {
-                display: none;
-            }
+    top: 0;
+    bottom: 0;
+
+    .add-contact {
+        position: fixed;
+
+        @media (orientation: portrait) {
+            bottom: 116px;
+            right: 32px;
         }
-        &.landscape {
-            @media (orientation: portrait) {
-                display: none;
+
+        .add-contact-button {
+            position: relative;
+            bottom: 0;
+            &.portrait {
+                @media (orientation: landscape) {
+                    display: none;
+                }
+            }
+            &.landscape {
+                @media (orientation: portrait) {
+                    display: none;
+                }
             }
         }
     }

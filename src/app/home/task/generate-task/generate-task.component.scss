@@ -32,6 +32,7 @@
 
     .task-view__body {
         display: flex;
+        justify-content: space-between;
 
         @media (orientation: portrait) {
             flex-direction: column;

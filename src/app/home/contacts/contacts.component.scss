@@ -1,3 +1,11 @@
 .contact-view {
     display: flex;
+    height: 100%;
+    .contact-list {
+        min-width: 33%;
+    }
 }
+
+// .contact-details {
+//     margin: 56px;
+// }
