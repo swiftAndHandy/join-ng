@@ -2,3 +2,28 @@
     text-align: center;
     white-space: nowrap;
 }
+
+.card--medium {
+    gap: 10px;
+    &:hover {
+    }
+
+    .icon {
+        position: relative;
+        > .icon-image {
+            &.--hovered {
+                visibility: hidden;
+            }
+        }
+
+        > .icon-hovered {
+            position: absolute;
+            top: 50%;
+            left: 40%;
+            transform: translate(-50%, -50%);
+            &.--hovered {
+                visibility: hidden;
+            }
+        }
+    }
+}

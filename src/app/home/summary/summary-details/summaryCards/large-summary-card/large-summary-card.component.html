@@ -1,6 +1,17 @@
 <div class="card card--large">
   <div class="left">
-    <img src="" alt="" />
+    <div class="icon">
+      <img
+        src="/assets/icons/urgent_circled.png"
+        alt=""
+        srcset="
+          /assets/icons/urgent_circled.png    1x,
+          /assets/icons/urgent_circled@2x.png 2x,
+          /assets/icons/urgent_circled@3x.png 3x
+        "
+        [ngClass]="{ '--hovered': isHovered }"
+      />
+    </div>
     <div class="details">
       <span class="counter">6</span>
       <span class="description"><ng-content></ng-content></span>

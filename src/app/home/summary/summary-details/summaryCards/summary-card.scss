@@ -12,6 +12,16 @@
     cursor: pointer;
     transition: all 125ms ease-in-out;
 
+    // .image-box {
+    //     position: relative;
+    //     display: flex;
+    //     justify-content: center;
+    //     align-items: center;
+    //     > img {
+    //         position: absolute;
+    //     }
+    // }
+
     &:hover {
         background: #2a3647;
         color: #ffffff;
@@ -25,6 +35,7 @@
     &.card--medium {
         padding: 38px 58px;
         display: flex;
+        align-items: center;
     }
 
     &.card--large {

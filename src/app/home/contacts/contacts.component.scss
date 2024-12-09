@@ -2,10 +2,12 @@
     display: flex;
     height: 100%;
     .contact-list {
-        min-width: 33%;
+        min-width: min(25vw, 400px);
+        max-width: min(25vw, 400px);
+    }
+    .contact-details {
+        display: flex;
+        align-items: flex-start;
+        flex: 1;
     }
 }
-
-// .contact-details {
-//     margin: 56px;
-// }

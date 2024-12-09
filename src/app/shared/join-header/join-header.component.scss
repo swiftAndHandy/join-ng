@@ -24,10 +24,11 @@ header {
         }
     }
 
-    > div {
+    > .help-avatar-section {
         display: flex;
         justify-content: center;
         align-items: center;
+        gap: 16px;
     }
     .help {
         transition: all 125ms ease-in-out;
