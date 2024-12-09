@@ -1,5 +1,12 @@
 <div class="user-selector">
   <input type="text" (focus)="setFocus(true)" (blur)="setFocus(false)" />
-  <div class="user-list" [ngClass]="{ '--focused': isFocused }">abc</div>
+  <div class="user-list" [ngClass]="{ '--focused': isFocused }">
+    @for(user of users; track $index) {
+    <div class="user-row">
+      <div class="user-details">{{ user }}</div>
+      <div class="user-checkbox"></div>
+    </div>
+    }
+  </div>
 </div>
 <selected-users [shift]="false"></selected-users>
