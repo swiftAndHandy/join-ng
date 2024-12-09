@@ -1,12 +1,6 @@
-.title {
-    font-family: "Inter", Arial, Helvetica, sans-serif;
-    font-size: clamp(1.5rem, 10vw, 3.8rem);
-    font-weight: 700;
-}
-
 .subtitle {
     font-family: "Inter", Arial, Helvetica, sans-serif;
-    font-size: clamp(1rem, 10vw, 1.25rem);
+    font-size: clamp(1rem, 5vw, 1.25rem);
     font-weight: 400;
     &.required::after {
         content: "*";
@@ -38,6 +32,10 @@
 
     .task-view__body {
         display: flex;
+
+        @media (orientation: portrait) {
+            flex-direction: column;
+        }
 
         &__left,
         &__right {

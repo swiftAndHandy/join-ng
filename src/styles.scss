@@ -18,3 +18,9 @@ html {
 body {
     margin: 0;
 }
+
+.page-title {
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+    font-size: clamp(1.5rem, 8vw, 3.8rem);
+    font-weight: 700;
+}

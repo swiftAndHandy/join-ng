@@ -7,6 +7,7 @@ export enum ButtonSymbol {
   contact = 'person_add',
   cancel = 'cancel_regular',
   unset = 'unset',
+  plus = 'add',
 }
 
 @Component({

@@ -1,1 +1,30 @@
-<p>dashboard works!</p>
+<section class="board">
+  <div class="board__header">
+    <h1 class="page-title">Board</h1>
+    <div class="task-control">
+      <searchbar></searchbar>
+      <join-button [bold]="true" [add]="ButtonSymbol.plus"
+        >Add task</join-button
+      >
+    </div>
+  </div>
+  <div class="board__body">
+    @for (category of categories; track $index) {
+    <div class="category">
+      <div class="category__header">
+        <h2>{{ category }}</h2>
+        @if (!$last) {
+        <button type="button">
+          <img
+            src="/assets/icons/add.svg"
+            style="filter: brightness(0)"
+            alt=""
+          />
+        </button>
+        }
+      </div>
+      <div class="category__body">No tasks to do</div>
+    </div>
+    }
+  </div>
+</section>
