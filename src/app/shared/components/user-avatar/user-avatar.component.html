@@ -1,3 +1,6 @@
-<div [ngStyle]="{ width: avatarSize, height: avatarSize }">
+<div
+  [ngStyle]="{ width: avatarSize, height: avatarSize }"
+  [ngClass]="{ 'white-border': whiteBorder, menu: isMenu }"
+>
   {{ usernameInitials }}
 </div>

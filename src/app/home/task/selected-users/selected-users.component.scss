@@ -1,0 +1,13 @@
+.selected-users {
+    display: flex;
+    flex-wrap: wrap;
+    &:not(.--margin-left) {
+        gap: 8px;
+    }
+
+    & .user {
+        &.--margin-left:not(:first-child) {
+            margin-left: -16px;
+        }
+    }
+}

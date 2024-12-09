@@ -1,1 +1,10 @@
-<p>selected-users works!</p>
+<div class="selected-users">
+  @for(user of users; track $index) {
+  <user-avatar
+    [user]="user"
+    class="user"
+    [ngClass]="{ '--margin-left': shift }"
+    [whiteBorder]="true"
+  ></user-avatar>
+  }
+</div>

@@ -1,2 +1,5 @@
-<p>user-selector works!</p>
-<selected-users></selected-users>
+<div class="user-selector">
+  <input type="text" (focus)="setFocus(true)" (blur)="setFocus(false)" />
+  <div class="user-list" [ngClass]="{ '--focused': isFocused }">abc</div>
+</div>
+<selected-users [shift]="false"></selected-users>

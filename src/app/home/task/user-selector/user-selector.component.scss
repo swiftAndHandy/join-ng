@@ -1,0 +1,15 @@
+.user-selector {
+    position: relative;
+    > input {
+    }
+
+    .user-list {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        display: none;
+        &.--focused {
+            display: unset;
+        }
+    }
+}
