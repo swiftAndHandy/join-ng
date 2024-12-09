@@ -1,6 +1,7 @@
 .board__header {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 
     .task-control {
         display: flex;

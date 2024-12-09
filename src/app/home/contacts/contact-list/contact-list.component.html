@@ -1,1 +1,17 @@
-<p>contact-list works!</p>
+<section class="contact-list">
+  <div class="add-contact">
+    <join-button
+      class="add-contact-button landscape"
+      [bold]="true"
+      [add]="ButtonSymbol.contact"
+      >Add new contact</join-button
+    >
+    <join-button
+      class="add-contact-button portrait"
+      [bold]="true"
+      shape="circle"
+      buttonPadding="small"
+      [add]="ButtonSymbol.contact"
+    ></join-button>
+  </div>
+</section>

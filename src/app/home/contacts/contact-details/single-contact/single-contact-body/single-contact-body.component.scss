@@ -1,0 +1,17 @@
+.contact-details-body {
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+
+    .user-information {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        & > .section-title {
+            font-weight: 700;
+        }
+    }
+}

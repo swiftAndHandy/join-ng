@@ -1,0 +1,18 @@
+.contact-list {
+    position: relative;
+    background-color: #fff;
+    box-shadow: 4px 0px 6px 0px #00000014;
+
+    .add-contact-button {
+        &.portrait {
+            @media (orientation: landscape) {
+                display: none;
+            }
+        }
+        &.landscape {
+            @media (orientation: portrait) {
+                display: none;
+            }
+        }
+    }
+}

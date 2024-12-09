@@ -2,7 +2,11 @@
   [type]="type"
   [ngClass]="[
     primary ? 'button--primary' : 'button--secondary',
-    bold ? 'font--bold' : 'font--regular'
+    bold ? 'font--bold' : 'font--regular',
+    shape == 'circle' ? 'shape--circle' : 'shape--regular',
+    buttonPadding == 'small'
+      ? 'button-padding--small'
+      : 'button-padding--regular'
   ]"
 >
   <ng-content></ng-content>

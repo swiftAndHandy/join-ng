@@ -1,12 +1,16 @@
 import { Component } from '@angular/core';
+import {
+  ButtonComponent,
+  ButtonSymbol,
+} from '../../../shared/components/button/button.component';
 
 @Component({
-  selector: 'app-contact-list',
+  selector: 'contact-list',
   standalone: true,
-  imports: [],
+  imports: [ButtonComponent],
   templateUrl: './contact-list.component.html',
-  styleUrl: './contact-list.component.scss'
+  styleUrl: './contact-list.component.scss',
 })
 export class ContactListComponent {
-
+  ButtonSymbol = ButtonSymbol;
 }
