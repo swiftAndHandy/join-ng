@@ -1,5 +1,12 @@
 <div class="user-selector">
-  <input type="text" (focus)="setFocus(true)" (blur)="setFocus(false)" />
+  <input
+    class="dropdown"
+    type="text"
+    [ngClass]="{ '--opened': isFocused }"
+    (focus)="setFocus(true)"
+    (blur)="setFocus(false)"
+    name="user-selector"
+  />
   <div class="user-list" [ngClass]="{ '--focused': isFocused }">
     @for(user of users; track $index) {
     <div class="user-row">

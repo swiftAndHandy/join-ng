@@ -6,6 +6,20 @@
         width: 100%;
         box-sizing: border-box;
         margin-bottom: 2px;
+
+        &.dropdown {
+            background-image: url("/assets/icons/arrow_drop_downaa.png");
+            background-image: image-set(
+                url("/assets/icons/arrow_drop_downaa.png") 1x,
+                url("/assets/icons/arrow_drop_downaa@2x.png") 2x,
+                url("/assets/icons/arrow_drop_downaa@3x.png") 3x
+            );
+            background-position: right center;
+            background-repeat: no-repeat;
+            &.--opened {
+                background-blend-mode: difference;
+            }
+        }
     }
 
     .user-list {
@@ -38,8 +52,8 @@
                 font-size: clamp(1rem, 6vw, 1.25rem);
             }
 
-            .user-checkbox {
-            }
+            // .user-checkbox {
+            // }
 
             &:hover {
                 background-color: #0c2e621f;
