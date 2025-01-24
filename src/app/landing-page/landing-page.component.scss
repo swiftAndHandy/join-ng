@@ -3,11 +3,55 @@ main {
 
     > .joinAnimation {
         position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, 50%);
+        top: 0%;
+        left: 0%;
+        transform: translate(-25%, -25%) scale(0.25);
+        z-index: 100;
+        &.--animate {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, 50%);
+            @media (orientation: landscape) {
+                animation: joinLogo 1000ms 200ms forwards;
+            }
+            @media (orientation: portrait) {
+                animation: joinLogo 1500ms 200ms forwards;
+            }
+        }
     }
-    > *:not(.joinAnimation) {
+}
+
+.intro__background.--animate {
+    position: absolute;
+    min-height: 100vh;
+    min-width: 100vw;
+    z-index: 99;
+    @media (orientation: landscape) {
+        background-color: white;
+        animation: joinLogoBackground 1200ms 200ms forwards;
+    }
+    @media (orientation: portrait) {
+        background-color: white; // posible adjustments on color swap for logo
+        animation: joinLogoBackground 2000ms 200ms forwards;
+    }
+}
+
+@keyframes joinLogo {
+    to {
+        top: 0%;
+        left: 0%;
+        transform: translate(-25%, -25%) scale(0.25);
+    }
+}
+
+@keyframes joinLogoBackground {
+    0% {
+        filter: opacity(1);
+    }
+    99% {
         filter: opacity(0);
+    }
+    100% {
+        display: none;
     }
 }
