@@ -7,7 +7,29 @@ export const routes: Routes = [
       import('./landing-page/landing-page.component').then(
         (m) => m.LandingPageComponent
       ),
-    pathMatch: 'full',
+    children: [
+      {
+        path: 'sign-up',
+        loadComponent: () =>
+          import('./landing-page/sign-up/sign-up.component').then(
+            (m) => m.SignUpComponent
+          ),
+      },
+      {
+        path: 'privacy',
+        loadComponent: () =>
+          import('./shared/legal/privacy-policy/privacy-policy.component').then(
+            (m) => m.PrivacyPolicyComponent
+          ),
+      },
+      {
+        path: 'legal-notice',
+        loadComponent: () =>
+          import('./shared/legal/legal-notice/legal-notice.component').then(
+            (m) => m.LegalNoticeComponent
+          ),
+      },
+    ],
   },
   {
     path: 'home',
@@ -40,6 +62,20 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./home/contacts/contacts.component').then(
             (m) => m.ContactsComponent
+          ),
+      },
+      {
+        path: 'privacy',
+        loadComponent: () =>
+          import('./shared/legal/privacy-policy/privacy-policy.component').then(
+            (m) => m.PrivacyPolicyComponent
+          ),
+      },
+      {
+        path: 'legal-notice',
+        loadComponent: () =>
+          import('./shared/legal/legal-notice/legal-notice.component').then(
+            (m) => m.LegalNoticeComponent
           ),
       },
     ],

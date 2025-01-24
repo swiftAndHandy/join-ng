@@ -10,9 +10,23 @@
     class="joinAnimation"
     [ngClass]="{ '--animate': joinAnimationState }"
   />
-  <section
+  <div
     class="intro__background"
     [ngClass]="{ '--animate': joinAnimationState }"
-  ></section>
-  <span>test</span>
+  ></div>
+  <section>
+    <header [ngClass]="{ 'd-none': activeSignUp }">
+      <span>Not a Join user?</span>
+      <join-button>Sign up</join-button>
+    </header>
+    @if (activeSignUp) {
+    <sign-up class="dialog"></sign-up>
+    } @else {
+    <log-in class="dialog"></log-in>
+    }
+    <footer>
+      <a [routerLink]="'privacy'">Privacy policy</a>
+      <a [routerLink]="'legal-notice'">Legal notice</a>
+    </footer>
+  </section>
 </main>

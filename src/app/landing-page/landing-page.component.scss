@@ -36,6 +36,28 @@ main {
     }
 }
 
+section {
+    display: flex;
+    flex-direction: column;
+
+    min-height: 100vh;
+    min-width: 100vh;
+    > header {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        &.d-none {
+            display: none;
+        }
+    }
+    > .dialog {
+        flex: 1;
+        align-content: center;
+        align-self: center;
+    }
+}
+
 @keyframes joinLogo {
     to {
         top: 0%;
