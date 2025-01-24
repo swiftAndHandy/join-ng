@@ -11,21 +11,28 @@
     .add-contact {
         position: fixed;
 
-        @media (orientation: portrait) {
-            bottom: 116px;
+        @media (max-width: 1080px) {
             right: 32px;
+            bottom: 20px;
+
+            @media (orientation: portrait) {
+                bottom: 116px;
+                @media (max-width: 380px) {
+                    bottom: 80px;
+                }
+            }
         }
 
         .add-contact-button {
             position: relative;
             bottom: 0;
             &.portrait {
-                @media (orientation: landscape) {
+                @media (min-width: 1081px) {
                     display: none;
                 }
             }
             &.landscape {
-                @media (orientation: portrait) {
+                @media (max-width: 1080px) {
                     display: none;
                 }
             }

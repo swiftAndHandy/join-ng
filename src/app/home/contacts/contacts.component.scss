@@ -1,9 +1,23 @@
 .contact-view {
     display: flex;
-    height: 100%;
+    @media (orientation: landscape) {
+        min-height: calc(100vh - 96px);
+    }
+
+    @media (orientation: portrait) {
+        min-height: calc(100vh - 176px);
+        @media (max-width: 380px) {
+            min-height: calc(100vh - 147px);
+        }
+    }
     .contact-list {
-        min-width: min(25vw, 400px);
-        max-width: min(25vw, 400px);
+        max-width: 0;
+
+        @media (orientation: landscape) and (min-width: 1081px) {
+            display: unset;
+            min-width: min(25vw, 400px);
+            max-width: min(25vw, 400px);
+        }
     }
     .contact-details {
         display: flex;
