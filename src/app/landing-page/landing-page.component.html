@@ -1,8 +1,14 @@
-<p>landing-page works!</p>
-<join-button
-  (click)="readData()"
-  [primary]="true"
-  [bold]="true"
-  [add]="ButtonSymbol.checkmark"
-  >Buttontext</join-button
->
+<main>
+  <img
+    src="/assets/icons/join2.png"
+    alt=""
+    srcset="
+      /assets/icons/join2.png    1x,
+      /assets/icons/join2@2x.png 2x,
+      /assets/icons/join2@3x.png 3x
+    "
+    class="joinAnimation"
+    [ngClass]="{ '--animate': joinAnimationState }"
+  />
+  <span>test</span>
+</main>

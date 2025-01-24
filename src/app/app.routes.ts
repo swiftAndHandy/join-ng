@@ -4,7 +4,9 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () =>
-      import('./home/home.component').then((m) => m.HomeComponent),
+      import('./landing-page/landing-page.component').then(
+        (m) => m.LandingPageComponent
+      ),
     pathMatch: 'full',
   },
   {
