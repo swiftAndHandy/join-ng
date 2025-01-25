@@ -1,0 +1,22 @@
+<div>
+  <input
+    class="input"
+    type="text"
+    [(ngModel)]="textValue"
+    [attr.name]="name"
+    [attr.placeholder]="placeholder"
+    [attr.aria-label]="ariaLabel"
+    [attr.aria-hidden]="ariaHidden"
+  />
+  @if (icon) {
+  <img
+    src="/assets/icons/{{ icon }}.png"
+    alt=""
+    srcset="
+    /assets/icons/{{ icon }}.png    1x,
+    /assets/icons/{{ icon }}@2x.png 2x,
+    /assets/icons/{{ icon }}@3x.png 3x
+  "
+  />
+  }
+</div>

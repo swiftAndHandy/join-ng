@@ -1,1 +1,14 @@
-<p>log-in works!</p>
+<div class="box">
+  <h1>Log in</h1>
+  <divider></divider>
+  <text-input name="E-Mail" placeholder="E-Mail"></text-input>
+  <span class="error mail" [ngClass]="{ '--error': invalidEmail }">Error</span>
+  <text-input name="Password" placeholder="Password"></text-input>
+  <span class="error password" [ngClass]="{ '--error': invalidPassword }"
+    >Error</span
+  >
+  <div class="buttons">
+    <join-button [bold]="true">Log in</join-button>
+    <join-button [primary]="false" [bold]="true">Guest Log in</join-button>
+  </div>
+</div>
