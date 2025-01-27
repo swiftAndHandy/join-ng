@@ -4,8 +4,9 @@ main {
     min-height: 100vh;
     min-width: 100vw;
     display: flex;
-    align-items: stretch;
-    justify-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
 
     .joinAnimation {
         position: absolute;
@@ -16,7 +17,7 @@ main {
         &.--animate {
             top: 50%;
             left: 50%;
-            transform: translate(-50%, 50%);
+            transform: translate(-50%, -50%);
             @media (orientation: landscape) {
                 animation: joinLogo 1000ms 200ms forwards;
             }
@@ -49,11 +50,16 @@ section {
     width: 100%;
     max-height: 1080px;
     max-width: 1920px;
+    justify-self: center;
+    flex: 1;
     > header {
         display: flex;
         justify-content: flex-end;
         align-items: center;
-
+        gap: 35px;
+        * {
+            font-family: "Inter", Arial, Helvetica, sans-serif;
+        }
         &.d-none {
             display: none;
         }
@@ -62,6 +68,20 @@ section {
         flex: 1;
         align-content: center;
         align-self: center;
+    }
+    > footer {
+        > a {
+            font-family: "Inter", Arial, Helvetica, sans-serif;
+            text-decoration: none;
+            color: var(--greyA8);
+
+            &:hover {
+                color: var(--lightblue);
+            }
+        }
+        display: flex;
+        gap: 16px;
+        justify-content: center;
     }
 }
 

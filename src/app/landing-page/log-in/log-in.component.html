@@ -1,12 +1,30 @@
 <div class="box">
-  <h1>Log in</h1>
-  <divider></divider>
-  <text-input name="E-Mail" placeholder="E-Mail"></text-input>
-  <span class="error mail" [ngClass]="{ '--error': invalidEmail }">Error</span>
-  <text-input name="Password" placeholder="Password"></text-input>
-  <span class="error password" [ngClass]="{ '--error': invalidPassword }"
-    >Error</span
-  >
+  <div>
+    <h1>Log in</h1>
+    <divider></divider>
+  </div>
+  <div class="input-field">
+    <text-input
+      name="E-Mail"
+      placeholder="E-Mail"
+      icon="arrow_drop_downaa"
+      [size]="24"
+      [error]="invalidEmail"
+    ></text-input>
+    <span class="error mail" [ngClass]="{ '--error': invalidEmail }"
+      >Error</span
+    >
+  </div>
+  <div class="input-field">
+    <text-input
+      name="Password"
+      placeholder="Password"
+      [error]="invalidPassword"
+    ></text-input>
+    <span class="error password" [ngClass]="{ '--error': invalidPassword }"
+      >Error</span
+    >
+  </div>
   <div class="buttons">
     <join-button [bold]="true">Log in</join-button>
     <join-button [primary]="false" [bold]="true">Guest Log in</join-button>

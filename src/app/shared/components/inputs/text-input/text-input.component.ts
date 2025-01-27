@@ -14,6 +14,8 @@ export class TextInputComponent {
   @Input() ariaLabel: string = '';
   @Input() ariaHidden: boolean = false;
   @Input() icon: string = '';
+  @Input() size: number = 24;
   @Input() placeholder: string = '';
+  @Input() error: boolean = false;
   textValue: string = '';
 }

@@ -1,22 +1,28 @@
-<div>
+<div class="input">
   <input
-    class="input"
     type="text"
     [(ngModel)]="textValue"
     [attr.name]="name"
     [attr.placeholder]="placeholder"
     [attr.aria-label]="ariaLabel"
     [attr.aria-hidden]="ariaHidden"
+    [ngClass]="{ '--error': error }"
   />
   @if (icon) {
-  <img
-    src="/assets/icons/{{ icon }}.png"
-    alt=""
-    srcset="
+  <div
+    class="icon-box"
+    [style.max-width]="size + 'px'"
+    [style.max-height]="size + 'px'"
+  >
+    <img
+      src="/assets/icons/{{ icon }}.png"
+      alt=""
+      srcset="
     /assets/icons/{{ icon }}.png    1x,
     /assets/icons/{{ icon }}@2x.png 2x,
     /assets/icons/{{ icon }}@3x.png 3x
   "
-  />
+    />
+  </div>
   }
 </div>

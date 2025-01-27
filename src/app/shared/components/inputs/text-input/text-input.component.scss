@@ -1,0 +1,30 @@
+.input {
+    input {
+        border: none;
+        width: 100%;
+        font-family: "Inter", Arial, Helvetica, sans-serif;
+        font-weight: 400;
+        font-size: 20px; // CAVE: Make adaptive by using clamp
+        outline: none;
+        &::placeholder {
+            color: #d1d1d1;
+        }
+    }
+    width: 100%;
+    outline: 1px solid var(--greyD1);
+    border-radius: 10px;
+    padding: 12px 21px;
+    display: flex;
+    &:has(input:focus) {
+        outline: 1px solid var(--lightblue);
+    }
+    &:has(input.--error) {
+        outline: 1px solid var(--error);
+    }
+
+    .icon-box {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+}
