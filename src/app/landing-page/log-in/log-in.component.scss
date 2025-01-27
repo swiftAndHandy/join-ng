@@ -16,10 +16,19 @@
         text-align: center;
     }
 
-    > .input-field {
+    > .inputs {
         display: flex;
         flex-direction: column;
         gap: 8px;
+        > .input-field {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+
+            > .--error-displayed {
+                visibility: hidden;
+            }
+        }
     }
 }
 
