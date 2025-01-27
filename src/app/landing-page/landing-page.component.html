@@ -1,4 +1,8 @@
 <main>
+  <div
+    class="intro__background"
+    [ngClass]="{ '--animate': joinAnimationState }"
+  ></div>
   <section>
     <img
       src="/assets/icons/join2.png"
@@ -11,10 +15,6 @@
       class="joinAnimation"
       [ngClass]="{ '--animate': joinAnimationState }"
     />
-    <div
-      class="intro__background"
-      [ngClass]="{ '--animate': joinAnimationState }"
-    ></div>
     <header [ngClass]="{ 'd-none': activeSignUp }">
       <span>Not a Join user?</span>
       <join-button>Sign up</join-button>
