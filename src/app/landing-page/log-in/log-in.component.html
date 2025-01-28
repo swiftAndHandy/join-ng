@@ -1,4 +1,4 @@
-<div class="box">
+<form class="box">
   <div>
     <h1>Log in</h1>
     <divider></divider>
@@ -8,9 +8,10 @@
       <text-input
         name="E-Mail"
         placeholder="E-Mail"
-        icon="arrow_drop_downaa"
+        icon="mail"
         [size]="24"
         [error]="invalidEmail"
+        autocomplete="email"
       ></text-input>
       <span
         class="error mail"
@@ -24,6 +25,8 @@
         name="Password"
         placeholder="Password"
         [error]="invalidPassword"
+        icon="lock"
+        autocomplete="current-password"
       ></text-input>
       <span
         class="error password"
@@ -37,4 +40,4 @@
     <join-button [bold]="true">Log in</join-button>
     <join-button [primary]="false" [bold]="true">Guest Log in</join-button>
   </div>
-</div>
+</form>

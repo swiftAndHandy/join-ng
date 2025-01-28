@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, input, Input, Renderer2 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -17,5 +17,25 @@ export class TextInputComponent {
   @Input() size: number = 24;
   @Input() placeholder: string = '';
   @Input() error: boolean = false;
+  @Input() autocomplete: string = '';
   textValue: string = '';
+  isHidden = true;
+
+  constructor(private renderer: Renderer2) {}
+
+  get type(): string {
+    if (this.icon === 'lock' && this.isHidden) {
+      return 'password';
+    }
+    return 'text';
+  }
+
+  toggleVisibility(inputElement: HTMLInputElement) {
+    this.isHidden = !this.isHidden;
+    this.setFocus(inputElement);
+  }
+
+  setFocus(inputElement: HTMLInputElement) {
+    this.renderer.selectRootElement(inputElement).focus();
+  }
 }

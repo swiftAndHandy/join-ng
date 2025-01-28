@@ -1,14 +1,57 @@
-<div class="input">
+<div class="input" (click)="setFocus(inputRef)">
   <input
-    type="text"
+    #inputRef
+    [attr.type]="type"
     [(ngModel)]="textValue"
     [attr.name]="name"
     [attr.placeholder]="placeholder"
     [attr.aria-label]="ariaLabel"
     [attr.aria-hidden]="ariaHidden"
     [ngClass]="{ '--error': error }"
+    [autocomplete]="autocomplete"
   />
-  @if (icon) {
+  @if (icon == "lock") {
+  <div
+    class="icon-box password"
+    [style.max-width]="size + 'px'"
+    [style.max-height]="size + 'px'"
+    (click)="toggleVisibility(inputRef)"
+  >
+    @if (!isHidden) {
+    <img
+      class="password --focused"
+      src="/assets/icons/visibility.png"
+      alt=""
+      srcset="
+        /assets/icons/visibility.png    1x,
+        /assets/icons/visibility@2x.png 2x,
+        /assets/icons/visibility@3x.png 3x
+      "
+    />
+    } @else {
+    <img
+      class="password --focused"
+      src="/assets/icons/visibility_off.png"
+      alt=""
+      srcset="
+        /assets/icons/visibility_off.png    1x,
+        /assets/icons/visibility_off@2x.png 2x,
+        /assets/icons/visibility_off@3x.png 3x
+      "
+    />
+    }
+    <img
+      class="password --regular"
+      src="/assets/icons/{{ icon }}.png"
+      alt=""
+      srcset="
+    /assets/icons/{{ icon }}.png    1x,
+    /assets/icons/{{ icon }}@2x.png 2x,
+    /assets/icons/{{ icon }}@3x.png 3x
+  "
+    />
+  </div>
+  } @else if (icon) {
   <div
     class="icon-box"
     [style.max-width]="size + 'px'"

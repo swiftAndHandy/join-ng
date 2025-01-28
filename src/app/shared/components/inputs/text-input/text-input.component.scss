@@ -18,14 +18,30 @@
     box-sizing: border-box;
     &:has(input:focus) {
         outline: 1px solid var(--lightblue);
+        & .password.--regular {
+            display: none;
+        }
+    }
+    &:not(:has(input:focus)) {
+        & .password.--focused {
+            display: none;
+        }
     }
     &:has(input.--error) {
         outline: 1px solid var(--error);
+    }
+    &:has(input:focus) {
+        & .icon-box {
+            .password.--regular {
+                display: none;
+            }
+        }
     }
 
     .icon-box {
         display: flex;
         justify-content: flex-end;
         align-items: center;
+        cursor: pointer;
     }
 }
