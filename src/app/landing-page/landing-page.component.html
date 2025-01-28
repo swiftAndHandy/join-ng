@@ -17,7 +17,7 @@
     />
     <header [ngClass]="{ 'd-none': activeSignUp }">
       <span>Not a Join user?</span>
-      <join-button>Sign up</join-button>
+      <join-button (click)="toggleSignUp()">Sign up</join-button>
     </header>
     @if (activeSignUp) {
     <sign-up class="dialog"></sign-up>

@@ -1,1 +1,83 @@
-<p>sign-up works!</p>
+<form action="" class="box">
+  <div class="headline">
+    <div class="back-arrow">
+      <img
+        src="/assets/icons/back-arrow.png"
+        alt=""
+        srcset="
+          /assets/icons/back-arrow.png    1x,
+          /assets/icons/back-arrow@2x.png 2x,
+          /assets/icons/back-arrow@3x.png 3x
+        "
+        class="joinAnimation"
+      />
+    </div>
+    <h1>Sign up</h1>
+    <divider></divider>
+  </div>
+  <div class="inputs">
+    <div class="input-field">
+      <text-input
+        name="Name"
+        placeholder="Name"
+        icon="mail"
+        [size]="24"
+        [error]="invalidName"
+        autocomplete="email"
+      ></text-input>
+      <span
+        class="error mail"
+        [attr.aria-hidden]="!invalidName"
+        [ngClass]="{ '--error-displayed': !invalidName }"
+        >Error</span
+      >
+    </div>
+    <div class="input-field">
+      <text-input
+        name="E-Mail"
+        placeholder="E-Mail"
+        icon="mail"
+        [size]="24"
+        [error]="invalidEmail"
+        autocomplete="email"
+      ></text-input>
+      <span
+        class="error mail"
+        [attr.aria-hidden]="!invalidEmail"
+        [ngClass]="{ '--error-displayed': !invalidEmail }"
+        >Error</span
+      >
+    </div>
+    <div class="input-field">
+      <text-input
+        name="Password"
+        placeholder="Password"
+        [error]="invalidPassword"
+        icon="lock"
+        autocomplete="new-password"
+      ></text-input>
+      <span
+        class="error password"
+        [attr.aria-hidden]="!invalidPassword"
+        [ngClass]="{ '--error-displayed': !invalidPassword }"
+        >Error</span
+      >
+    </div>
+    <div class="input-field">
+      <text-input
+        name="PasswordConfirmation"
+        placeholder="Confirm Password"
+        [error]="invalidPassword"
+        icon="lock"
+        autocomplete="new-password"
+      ></text-input>
+      <span
+        class="error password"
+        [attr.aria-hidden]="!invalidPassword"
+        [ngClass]="{ '--error-displayed': !invalidPassword }"
+        >Error</span
+      >
+    </div>
+    <join-button [bold]="true" class="button">Sign up</join-button>
+  </div>
+</form>

@@ -62,4 +62,8 @@ export class LandingPageComponent {
       this.joinAnimationState = true;
     }
   }
+
+  toggleSignUp() {
+    this.activeSignUp = !this.activeSignUp;
+  }
 }
