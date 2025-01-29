@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { DividerComponent } from '../../shared/components/divider/divider.component';
 import { CommonModule } from '@angular/common';
 import { TextInputComponent } from '../../shared/components/inputs/text-input/text-input.component';
@@ -20,4 +20,9 @@ export class SignUpComponent {
   invalidEmail: boolean = false;
   invalidName: boolean = false;
   invalidPassword: boolean = false;
+  @Output() closeSignUp: EventEmitter<void> = new EventEmitter<void>();
+
+  close() {
+    this.closeSignUp.emit();
+  }
 }

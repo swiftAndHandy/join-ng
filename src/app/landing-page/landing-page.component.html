@@ -20,7 +20,7 @@
       <join-button (click)="toggleSignUp()">Sign up</join-button>
     </header>
     @if (activeSignUp) {
-    <sign-up class="dialog"></sign-up>
+    <sign-up class="dialog" (closeSignUp)="toggleSignUp()"></sign-up>
     } @else {
     <log-in class="dialog"></log-in>
     }

@@ -1,6 +1,6 @@
 <form action="" class="box">
   <div class="headline">
-    <div class="back-arrow">
+    <div class="back-arrow" (click)="close()">
       <img
         src="/assets/icons/back-arrow.png"
         alt=""
@@ -9,7 +9,6 @@
           /assets/icons/back-arrow@2x.png 2x,
           /assets/icons/back-arrow@3x.png 3x
         "
-        class="joinAnimation"
       />
     </div>
     <h1>Sign up</h1>
@@ -20,10 +19,10 @@
       <text-input
         name="Name"
         placeholder="Name"
-        icon="mail"
+        icon="person"
         [size]="24"
         [error]="invalidName"
-        autocomplete="email"
+        autocomplete="name"
       ></text-input>
       <span
         class="error mail"
