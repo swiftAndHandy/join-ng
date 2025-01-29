@@ -1,4 +1,13 @@
 .input {
+    width: 100%;
+    outline: 1px solid var(--greyD1);
+    border-radius: 10px;
+    padding: 12px 21px;
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+    cursor: text;
+
     input {
         border: none;
         width: 100%;
@@ -6,42 +15,51 @@
         font-weight: 400;
         font-size: 20px; // CAVE: Make adaptive by using clamp
         outline: none;
+
         &::placeholder {
             color: #d1d1d1;
         }
     }
-    width: 100%;
-    outline: 1px solid var(--greyD1);
-    border-radius: 10px;
-    padding: 12px 21px;
-    display: flex;
-    box-sizing: border-box;
+
     &:has(input:focus) {
         outline: 1px solid var(--lightblue);
-        & .password.--regular {
-            display: none;
+        .icon-box {
+            cursor: pointer;
         }
     }
-    &:not(:has(input:focus)) {
-        & .password.--focused {
-            display: none;
-        }
-    }
+
     &:has(input.--error) {
         outline: 1px solid var(--error);
-    }
-    &:has(input:focus) {
-        & .icon-box {
-            .password.--regular {
-                display: none;
-            }
-        }
     }
 
     .icon-box {
         display: flex;
         justify-content: flex-end;
         align-items: center;
-        cursor: pointer;
+        position: relative;
+
+        img {
+            transition: opacity 0.15s ease-in-out;
+        }
+
+        .password {
+            &.--regular {
+                display: block;
+            }
+
+            &.--focused {
+                display: none;
+            }
+        }
+    }
+
+    &:has(.icon-box:focus, .icon-box:active, input:focus) {
+        .password.--regular {
+            display: none;
+        }
+
+        .password.--focused {
+            display: block;
+        }
     }
 }

@@ -49,6 +49,7 @@
     /assets/icons/{{ icon }}@2x.png 2x,
     /assets/icons/{{ icon }}@3x.png 3x
   "
+      (click)="$event.stopPropagation()"
     />
   </div>
   } @else if (icon) {
