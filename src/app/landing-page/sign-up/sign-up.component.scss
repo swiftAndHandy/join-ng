@@ -26,6 +26,15 @@
             }
         }
 
+        .section_om_td1_td3 {
+            display: flex;
+            gap: 80px;
+        }
+
+        .section_om_td1_td3:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
         h1 {
             font-family: "Inter", Arial, Helvetica, sans-serif;
             margin-block: 0 16px;

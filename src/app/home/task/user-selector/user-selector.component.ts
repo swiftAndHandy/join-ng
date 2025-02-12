@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, ElementRef, HostListener, Input } from '@angular/core';
 import { SelectedUsersComponent } from '../selected-users/selected-users.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -11,11 +11,13 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './user-selector.component.scss',
 })
 export class UserSelectorComponent {
-  @Input() users: string[] = ['Peter Meyer', 'Klaus Dieter', 'Felix Finke']; //Use User-Datatype
+  @Input() users: string[] = ['Peter Meyer', 'Klaus Dieter', 'Felix Finke']; // TODO: User-Datatype nutzen
   filteredUsers: string[] = [...this.users];
   searchTerm: string = '';
-
   isFocused = false;
+
+  constructor(private elRef: ElementRef) {}
+
   setFocus(value: boolean) {
     this.isFocused = value;
   }
@@ -25,5 +27,12 @@ export class UserSelectorComponent {
       user.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
     console.log(this.filteredUsers);
+  }
+
+  @HostListener('document:click', ['$event'])
+  onClickOutside(event: Event) {
+    if (!this.elRef.nativeElement.contains(event.target)) {
+      this.setFocus(false);
+    }
   }
 }

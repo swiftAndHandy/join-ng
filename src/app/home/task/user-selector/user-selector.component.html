@@ -4,7 +4,6 @@
     type="text"
     [ngClass]="{ '--opened': isFocused }"
     (focus)="setFocus(true)"
-    (blur)="setFocus(false)"
     [(ngModel)]="searchTerm"
     (ngModelChange)="filterUsers()"
     name="user-selector"
@@ -18,4 +17,4 @@
     }
   </div>
 </div>
-<selected-users [shift]="false"></selected-users>
+<selected-users [shift]="false" (click)="setFocus(false)"></selected-users>
