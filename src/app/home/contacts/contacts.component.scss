@@ -36,8 +36,6 @@
 
   @media (min-width: 1081px) {
     top: 50%;
-    right: 0;
-    transform: translate(100%, -50%);
     animation: fadeSideToCenter 500ms ease-in-out forwards;
   }
   @media (max-width: 1080px) {
@@ -46,18 +44,57 @@
     transform: translate(-50%, 100%);
     animation: fadeBottomToCenter 500ms ease-in-out forwards;
   }
+
+  &.--despawn {
+    @media (min-width: 1081px) {
+      animation: fadeCenterToSide 500ms ease-in-out forwards;
+    }
+    @media (max-width: 1080px) {
+      animation: fadeCenterToBottom 500ms ease-in-out forwards;
+    }
+  }
 }
 
 @keyframes fadeSideToCenter {
+  from {
+    right: 0;
+    transform: translate(100%, -50%);
+  }
   to {
     right: 50%;
     transform: translate(50%, -50%);
   }
 }
 
+@keyframes fadeCenterToSide {
+  from {
+    right: 50%;
+    transform: translate(50%, -50%);
+  }
+  to {
+    right: 0;
+    transform: translate(100%, -50%);
+  }
+}
+
 @keyframes fadeBottomToCenter {
+  from {
+    bottom: 0;
+    transform: translate(-50%, 100%);
+  }
   to {
     bottom: 50%;
     transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes fadeCenterToBottom {
+  from {
+    bottom: 50%;
+    transform: translate(-50%, -50%);
+  }
+  to {
+    bottom: 0;
+    transform: translate(-50%, 100%);
   }
 }

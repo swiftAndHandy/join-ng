@@ -1,1 +1,8 @@
-<p>edit-contact works!</p>
+<section class="contact-editor">
+  <button (click)="contactService.hidePopup()" [joinButton]="{}">Close</button>
+@if(contactService.createModus()) {
+  <p>create-contact works!</p>
+} @else {
+  <p>edit-contact works!</p>
+}
+</section>
