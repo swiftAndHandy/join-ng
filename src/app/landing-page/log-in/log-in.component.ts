@@ -3,6 +3,7 @@ import { TextInputComponent } from '../../shared/components/inputs/text-input/te
 import { CommonModule } from '@angular/common';
 import { ButtonComponent } from '../../shared/components/button/button.component';
 import { DividerComponent } from '../../shared/components/divider/divider.component';
+import {JoinButtonDirective} from "../../shared/directives/join-button.directive";
 
 @Component({
   selector: 'log-in',
@@ -12,6 +13,7 @@ import { DividerComponent } from '../../shared/components/divider/divider.compon
     CommonModule,
     ButtonComponent,
     DividerComponent,
+    JoinButtonDirective,
   ],
   templateUrl: './log-in.component.html',
   styleUrl: './log-in.component.scss',

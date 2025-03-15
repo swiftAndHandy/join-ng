@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import {Component, ElementRef, Input, Renderer2} from '@angular/core';
 
 type ButtonType = 'button' | 'submit' | 'reset';
 export enum ButtonSymbol {
@@ -18,6 +18,7 @@ export enum ButtonSymbol {
   styleUrl: './button.component.scss',
 })
 export class ButtonComponent {
+
   @Input() type: ButtonType = 'button';
   @Input() primary: boolean = true;
   @Input() bold: boolean = false;

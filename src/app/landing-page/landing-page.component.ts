@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AnimationObject } from '../interfaces/animation-object';
+import { AnimationObject } from '../shared/interfaces/animation-object';
 import { CommonModule } from '@angular/common';
 import { LogInComponent } from './log-in/log-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
