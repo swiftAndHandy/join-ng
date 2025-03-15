@@ -1,27 +1,63 @@
 .contact-view {
+  position: relative;
+  overflow-x: clip;
+  display: flex;
+  @media (orientation: landscape) {
+    min-height: calc(100vh - 96px);
+  }
+
+  @media (orientation: portrait) {
+    min-height: calc(100vh - 176px);
+    @media (max-width: 380px) {
+      min-height: calc(100vh - 147px);
+    }
+  }
+
+  .contact-list {
+    max-width: 0;
+
+      @media (orientation: landscape) and (min-width: 1081px) {
+        display: unset;
+        min-width: min(25vw, 400px);
+        max-width: min(25vw, 400px);
+      }
+  }
+
+  .contact-details {
     display: flex;
-    @media (orientation: landscape) {
-        min-height: calc(100vh - 96px);
-    }
+    align-items: flex-start;
+    flex: 1;
+  }
+}
 
-    @media (orientation: portrait) {
-        min-height: calc(100vh - 176px);
-        @media (max-width: 380px) {
-            min-height: calc(100vh - 147px);
-        }
-    }
-    .contact-list {
-        max-width: 0;
+.edit-contact {
+  position: absolute;
+  z-index: 10;
 
-        @media (orientation: landscape) and (min-width: 1081px) {
-            display: unset;
-            min-width: min(25vw, 400px);
-            max-width: min(25vw, 400px);
-        }
-    }
-    .contact-details {
-        display: flex;
-        align-items: flex-start;
-        flex: 1;
-    }
+  @media (min-width: 1081px) {
+    top: 50%;
+    right: 0;
+    transform: translate(100%, -50%);
+    animation: fadeSideToCenter 500ms ease-in-out forwards;
+  }
+  @media (max-width: 1080px) {
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 100%);
+    animation: fadeBottomToCenter 500ms ease-in-out forwards;
+  }
+}
+
+@keyframes fadeSideToCenter {
+  to {
+    right: 50%;
+    transform: translate(50%, -50%);
+  }
+}
+
+@keyframes fadeBottomToCenter {
+  to {
+    bottom: 50%;
+    transform: translate(-50%, -50%);
+  }
 }

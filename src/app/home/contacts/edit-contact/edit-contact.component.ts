@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {ContactService} from "../contact.service";
 
 @Component({
   selector: 'edit-contact',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
   templateUrl: './edit-contact.component.html',
   styleUrl: './edit-contact.component.scss',
 })
-export class EditContactComponent {}
+export class EditContactComponent {
+  constructor(private contactService: ContactService) { }
+
+
+}

@@ -43,7 +43,7 @@ export class JoinButtonDirective {
       this.renderer.setStyle(this.el.nativeElement, 'border-radius', '8px');
     } else if (this.joinButton.shape === 'circle') {
       this.renderer.setStyle(this.el.nativeElement, 'border-radius', '50%');
-      this.renderer.setStyle(this.el.nativeElement, 'padding', '12px !important');
+      this.renderer.setStyle(this.el.nativeElement, 'padding', '12px');
     }
 
     this.renderDefaultStyle();

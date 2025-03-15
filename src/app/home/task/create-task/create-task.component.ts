@@ -7,7 +7,7 @@ import { SubtaskFormComponent } from '../subtasks/subtask-form/subtask-form.comp
 import {JoinButtonDirective} from "../../../shared/directives/join-button.directive";
 
 @Component({
-  selector: 'app-generate-task',
+  selector: 'app-create-task',
   standalone: true,
   imports: [
     PrioButtonsComponent,
@@ -17,10 +17,10 @@ import {JoinButtonDirective} from "../../../shared/directives/join-button.direct
     SubtaskFormComponent,
     JoinButtonDirective,
   ],
-  templateUrl: './generate-task.component.html',
-  styleUrl: './generate-task.component.scss',
+  templateUrl: './create-task.component.html',
+  styleUrl: './create-task.component.scss',
 })
-export class GenerateTaskComponent {
+export class CreateTaskComponent {
 
   taskTitle = signal('');
   taskDescription = signal('');

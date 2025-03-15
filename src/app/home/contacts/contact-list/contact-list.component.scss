@@ -28,12 +28,12 @@
             bottom: 0;
             &.portrait {
                 @media (min-width: 1081px) {
-                    display: none;
+                    display: none !important;
                 }
             }
             &.landscape {
                 @media (max-width: 1080px) {
-                    display: none;
+                    display: none !important;
                 }
             }
         }

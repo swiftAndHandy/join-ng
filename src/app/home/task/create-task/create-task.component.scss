@@ -66,3 +66,9 @@
         }
     }
 }
+
+.color-switch:hover {
+  >img {
+    filter: brightness(0) invert(56%) sepia(56%) saturate(660%) hue-rotate(154deg) brightness(93%) contrast(90%);;
+  }
+}
