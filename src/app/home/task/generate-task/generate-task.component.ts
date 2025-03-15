@@ -53,7 +53,7 @@ export class GenerateTaskComponent {
       'taskTitle': this.taskTitle(),
       'taskDescription': this.taskDescription(),
       'priorityLevel': this.currentPriority(),
-
+      'category': this.taskCategory(),
     });
   }
 

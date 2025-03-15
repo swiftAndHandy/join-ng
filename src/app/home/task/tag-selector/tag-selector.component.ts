@@ -18,11 +18,6 @@ export class TagSelectorComponent {
 
   @Output() categorySelected = new EventEmitter<number>();
 
-  selectCategory(category: number) {
-    this.selectedCategory.set(category); // Intern für sich selbst
-    this.categorySelected.emit(category); // Für Parent-Komponente
-  }
-
   constructor(private elRef: ElementRef, private backend: BackendService) {}
 
   ngOnInit() {
@@ -41,7 +36,7 @@ export class TagSelectorComponent {
 
   updateCategory(index: number) {
     this.selectedCategory.set(index);
-    console.log(this.selectedCategory());
+    this.categorySelected.emit(this.selectedCategory());
     this.setFocus(false);
   }
 
