@@ -39,6 +39,7 @@ export class JoinButtonDirective {
     this.renderer.setStyle(this.el.nativeElement, 'cursor', 'pointer');
     this.renderer.setStyle(this.el.nativeElement, 'display', 'flex');
     this.renderer.setStyle(this.el.nativeElement, 'align-items', 'center');
+    this.renderer.setStyle(this.el.nativeElement, 'justify-content', 'center');
     this.renderer.setStyle(this.el.nativeElement, 'font-size', '1.3rem');
 
     if (this.joinButton.bold) this.renderer.setStyle(this.el.nativeElement, 'font-weight', '700');

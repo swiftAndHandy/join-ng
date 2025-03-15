@@ -3,12 +3,12 @@
     class="dropdown"
     type="text"
     [ngClass]="{ '--opened': isFocused }"
-    [placeholder]="categories[selectedCategory]"
-    [value]="categories[selectedCategory]"
+    [placeholder]="categories()[selectedCategory]"
+    [value]="categories()[selectedCategory]"
     name="tag-selector"
   />
   <div class="tag-list" [ngClass]="{ '--focused': isFocused }">
-    @for(category of categories; track $index) { @if(!$first){
+    @for(category of categories(); track $index) { @if(!$first){
     <div
       class="tag-row"
       (click)="updateCategory($index); $event.stopPropagation()"

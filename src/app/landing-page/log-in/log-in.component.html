@@ -1,4 +1,4 @@
-<form class="box">
+<form class="box" onsubmit="return false">
   <div>
     <h1>Log in</h1>
     <divider></divider>
@@ -38,6 +38,6 @@
   </div>
   <div class="buttons">
     <button [joinButton]="{bold: true}">Log in</button>
-    <button [joinButton]="{bold: true, primary: false}">Guest Log in</button>
+    <button (click)="guestLogin()" [joinButton]="{bold: true, primary: false}">Guest Log in</button>
   </div>
 </form>

@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ButtonComponent } from '../../shared/components/button/button.component';
 import { DividerComponent } from '../../shared/components/divider/divider.component';
 import {JoinButtonDirective} from "../../shared/directives/join-button.directive";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'log-in',
@@ -21,4 +22,11 @@ import {JoinButtonDirective} from "../../shared/directives/join-button.directive
 export class LogInComponent {
   invalidEmail: boolean = false;
   invalidPassword: boolean = false;
+
+  constructor(private router: Router) {
+  }
+
+  guestLogin() {
+    this.router.navigate(['/home/summary']);
+  }
 }

@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, HostListener } from '@angular/core';
+import {Component, ElementRef, HostListener, signal} from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import {BackendService} from "../../../shared/services/backend.service";
 
 @Component({
   selector: 'tag-selector',
@@ -11,14 +12,20 @@ import { FormsModule } from '@angular/forms';
 })
 export class TagSelectorComponent {
   isFocused = false;
-  categories: string[] = [
-    'Select task category',
-    'Technical Task',
-    'User Story',
-  ];
+  categories = signal(['Select task category'])
   selectedCategory: number = 0;
 
-  constructor(private elRef: ElementRef) {}
+  constructor(private elRef: ElementRef, private backend: BackendService) {}
+
+  ngOnInit() {
+    this.getCategories();
+  }
+
+  async getCategories() {
+    const allCategories = await this.backend.getData();
+    const categoryNames = allCategories.map((category: any) => category.name);
+    this.categories.set([...this.categories(), ...categoryNames]);
+  }
 
   setFocus(value: boolean) {
     this.isFocused = value;
