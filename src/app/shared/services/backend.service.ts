@@ -9,15 +9,16 @@ export class BackendService {
   private apiURL = environment.BASE_URL;
   constructor() { }
 
-  async getData() {
+  async getCategories(categoryId: number | null = null): Promise<any> {
     try {
       const response: Response = await fetch(`${this.apiURL}/categories/`);
       if (!response.ok) return;
       return await response.json();
     } catch(error) {
-      console.error(error);
       throw error;
     }
   }
+
+  async createData() {}
 
 }

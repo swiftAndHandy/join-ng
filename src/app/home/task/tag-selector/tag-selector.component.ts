@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import {Component, ElementRef, HostListener, signal} from '@angular/core';
+import {Component, ElementRef, EventEmitter, HostListener, Output, signal} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {BackendService} from "../../../shared/services/backend.service";
 
@@ -13,7 +13,15 @@ import {BackendService} from "../../../shared/services/backend.service";
 export class TagSelectorComponent {
   isFocused = false;
   categories = signal(['Select task category'])
-  selectedCategory: number = 0;
+
+  selectedCategory = signal<number>(0);
+
+  @Output() categorySelected = new EventEmitter<number>();
+
+  selectCategory(category: number) {
+    this.selectedCategory.set(category); // Intern für sich selbst
+    this.categorySelected.emit(category); // Für Parent-Komponente
+  }
 
   constructor(private elRef: ElementRef, private backend: BackendService) {}
 
@@ -22,7 +30,7 @@ export class TagSelectorComponent {
   }
 
   async getCategories() {
-    const allCategories = await this.backend.getData();
+    const allCategories = await this.backend.getCategories();
     const categoryNames = allCategories.map((category: any) => category.name);
     this.categories.set([...this.categories(), ...categoryNames]);
   }
@@ -32,8 +40,8 @@ export class TagSelectorComponent {
   }
 
   updateCategory(index: number) {
-    this.selectedCategory = index;
-    console.log(this.selectedCategory);
+    this.selectedCategory.set(index);
+    console.log(this.selectedCategory());
     this.setFocus(false);
   }
 

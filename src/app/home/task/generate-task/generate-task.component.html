@@ -4,13 +4,12 @@
     <div class="task-view__body__left">
       <div class="section">
         <span class="subtitle required">Title</span>
-        <input type="text" name="task-title" id="" class="input" />
+        <input [value]="taskTitle()" (input)="updateInputElementSignal($event, taskTitle)" type="text" name="task-title" id="" class="input" />
       </div>
       <div class="section">
         <span class="subtitle">Description</span>
-        <textarea
+        <textarea [value]="taskDescription()" (input)="updateInputElementSignal($event, taskDescription)"
           name="task-description"
-          id=""
           class="input textarea"
         ></textarea>
       </div>
@@ -30,7 +29,7 @@
           @for (priorityLevel of priorityLevels; track $index) {
           <prio-button
             [level]="priorityLevel"
-            [active]="$index == currentPriority"
+            [active]="$index == currentPriority()"
             (click)="setPriorityTo($index)"
           ></prio-button>
           }
@@ -38,7 +37,7 @@
       </div>
       <div class="section">
         <span class="subtitle required">Category</span>
-        <tag-selector></tag-selector>
+        <tag-selector (categorySelected)="updateCategory($event)"></tag-selector>
       </div>
       <div class="section">
         <span class="subtitle required">Subtasks</span>
@@ -49,10 +48,8 @@
   <div class="task-view__footer">
     <span class="required description">This field is required</span>
     <div class="footer-buttons">
-      <join-button type="reset" [primary]="false" [add]="ButtonSymbol.cancel"
-        >Clear</join-button
-      >
-      <join-button [add]="ButtonSymbol.checkmark">Create Task</join-button>
+      <button type="reset" [joinButton]="{primary: false}">Cancel <img src="./assets/icons/cancel_regular.svg" alt=""></button>
+      <button (click)="pseudoObject()" [joinButton]="{}">Create Task <img src="./assets/icons/checkmark_regular.svg" alt=""></button>
     </div>
   </div>
 </section>

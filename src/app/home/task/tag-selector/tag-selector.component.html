@@ -3,8 +3,8 @@
     class="dropdown"
     type="text"
     [ngClass]="{ '--opened': isFocused }"
-    [placeholder]="categories()[selectedCategory]"
-    [value]="categories()[selectedCategory]"
+    [placeholder]="categories()[selectedCategory()]"
+    [value]="categories()[selectedCategory()]"
     name="tag-selector"
   />
   <div class="tag-list" [ngClass]="{ '--focused': isFocused }">

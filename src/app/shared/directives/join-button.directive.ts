@@ -3,17 +3,8 @@ import {Directive, ElementRef, HostListener, Input, Renderer2} from '@angular/co
 export interface ButtonConfig {
   primary?: boolean;
   bold?: boolean;
-  add?: ButtonSymbol;
   shape?: 'regular' |'circle';
   buttonPadding?: 'small' | 'regular';
-}
-
-export enum ButtonSymbol {
-  checkmark = 'checkmark_regular',
-  contact = 'person_add',
-  cancel = 'cancel_regular',
-  unset = 'unset',
-  plus = 'add',
 }
 
 @Directive({
@@ -31,13 +22,13 @@ export class JoinButtonDirective {
     if (this.joinButton === undefined) return;
     this.joinButton.primary = this.joinButton.primary ?? true;
     this.joinButton.bold = this.joinButton.bold ?? false;
-    this.joinButton.add =  this.joinButton.add ?? ButtonSymbol.unset;
     this.joinButton.shape = this.joinButton.shape ?? 'regular';
     this.joinButton.buttonPadding = this.joinButton.buttonPadding ?? 'regular';
 
     this.renderer.setStyle(this.el.nativeElement, 'border', 'none');
     this.renderer.setStyle(this.el.nativeElement, 'cursor', 'pointer');
     this.renderer.setStyle(this.el.nativeElement, 'display', 'flex');
+    this.renderer.setStyle(this.el.nativeElement, 'gap', '0.5rem');
     this.renderer.setStyle(this.el.nativeElement, 'align-items', 'center');
     this.renderer.setStyle(this.el.nativeElement, 'justify-content', 'center');
     this.renderer.setStyle(this.el.nativeElement, 'font-size', '1.3rem');
