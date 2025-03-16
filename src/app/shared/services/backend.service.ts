@@ -19,6 +19,20 @@ export class BackendService {
     }
   }
 
-  async createData() {}
+  async createContact(contactDetails: object): Promise<any> {
+    try {
+      debugger
+      const response: Response = await fetch(`${this.apiURL}/contacts/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(contactDetails)
+      })
+      return await response.json();
+    } catch(error) {
+      throw error;
+    }
+  }
 
 }

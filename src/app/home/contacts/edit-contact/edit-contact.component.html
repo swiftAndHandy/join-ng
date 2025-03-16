@@ -1,8 +1,23 @@
 <section class="contact-editor">
   <button (click)="contactService.hidePopup()" [joinButton]="{}">Close</button>
-@if(contactService.createModus()) {
-  <p>create-contact works!</p>
-} @else {
-  <p>edit-contact works!</p>
-}
+  <div class="primary">
+      @if(contactService.createModus()) {
+        <h2>Add contact</h2>
+        <span>Tasks are better with a team!</span>
+      } @else {
+        <h2>Edit contact</h2>
+      }
+  </div>
+  <div class="secondary">
+    @if(contactService.createModus()) {
+      <input autocomplete="off" [value]="firstName()" (input)="inputSignal.updateInputElement($event, firstName)" type="text" name="first-name">
+      <input autocomplete="off" [value]="surname()" (input)="inputSignal.updateInputElement($event, surname)" type="text" name="surname">
+      <input autocomplete="off" [value]="address()" (input)="inputSignal.updateInputElement($event, address)" type="tel" name="address">
+      <input autocomplete="off" [value]="email()" (input)="inputSignal.updateInputElement($event, email)" type="email" name="email">
+      <input autocomplete="off" [value]="phone()" (input)="inputSignal.updateInputElement($event, phone)" type="tel" name="phone">
+    } @else {
+      <p>edit-contact works!</p>
+    }
+  </div>
+  <button (click)="validate()" [joinButton]="{}">Send</button>
 </section>

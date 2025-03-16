@@ -16,7 +16,7 @@
   .contact-list {
     max-width: 0;
 
-      @media (orientation: landscape) and (min-width: 1081px) {
+      @media (min-width: 1200px) {
         display: unset;
         min-width: min(25vw, 400px);
         max-width: min(25vw, 400px);
@@ -34,23 +34,23 @@
   position: absolute;
   z-index: 10;
 
-  @media (min-width: 1081px) {
+  @media (min-width: 1200px) {
     top: 50%;
-    animation: fadeSideToCenter 500ms ease-in-out forwards;
+    animation: fadeSideToCenter 300ms ease-in-out forwards;
   }
-  @media (max-width: 1080px) {
+  @media (max-width: 1199px) {
     bottom: 0;
     left: 50%;
     transform: translate(-50%, 100%);
-    animation: fadeBottomToCenter 500ms ease-in-out forwards;
+    animation: fadeBottomToCenter 300ms ease-in-out forwards;
   }
 
   &.--despawn {
-    @media (min-width: 1081px) {
-      animation: fadeCenterToSide 500ms ease-in-out forwards;
+    @media (min-width: 1200px) {
+      animation: fadeCenterToSide 300ms ease-in-out forwards;
     }
-    @media (max-width: 1080px) {
-      animation: fadeCenterToBottom 500ms ease-in-out forwards;
+    @media (max-width: 1199px) {
+      animation: fadeCenterToBottom 300ms ease-in-out forwards;
     }
   }
 }
@@ -84,14 +84,14 @@
   }
   to {
     bottom: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, 50%);
   }
 }
 
 @keyframes fadeCenterToBottom {
   from {
     bottom: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, 50%);
   }
   to {
     bottom: 0;

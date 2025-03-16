@@ -5,6 +5,7 @@ import { DatePickerComponent } from '../date-picker/date-picker.component';
 import { TagSelectorComponent } from '../tag-selector/tag-selector.component';
 import { SubtaskFormComponent } from '../subtasks/subtask-form/subtask-form.component';
 import {JoinButtonDirective} from "../../../shared/directives/join-button.directive";
+import {InputSignalService} from "../../../shared/services/input-signal.service";
 
 @Component({
   selector: 'app-create-task',
@@ -22,17 +23,15 @@ import {JoinButtonDirective} from "../../../shared/directives/join-button.direct
 })
 export class CreateTaskComponent {
 
+  constructor(public inputSignal: InputSignalService) {
+  }
+
   taskTitle = signal('');
   taskDescription = signal('');
   taskCategory = signal<number>(0);
 
   updateCategory(category: number) {
     this.taskCategory.set(category);
-  }
-
-  updateInputElementSignal(event: Event, targetSignal: WritableSignal<string>) {
-    const input = event.target as HTMLInputElement;
-    targetSignal.set(input.value);
   }
 
 

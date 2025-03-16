@@ -11,7 +11,7 @@
     .add-contact {
         position: fixed;
 
-        @media (max-width: 1080px) {
+        @media (max-width: 1199px) {
             right: 32px;
             bottom: 20px;
 
@@ -27,12 +27,12 @@
             position: relative;
             bottom: 0;
             &.portrait {
-                @media (min-width: 1081px) {
+                @media (min-width: 1200px) {
                     display: none !important;
                 }
             }
             &.landscape {
-                @media (max-width: 1080px) {
+                @media (max-width: 1199px) {
                     display: none !important;
                 }
             }

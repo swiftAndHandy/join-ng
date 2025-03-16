@@ -1,3 +1,16 @@
 .contact-editor {
-  position: relative;
+  width: min(70dvw, 1000px);
+  height: 90dvh;
+  display: flex;
+  flex-direction: column;
+  @media(min-width: 1081px) {
+    height: auto;
+    flex-direction: row;
+  }
+}
+
+.primary {
+  width: 33%;
+  background-color: var(--darkblue);
+  color: white;
 }
