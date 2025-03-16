@@ -22,6 +22,6 @@ export class ContactService {
     setTimeout(() => {
       this.displayPopup.set(false);
       this.despawnPopup.set(false);
-    }, 1000)
+    }, 250)
   }
 }
