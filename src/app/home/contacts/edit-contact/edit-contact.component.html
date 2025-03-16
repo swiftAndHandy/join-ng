@@ -1,5 +1,5 @@
 <section class="contact-editor">
-  <button (click)="contactService.hidePopup()" [joinButton]="{}">Close</button>
+  <button class="close-btn" (click)="contactService.hidePopup()" [joinButton]="{}">Close</button>
   <div class="primary">
       @if(contactService.createModus()) {
         <h2>Add contact</h2>
@@ -10,14 +10,16 @@
   </div>
   <div class="secondary">
     @if(contactService.createModus()) {
-      <input autocomplete="off" [value]="firstName()" (input)="inputSignal.updateInputElement($event, firstName)" type="text" name="first-name">
-      <input autocomplete="off" [value]="surname()" (input)="inputSignal.updateInputElement($event, surname)" type="text" name="surname">
-      <input autocomplete="off" [value]="address()" (input)="inputSignal.updateInputElement($event, address)" type="tel" name="address">
-      <input autocomplete="off" [value]="email()" (input)="inputSignal.updateInputElement($event, email)" type="email" name="email">
-      <input autocomplete="off" [value]="phone()" (input)="inputSignal.updateInputElement($event, phone)" type="tel" name="phone">
+      <input autocomplete="off" placeholder="First name" [value]="firstName()" (input)="inputSignal.updateInputElement($event, firstName)" type="text" name="first-name">
+      <input autocomplete="off" placeholder="surname" [value]="surname()" (input)="inputSignal.updateInputElement($event, surname)" type="text" name="surname">
+      <input autocomplete="off" placeholder="Street" [value]="address.street()" (input)="inputSignal.updateInputElement($event, address.street)" type="text" name="address">
+      <input autocomplete="off" placeholder="ZIP" [value]="address.zipCode()" (input)="inputSignal.updateInputElement($event, address.zipCode)" type="text" name="address">
+      <input autocomplete="off" placeholder="City" [value]="address.city()" (input)="inputSignal.updateInputElement($event, address.city)" type="text" name="address">
+      <input autocomplete="off" placeholder="E-Mail" [value]="email()" (input)="inputSignal.updateInputElement($event, email)" type="email" name="email">
+      <input autocomplete="off" placeholder="Phone" [value]="phone()" (input)="inputSignal.updateInputElement($event, phone)" type="tel" name="phone">
     } @else {
       <p>edit-contact works!</p>
     }
-  </div>
   <button (click)="validate()" [joinButton]="{}">Send</button>
+  </div>
 </section>

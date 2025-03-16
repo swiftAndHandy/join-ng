@@ -16,7 +16,11 @@ import {BackendService} from "../../../shared/services/backend.service";
 export class EditContactComponent {
   firstName = signal('');
   surname = signal('');
-  address = signal('');
+  address = {
+    street: signal(''),
+    zipCode: signal(''),
+    city: signal(''),
+  };
   email = signal('');
   phone = signal('');
 
@@ -26,11 +30,14 @@ export class EditContactComponent {
     const request = {
       first_name: this.firstName(),
       surname: this.surname(),
-      address: this.address(),
+      street: this.address.street(),
+      zipCode: this.address.zipCode(),
+      city: this.address.city(),
       phone: this.phone(),
       email: this.email(),
     };
-    debugger;
-    await this.backend.createContact(request);
+    // debugger;
+    // await this.backend.createContact(request);
+    console.table(request);
   }
 }

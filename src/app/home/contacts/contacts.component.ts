@@ -16,4 +16,8 @@ export class ContactsComponent {
 
   constructor(public contactService: ContactService) {}
 
+  ngOnDestroy() {
+    this.contactService.hidePopup();
+  }
+
 }
