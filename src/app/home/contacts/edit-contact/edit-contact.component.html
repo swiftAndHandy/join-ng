@@ -9,17 +9,27 @@
       }
   </div>
   <div class="secondary">
-    @if(contactService.createModus()) {
-      <input autocomplete="off" placeholder="First name" [value]="firstName()" (input)="inputSignal.updateInputElement($event, firstName)" type="text" name="first-name">
-      <input autocomplete="off" placeholder="surname" [value]="surname()" (input)="inputSignal.updateInputElement($event, surname)" type="text" name="surname">
-      <input autocomplete="off" placeholder="Street" [value]="address.street()" (input)="inputSignal.updateInputElement($event, address.street)" type="text" name="address">
-      <input autocomplete="off" placeholder="ZIP" [value]="address.zipCode()" (input)="inputSignal.updateInputElement($event, address.zipCode)" type="text" name="address">
-      <input autocomplete="off" placeholder="City" [value]="address.city()" (input)="inputSignal.updateInputElement($event, address.city)" type="text" name="address">
-      <input autocomplete="off" placeholder="E-Mail" [value]="email()" (input)="inputSignal.updateInputElement($event, email)" type="email" name="email">
-      <input autocomplete="off" placeholder="Phone" [value]="phone()" (input)="inputSignal.updateInputElement($event, phone)" type="tel" name="phone">
-    } @else {
-      <p>edit-contact works!</p>
-    }
+<!--    @if(contactService.createModus()) {-->
+    <form class="contact-form" onsubmit="return false">
+      <div class="contact-form__name custom-input">
+        <input class="contact-form__name__first-name" autocomplete="off" placeholder="First name" [value]="firstName()" (input)="inputSignal.updateInputElement($event, firstName)" type="text" name="first-name">
+        <div class="input-with-icon">
+          <input class="contact-form__name__surname" autocomplete="off" placeholder="Surname" [value]="surname()" (input)="inputSignal.updateInputElement($event, surname)" type="text" name="surname">
+        </div>
+      </div>
+      <input class="custom-input" autocomplete="off" placeholder="Street" [value]="address.street()" (input)="inputSignal.updateInputElement($event, address.street)" type="text" name="address">
+      <div class="contact-form__city custom-input">
+        <input class="contact-form__city__zip-code" maxlength="5" autocomplete="off" placeholder="ZIP" [value]="address.zipCode()" (input)="inputSignal.updateInputElement($event, address.zipCode)" type="text" name="address">
+        <div class="input-with-icon">
+          <input class="contact-form__city__city-name" autocomplete="off" placeholder="City" [value]="address.city()" (input)="inputSignal.updateInputElement($event, address.city)" type="text" name="address">
+        </div>
+      </div>
+      <input class="custom-input" autocomplete="off" placeholder="E-Mail" [value]="email()" (input)="inputSignal.updateInputElement($event, email)" type="email" name="email">
+      <input class="custom-input" autocomplete="off" placeholder="Phone" [value]="phone()" (input)="inputSignal.updateInputElement($event, phone)" type="tel" name="phone">
+    </form>
+<!--    } @else {-->
+<!--      <p>edit-contact works!</p>-->
+<!--    }-->
   <button (click)="validate()" [joinButton]="{}">Send</button>
   </div>
 </section>

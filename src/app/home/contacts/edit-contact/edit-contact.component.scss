@@ -56,3 +56,64 @@
   background-color: #fff;
   padding: 66px 46px 66px 0;
 }
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  .custom-input {
+    border: 1px solid var(--greyD1);
+    border-radius: 10px;
+  }
+
+  input {
+    border: 1px solid transparent;
+    border-radius: 10px;
+    &:focus-visible {
+      outline: none;
+      &:is(.custom-input) {
+        border: 1px solid var(--lightblue);
+      }
+    }
+  }
+
+  .input-with-icon {
+    flex: 1;
+    display: flex;
+  }
+
+  &__name {
+    display: flex;
+    &__first-name {
+      flex: 1;
+      &:focus-visible {
+        border: 1px solid var(--lightblue) !important;
+        border-radius: 10px 0 0 10px !important;
+      }
+    }
+    &__surname {
+      flex: 1;
+      &:focus-visible {
+        border: 1px solid var(--lightblue) !important;
+        border-radius: 0 10px 10px 0 !important;
+      }
+    }
+  }
+
+  &__city {
+    display: flex;
+    &__zip-code {
+      &:focus-visible {
+        border: 1px solid var(--lightblue) !important;
+        border-radius: 10px 0 0 10px !important;
+      }
+    }
+    &__city-name {
+      flex: 1;
+      &:focus-visible {
+        border: 1px solid var(--lightblue) !important;
+        border-radius: 0 10px 10px 0 !important;
+      }
+    }
+  }
+}

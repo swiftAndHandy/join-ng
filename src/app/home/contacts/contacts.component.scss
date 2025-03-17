@@ -14,12 +14,12 @@
   }
 
   .contact-list {
-    max-width: 0;
+    width: 0;
+    transition: width 0.1s ease-in-out;
 
       @media (min-width: 1200px) {
         display: unset;
-        min-width: min(25vw, 400px);
-        max-width: min(25vw, 400px);
+        width: clamp(min(25vw, 400px), min(25vw, 400px), min(25vw, 400px));
       }
   }
 
