@@ -31,13 +31,13 @@ export class EditContactComponent {
       first_name: this.firstName(),
       surname: this.surname(),
       street: this.address.street(),
-      zipCode: this.address.zipCode(),
+      zip_code: this.address.zipCode(),
       city: this.address.city(),
       phone: this.phone(),
       email: this.email(),
     };
-    // debugger;
-    // await this.backend.createContact(request);
-    console.table(request);
+    debugger;
+    const response = await this.backend.createContact(request);
+    console.table(response);
   }
 }
