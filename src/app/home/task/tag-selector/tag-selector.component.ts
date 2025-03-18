@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import {Component, ElementRef, EventEmitter, HostListener, Output, signal} from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import {BackendService} from "../../../shared/services/backend/backend.service";
+import {CategoriesService} from "../../../shared/services/backend/categories.service";
 
 @Component({
   selector: 'tag-selector',
@@ -18,16 +18,16 @@ export class TagSelectorComponent {
 
   @Output() categorySelected = new EventEmitter<number>();
 
-  constructor(private elRef: ElementRef, private backend: BackendService) {}
+  constructor(private elRef: ElementRef, private backend: CategoriesService) {}
 
   ngOnInit() {
     this.getCategories();
   }
 
   async getCategories() {
-    const allCategories = await this.backend.getCategories();
-    const categoryNames = allCategories.map((category: any) => category.name);
-    this.categories.set([...this.categories(), ...categoryNames]);
+    // const allCategories = await this.backend.getCategories();
+    // const categoryNames = allCategories.map((category: any) => category.name);
+    // this.categories.set([...this.categories(), ...categoryNames]);
   }
 
   setFocus(value: boolean) {

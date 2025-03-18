@@ -1,37 +1,34 @@
-import { Injectable } from '@angular/core';
-import { environment } from "../../../../environments/environment";
+import {inject, Injectable, signal} from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import {lastValueFrom} from "rxjs";
+import {environment} from "../../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class BackendService {
+  protected apiURL = environment.BASE_URL;
+  private http = inject(HttpClient);
 
-  private apiURL = environment.BASE_URL;
-  constructor() { }
+  constructor() {}
 
-  async getCategories(categoryId: number | null = null): Promise<any> {
-    try {
-      const response: Response = await fetch(`${this.apiURL}/categories/`);
-      if (!response.ok) return;
-      return await response.json();
-    } catch(error) {
-      throw error;
-    }
+  async get<T>(endpoint: string): Promise<T> {
+    return await lastValueFrom(this.http.get<T>(this.apiURL + endpoint));
   }
 
-  async createContact(contactDetails: object): Promise<any> {
-    try {
-      const response: Response = await fetch(`${this.apiURL}/contacts/`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(contactDetails)
-      })
-      return await response.json();
-    } catch(error) {
-      throw error;
-    }
+  async post<T>(endpoint: string, data: any): Promise<T> {
+    return await lastValueFrom(this.http.post<T>(this.apiURL + endpoint, data));
   }
 
+  async put<T>(endpoint: string, data: any): Promise<T> {
+    return await lastValueFrom(this.http.put<T>(this.apiURL + endpoint, data));
+  }
+
+  async patch<T>(endpoint: string, data: any): Promise<T> {
+    return await lastValueFrom(this.http.patch<T>(this.apiURL + endpoint, data));
+  }
+
+  async delete<T>(endpoint: string): Promise<T> {
+    return await lastValueFrom(this.http.delete<T>(this.apiURL + endpoint));
+  }
 }
