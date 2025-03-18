@@ -3,7 +3,7 @@ import {computed, Injectable, signal} from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class ContactService {
+export class ContactMenuService {
 
   private displayPopup = signal(false);
   public createModus = signal(true);

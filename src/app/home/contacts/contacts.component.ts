@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ContactListComponent } from './contact-list/contact-list.component';
 import { ContactDetailsComponent } from './contact-details/contact-details.component';
 import {EditContactComponent} from "./edit-contact/edit-contact.component";
-import {ContactService} from "./contact.service";
+import {ContactMenuService} from "./contact-menu.service";
 import {NgClass} from "@angular/common";
 
 @Component({
@@ -14,7 +14,7 @@ import {NgClass} from "@angular/common";
 })
 export class ContactsComponent {
 
-  constructor(public contactService: ContactService) {}
+  constructor(public contactService: ContactMenuService) {}
 
   ngOnDestroy() {
     this.contactService.hidePopup();

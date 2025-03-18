@@ -1,8 +1,8 @@
 import {Component, signal, WritableSignal} from '@angular/core';
-import {ContactService} from "../contact.service";
+import {ContactMenuService} from "../contact-menu.service";
 import {JoinButtonDirective} from "../../../shared/directives/join-button.directive";
 import {InputSignalService} from "../../../shared/services/input-signal.service";
-import {BackendService} from "../../../shared/services/backend.service";
+import {BackendService} from "../../../shared/services/backend/backend.service";
 
 @Component({
   selector: 'edit-contact',
@@ -24,7 +24,7 @@ export class EditContactComponent {
   email = signal('');
   phone = signal('');
 
-  constructor(public contactService: ContactService, public inputSignal: InputSignalService, private backend: BackendService) { }
+  constructor(public contactService: ContactMenuService, public inputSignal: InputSignalService, private backend: BackendService) { }
 
   async validate() {
     const request = {
@@ -36,7 +36,6 @@ export class EditContactComponent {
       phone: this.phone(),
       email: this.email(),
     };
-    debugger;
     const response = await this.backend.createContact(request);
     console.table(response);
   }
