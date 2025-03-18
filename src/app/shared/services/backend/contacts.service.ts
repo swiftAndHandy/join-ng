@@ -1,4 +1,4 @@
-import {Injectable, signal} from '@angular/core';
+import {inject, Injectable, signal} from '@angular/core';
 import {BackendService} from "./backend.service";
 
 @Injectable({
@@ -6,15 +6,23 @@ import {BackendService} from "./backend.service";
 })
 export class ContactsService{
 
-  contacts = signal<any[]>([]);
-  selectedContact = signal<any | null>(null);
-  error = signal<string | null>(null);
+  private backend: BackendService = inject(BackendService);
 
-  constructor(private backend: BackendService) {}
+  private contacts = signal<any[]>([]);
+  private selectedContact = signal<any | null>(null);
 
-  async fetchContacts(): Promise<void> {
+  get list() {
+    return this.contacts();
+  }
+
+  get current() {
+    return this.selectedContact();
+  }
+
+  async initList(): Promise<any[]> {
     const data = await this.backend.get<any[]>('contacts/');
     if (data) this.contacts.set(data);
+    return this.contacts();
   }
 
   async fetchContactById(id: number): Promise<void> {
@@ -23,8 +31,20 @@ export class ContactsService{
   }
 
   async createContact(contactDetails: object): Promise<void> {
-    const newContact = await this.backend.post<any>('contacts/', contactDetails);
-    if (newContact) this.contacts.update(contacts => [...contacts, newContact]);
+    const newContactDetails = { ...contactDetails, badge_color: this.getRandomBadgeColor() };
+    const response = await this.backend.post<any>('contacts/', newContactDetails);
+    if (response.ok) {
+      this.contacts.update(contacts => [...contacts, response.data]);
+    } else {
+      return response.error;
+    }
+  }
+
+  private getRandomBadgeColor() {
+    const validColors = ['FF7A00', 'FF5EB3', '6E52FF', '9327FF', '00BEE8', '1FD7C1', 'FF745E', 'FFA35E', 'FC71FF', 'FFC701', '0038FF', 'C3FF2B', 'FFE62B', 'FF4646', 'FFBB2B'];
+    const index = Math.floor(Math.random()*(validColors.length));
+
+    return validColors[index];
   }
 
 }

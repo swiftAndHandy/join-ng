@@ -1,7 +1,7 @@
 <section class="contact-editor">
-  <button class="close-btn" (click)="contactService.hidePopup()" [joinButton]="{}">Close</button>
+  <button class="close-btn" (click)="contactMenu.hidePopup()" [joinButton]="{}">Close</button>
   <div class="primary">
-      @if(contactService.createModus()) {
+      @if(contactMenu.createModus()) {
         <h2>Add contact</h2>
         <span>Tasks are better with a team!</span>
       } @else {
@@ -9,23 +9,23 @@
       }
   </div>
   <div class="secondary">
-<!--    @if(contactService.createModus()) {-->
+<!--    @if(contactMenu.createModus()) {-->
     <form class="contact-form" onsubmit="return false">
       <div class="contact-form__name custom-input">
-        <input class="contact-form__name__first-name" autocomplete="off" placeholder="First name" [value]="firstName()" (input)="inputSignal.updateInputElement($event, firstName)" type="text" name="first-name">
+        <input class="contact-form__name__first-name" autocomplete="off" placeholder="First name" [value]="firstName()" (input)="signalService.updateInputElement($event, firstName)" type="text" name="first-name">
         <div class="input-with-icon">
-          <input class="contact-form__name__surname" autocomplete="off" placeholder="Surname" [value]="surname()" (input)="inputSignal.updateInputElement($event, surname)" type="text" name="surname">
+          <input class="contact-form__name__surname" autocomplete="off" placeholder="Surname" [value]="surname()" (input)="signalService.updateInputElement($event, surname)" type="text" name="surname">
         </div>
       </div>
-      <input class="custom-input" autocomplete="off" placeholder="Street" [value]="address.street()" (input)="inputSignal.updateInputElement($event, address.street)" type="text" name="address">
+      <input class="custom-input" autocomplete="off" placeholder="Street" [value]="address.street()" (input)="signalService.updateInputElement($event, address.street)" type="text" name="address">
       <div class="contact-form__city custom-input">
-        <input class="contact-form__city__zip-code" maxlength="5" autocomplete="off" placeholder="ZIP" [value]="address.zipCode()" (input)="inputSignal.updateInputElement($event, address.zipCode)" type="text" name="address">
+        <input class="contact-form__city__zip-code" maxlength="5" autocomplete="off" placeholder="ZIP" [value]="address.zipCode()" (input)="signalService.updateInputElement($event, address.zipCode)" type="text" name="address">
         <div class="input-with-icon">
-          <input class="contact-form__city__city-name" autocomplete="off" placeholder="City" [value]="address.city()" (input)="inputSignal.updateInputElement($event, address.city)" type="text" name="address">
+          <input class="contact-form__city__city-name" autocomplete="off" placeholder="City" [value]="address.city()" (input)="signalService.updateInputElement($event, address.city)" type="text" name="address">
         </div>
       </div>
-      <input class="custom-input" autocomplete="off" placeholder="E-Mail" [value]="email()" (input)="inputSignal.updateInputElement($event, email)" type="email" name="email">
-      <input class="custom-input" autocomplete="off" placeholder="Phone" [value]="phone()" (input)="inputSignal.updateInputElement($event, phone)" type="tel" name="phone">
+      <input class="custom-input" autocomplete="off" placeholder="E-Mail" [value]="email()" (input)="signalService.updateInputElement($event, email)" type="email" name="email">
+      <input class="custom-input" autocomplete="off" placeholder="Phone" [value]="phone()" (input)="signalService.updateInputElement($event, phone)" type="tel" name="phone">
     </form>
 <!--    } @else {-->
 <!--      <p>edit-contact works!</p>-->

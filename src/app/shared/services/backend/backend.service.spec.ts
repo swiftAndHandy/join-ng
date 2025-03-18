@@ -25,7 +25,7 @@ describe('BackendService', () => {
   });
 
   it('should fetch data from API', fakeAsync(() => {
-    const dummyData = [{ id: 1, first_name: 'Andre', surname: 'Veltens' }];
+    const dummyData = [{ id: 1, first_name: 'Austin', surname: 'Powers' }];
 
     service.get<any[]>('contacts/').then(data => {
       expect(data).toEqual(dummyData);

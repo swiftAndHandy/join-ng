@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {JoinButtonDirective} from "../../../shared/directives/join-button.directive";
 import {ContactMenuService} from "../contact-menu.service";
+import {ContactsService} from "../../../shared/services/backend/contacts.service";
 
 @Component({
   selector: 'contact-list',
@@ -10,6 +11,10 @@ import {ContactMenuService} from "../contact-menu.service";
   styleUrl: './contact-list.component.scss',
 })
 export class ContactListComponent {
+  public contactMenu: ContactMenuService = inject(ContactMenuService);
+  private contacts = inject(ContactsService);
 
-  constructor(public contactService: ContactMenuService) {}
+  async ngOnInit() {
+    await this.contacts.initList();
+  }
 }

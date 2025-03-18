@@ -17,7 +17,11 @@ export class BackendService {
   }
 
   async post<T>(endpoint: string, data: any): Promise<T> {
-    return await lastValueFrom(this.http.post<T>(this.apiURL + endpoint, data));
+    try {
+      return await lastValueFrom(this.http.post<T>(this.apiURL + endpoint, data));
+    } catch (error: any) {
+      return error;
+    }
   }
 
   async put<T>(endpoint: string, data: any): Promise<T> {
