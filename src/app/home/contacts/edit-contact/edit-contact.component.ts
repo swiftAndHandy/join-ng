@@ -19,15 +19,15 @@ export class EditContactComponent {
   public signalService = inject(InputSignalService)
   private contacts = inject(ContactsService);
 
-  firstName = signal('');
-  surname = signal('');
+  firstName: WritableSignal<string> = signal('');
+  surname: WritableSignal<string> = signal('');
   address = {
     street: signal(''),
     zipCode: signal(''),
     city: signal(''),
   };
-  email = signal('');
-  phone = signal('');
+  email: WritableSignal<string> = signal('');
+  phone: WritableSignal<string> = signal('');
 
   async validate() {
     const request = {
@@ -39,7 +39,10 @@ export class EditContactComponent {
       phone: this.phone(),
       email: this.email(),
     };
-    const response = await this.contacts.createContact(request);
-    console.table(response);
+    const success = await this.contacts.createContact(request);
+    if (success) {
+      this.contactMenu.hidePopup();
+    }
+
   }
 }

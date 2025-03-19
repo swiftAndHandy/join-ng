@@ -1,8 +1,14 @@
-<div class="contact-header">
-  <user-avatar></user-avatar>
+@if (contact.contactDetails()) {
+  <div class="contact-header">
+  <div class="contact-avatar">
+
+  </div>
   <div class="user-overview">
-    <h2>{{ username }}</h2>
+
+      <h2>{{contact.contactDetails().first_name}} {{contact.contactDetails().surname}}</h2>
+
     <button type="button">Edit</button>
     <button type="button">Delete</button>
   </div>
 </div>
+}

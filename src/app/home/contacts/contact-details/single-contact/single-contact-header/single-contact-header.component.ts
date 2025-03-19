@@ -1,13 +1,13 @@
-import { Component, Input } from '@angular/core';
-import { UserAvatarComponent } from '../../../../../shared/components/user-avatar/user-avatar.component';
+import {Component, inject, Input} from '@angular/core';
+import {ContactsService} from "../../../../../shared/services/backend/contacts.service";
 
 @Component({
   selector: 'contact-header',
   standalone: true,
-  imports: [UserAvatarComponent],
+  imports: [],
   templateUrl: './single-contact-header.component.html',
   styleUrl: './single-contact-header.component.scss',
 })
 export class SingleContactHeaderComponent {
-  @Input() username: string = 'Anton Mayer';
+  protected contact = inject(ContactsService)
 }

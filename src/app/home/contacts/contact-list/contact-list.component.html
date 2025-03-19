@@ -3,6 +3,21 @@
     <button (click)="contactMenu.showPopup(true)" class="add-contact-button landscape" [joinButton]="{bold: true}">Add new contact <img src="./assets/icons/person_add.svg" alt=""></button>
     <button (click)="contactMenu.showPopup(true)" class="add-contact-button portrait" [joinButton]="{bold: true, shape:'circle', buttonPadding: 'small'}"><img
       src="./assets/icons/person_add.svg" alt="add"></button>
+    <ul>
+    @for(contact of contacts.list(); track contact) {
+      <li class="contact-overview">
+        <button class="contact-overview__button" (click)="contacts.selectContactById(contact.id)"
+        attr.aria-label="Open contact details for {{ contact.first_name }} {{ contact.surname }}"
+        >
+          <div class="contact__avatar" [ngStyle]="{'background-color': contact.badge_color}">{{ contacts.initials(contact) }}</div>
+          <div class="contact-overview__summary">
+            <p class="contact__name">{{ contact.first_name }} {{contact.surname}}</p>
+            <p class="contact__mail">{{ contact.email }}</p>
+          </div>
+        </button>
+      </li>
+    }
+    </ul>
 
   </div>
 </section>

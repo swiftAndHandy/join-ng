@@ -1,4 +1,4 @@
-import {inject, Injectable, signal} from '@angular/core';
+import {computed, inject, Injectable, signal} from '@angular/core';
 import {BackendService} from "./backend.service";
 
 @Injectable({
@@ -11,12 +11,14 @@ export class ContactsService{
   private contacts = signal<any[]>([]);
   private selectedContact = signal<any | null>(null);
 
-  get list() {
-    return this.contacts();
-  }
+  private errors = signal<Record<string, string[]> | null>(null);
 
-  get current() {
-    return this.selectedContact();
+  public list = computed(() => this.contacts());
+  public contactDetails = computed(() => this.selectedContact());
+
+  initials(contact: { first_name: string; surname: string; [key: string]: any }): string {
+    return (contact.first_name.trim().charAt(0).toUpperCase() +
+      contact.surname.trim().charAt(0).toUpperCase());
   }
 
   async initList(): Promise<any[]> {
@@ -25,23 +27,37 @@ export class ContactsService{
     return this.contacts();
   }
 
-  async fetchContactById(id: number): Promise<void> {
+  async selectContactById(id: number): Promise<void> {
     const data = await this.backend.get<any>(`contacts/${id}/`);
     if (data) this.selectedContact.set(data);
+    console.table(data);
   }
 
-  async createContact(contactDetails: object): Promise<void> {
+  async createContact(contactDetails: object): Promise<boolean> {
     const newContactDetails = { ...contactDetails, badge_color: this.getRandomBadgeColor() };
-    const response = await this.backend.post<any>('contacts/', newContactDetails);
-    if (response.ok) {
-      this.contacts.update(contacts => [...contacts, response.data]);
-    } else {
-      return response.error;
+    try {
+      const response = await this.backend.post<any>('contacts/', newContactDetails);
+      this.contacts.update(contacts =>
+        [...contacts, response].sort((a, b) =>
+          a.first_name.localeCompare(b.first_name) || a.surname.localeCompare(b.surname)
+        )
+      );
+      return true;
+    } catch (error: any) {
+      this.handleValidationErrors(error.error ?? {'unknown': 'unspecified error occurred'});
+      return false;
     }
   }
 
+  private handleValidationErrors(errors: Record<string, string[]>) {
+    for (const [field, message] of Object.entries(errors)) {
+      console.warn(`Error at ${field}: ${message}`);
+    }
+    this.errors.set(errors);
+  }
+
   private getRandomBadgeColor() {
-    const validColors = ['FF7A00', 'FF5EB3', '6E52FF', '9327FF', '00BEE8', '1FD7C1', 'FF745E', 'FFA35E', 'FC71FF', 'FFC701', '0038FF', 'C3FF2B', 'FFE62B', 'FF4646', 'FFBB2B'];
+    const validColors = ['#FF7A00', '#FF5EB3', '#6E52FF', '#9327FF', '#00BEE8', '#1FD7C1', '#FF745E', '#FFA35E', '#FC71FF', '#FFC701', '#0038FF', '#C3FF2B', '#FFE62B', '#FF4646', '#FFBB2B'];
     const index = Math.floor(Math.random()*(validColors.length));
 
     return validColors[index];

@@ -23,6 +23,6 @@ export class UserAvatarComponent {
   }
 
   get usernameInitials() {
-    return 'AV';
+    return 'Guest';
   }
 }

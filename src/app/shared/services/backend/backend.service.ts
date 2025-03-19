@@ -20,7 +20,7 @@ export class BackendService {
     try {
       return await lastValueFrom(this.http.post<T>(this.apiURL + endpoint, data));
     } catch (error: any) {
-      return error;
+      throw error;
     }
   }
 
