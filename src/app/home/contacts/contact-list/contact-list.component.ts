@@ -14,13 +14,12 @@ import {NgClass, NgStyle} from "@angular/common";
 export class ContactListComponent {
   public contactMenu: ContactMenuService = inject(ContactMenuService);
   protected contacts: ContactsService = inject(ContactsService);
-  protected activeButton: WritableSignal<number> = signal(-1);
 
   async ngOnInit() {
     await this.contacts.initList();
   }
 
   activateContactButton(index: number) {
-    this.activeButton.set(index);
+    this.contacts.currentListIndex.set(index);
   }
 }

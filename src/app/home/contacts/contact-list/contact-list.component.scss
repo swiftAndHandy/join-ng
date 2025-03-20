@@ -41,6 +41,8 @@
 }
 
 .contact-overview {
+  padding: 0 12px;
+
   .contact__avatar {
     display: flex;
     justify-content: center;
@@ -65,6 +67,11 @@
     text-align: left;
     gap: 35px;
     width: 100%;
+
+    &:hover:not(.--active) {
+      background-image: linear-gradient(#F9F9F9, #F0F0F0);
+
+    }
 
     &.--active {
       background-color: var(--darkblue);

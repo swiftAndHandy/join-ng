@@ -1,14 +1,14 @@
 @if (contact.contactDetails()) {
   <div class="contact-header">
-  <div class="contact-avatar">
-
-  </div>
-  <div class="user-overview">
-
+    <div class="contact-avatar" [ngStyle]="{'background-color': contact.contactDetails().badge_color}">
+      {{ contact.initials(contact.contactDetails()) }}
+    </div>
+    <div class="user-overview">
       <h2>{{contact.contactDetails().first_name}} {{contact.contactDetails().surname}}</h2>
-
-    <button type="button">Edit</button>
-    <button type="button">Delete</button>
+      <div class="contact-actions">
+        <button (click)="contactMenu.showPopup(false)" type="button">Edit</button>
+        <button (click)="contact.deleteContact(contact.contactDetails().id)" type="button">Delete</button>
+      </div>
   </div>
 </div>
 }

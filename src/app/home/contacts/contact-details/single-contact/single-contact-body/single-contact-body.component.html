@@ -1,12 +1,19 @@
-<div class="contact-details-body">
-  <span>Contact Information</span>
+@if(contact.contactDetails()) {
+  <div class="contact-details-body">
+    <span>Contact Information</span>
 
-  <div class="user-information">
-    <span class="section-title">Email</span>
-    <a href="mailto:"><span class="mail">mail</span></a>
+    <div class="user-information">
+      <span class="section-title">Address</span>
+      <p>{{ contact.contactDetails().street }}<br>
+      {{ contact.contactDetails().zip_code }}&nbsp;{{ contact.contactDetails().city }}</p>
+    </div>
+    <div class="user-information">
+      <span class="section-title">Email</span>
+      <a [attr.href]="'mailto:'+contact.contactDetails().email"><span class="mail">{{ contact.contactDetails().email }}</span></a>
+    </div>
+    <div class="user-information">
+      <span class="section-title">Phone</span>
+      <span class="phone">{{ contact.contactDetails().phone }}</span>
+    </div>
   </div>
-  <div class="user-information">
-    <span class="section-title">Phone</span>
-    <span class="phone">+49 1111 111 11 1</span>
-  </div>
-</div>
+}

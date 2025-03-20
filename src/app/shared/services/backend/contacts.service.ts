@@ -1,4 +1,4 @@
-import {computed, inject, Injectable, signal} from '@angular/core';
+import {computed, inject, Injectable, signal, WritableSignal} from '@angular/core';
 import {BackendService} from "./backend.service";
 
 @Injectable({
@@ -15,6 +15,7 @@ export class ContactsService{
 
   public list = computed(() => this.contacts());
   public contactDetails = computed(() => this.selectedContact());
+  public currentListIndex: WritableSignal<number> = signal(-1);
 
   initials(contact: { first_name: string; surname: string; [key: string]: any }): string {
     return (contact.first_name.trim().charAt(0).toUpperCase() +
@@ -36,15 +37,27 @@ export class ContactsService{
     const newContactDetails = { ...contactDetails, badge_color: this.getRandomBadgeColor() };
     try {
       const response = await this.backend.post<any>('contacts/', newContactDetails);
-      this.contacts.update(contacts =>
-        [...contacts, response].sort((a, b) =>
-          a.first_name.localeCompare(b.first_name) || a.surname.localeCompare(b.surname)
-        )
+      const newContactList = [...this.contacts(), response].sort((a, b) =>
+        a.first_name.localeCompare(b.first_name) || a.surname.localeCompare(b.surname)
       );
+      this.contacts.set(newContactList);
+      this.currentListIndex.set(newContactList.findIndex(contact => contact.id === response.id));
+      this.selectedContact.set(response)
       return true;
     } catch (error: any) {
       this.handleValidationErrors(error.error ?? {'unknown': 'unspecified error occurred'});
       return false;
+    }
+  }
+
+  async deleteContact(contactId: number): Promise<void> {
+    try {
+      const response = await this.backend.delete<any>(`contacts/${contactId}/`);
+      this.contacts.update(contacts => contacts.filter(contact => contact.id !== contactId));
+      this.currentListIndex.set(-1);
+      this.selectedContact.set(null);
+    } catch (error: any) {
+      throw error.error;
     }
   }
 

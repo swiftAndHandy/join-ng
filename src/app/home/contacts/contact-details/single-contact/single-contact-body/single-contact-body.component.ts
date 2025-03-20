@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
+import {ContactsService} from "../../../../../shared/services/backend/contacts.service";
 
 @Component({
   selector: 'contact-body',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
   templateUrl: './single-contact-body.component.html',
   styleUrl: './single-contact-body.component.scss',
 })
-export class SingleContactBodyComponent {}
+export class SingleContactBodyComponent {
+  contact: ContactsService = inject(ContactsService);
+}
