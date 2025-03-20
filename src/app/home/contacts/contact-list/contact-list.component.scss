@@ -24,8 +24,8 @@
         }
 
         .add-contact-button {
-            position: relative;
-            bottom: 0;
+          position: relative;
+          bottom: 0;
             &.portrait {
                 @media (min-width: 1200px) {
                     display: none !important;
@@ -42,9 +42,43 @@
 
 .contact-overview {
   .contact__avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    color: #FFF;
     border-radius: 45px;
     border: 2px solid white;
     height: 40px;
     width: 40px;
   }
+
+  > .contact-overview__button {
+    display: flex;
+    justify-content: left;
+    cursor: pointer;
+    align-items: center;
+    background-color: unset;
+    border-radius: 10px;
+    border: none;
+    padding: 15px 24px;
+    text-align: left;
+    gap: 35px;
+    width: 100%;
+
+    &.--active {
+      background-color: var(--darkblue);
+      color: white;
+    }
+
+    .contact__mail {
+      color: #007CEE;
+    }
+  }
+}
+
+.contact-list__body {
+  width: inherit;
+  overflow-x: clip;
+  padding-top: 75px;
 }

@@ -30,7 +30,6 @@ export class ContactsService{
   async selectContactById(id: number): Promise<void> {
     const data = await this.backend.get<any>(`contacts/${id}/`);
     if (data) this.selectedContact.set(data);
-    console.table(data);
   }
 
   async createContact(contactDetails: object): Promise<boolean> {

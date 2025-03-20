@@ -26,6 +26,7 @@ export class JoinButtonDirective {
     this.joinButton.buttonPadding = this.joinButton.buttonPadding ?? 'regular';
 
     this.renderer.setStyle(this.el.nativeElement, 'border', 'none');
+    this.renderer.setStyle(this.el.nativeElement, 'font-family', 'Inter, sans-serif');
     this.renderer.setStyle(this.el.nativeElement, 'cursor', 'pointer');
     this.renderer.setStyle(this.el.nativeElement, 'display', 'flex');
     this.renderer.setStyle(this.el.nativeElement, 'gap', '0.5rem');
