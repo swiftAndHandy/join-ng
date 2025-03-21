@@ -35,29 +35,32 @@
             display: unset;
             width: 100%;
         }
-
-        .user-row {
-            display: flex;
-            width: 100%;
-            justify-content: space-between;
-
-            padding: 7px 16px;
-            box-sizing: border-box;
-            border-radius: 10px;
-
-            cursor: pointer;
-
-            .user-details {
-                font-family: "Inter", Arial, Helvetica, sans-serif;
-                font-size: clamp(1rem, 6vw, 1.25rem);
-            }
-
-            // .user-checkbox {
-            // }
-
-            &:hover {
-                background-color: #0c2e621f;
-            }
-        }
     }
+}
+
+.user-row {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  background-color: unset;
+  border: none;
+
+  padding: 7px 16px;
+  box-sizing: border-box;
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  .user-details {
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+    font-size: clamp(1rem, 6vw, 1.25rem);
+  }
+
+  &:hover {
+    background-color: #0c2e621f;
+  }
+
+  .user-checkbox {
+    border: 1px solid black;
+  }
 }

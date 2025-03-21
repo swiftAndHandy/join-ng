@@ -7,7 +7,7 @@ export class InputSignalService {
 
   constructor() { }
 
-  updateInputElement(event: Event, targetSignal: WritableSignal<string>) {
+  updateInputElement(event: Event, targetSignal: WritableSignal<string|number>) {
     const input = event.target as HTMLInputElement;
     targetSignal.set(input.value);
   }

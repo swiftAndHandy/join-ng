@@ -13,6 +13,5 @@ export class TasksService {
   destroy() {
     this.categories.destroy();
     this.contacts.destroy();
-    console.log('destroyed tasks');
   }
 }

@@ -4,16 +4,16 @@
     type="text"
     [ngClass]="{ '--opened': isFocused }"
     (focus)="setFocus(true)"
-    [(ngModel)]="searchTerm"
-    (ngModelChange)="filterUsers()"
+    [value]="searchTerm()"
+    (input)="inputSignal.updateInputElement($event, searchTerm)"
     name="user-selector"
   />
   <div class="user-list" [ngClass]="{ '--focused': isFocused }">
-    @for(user of filteredUsers; track $index) {
-    <div class="user-row">
-      <div class="user-details">{{ user }}</div>
+    @for(person of filteredAssigned; track $index) {
+    <button class="user-row" (click)="toggleAssignedPerson(person.id)">
+      <div class="user-details">{{ person['first_name'] }} {{ person['surname']}}</div>
       <div class="user-checkbox"></div>
-    </div>
+    </button>
     }
   </div>
 </div>
