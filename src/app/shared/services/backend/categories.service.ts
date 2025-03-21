@@ -17,11 +17,15 @@ export class CategoriesService extends BackendService {
 
   public selectedCategory: WritableSignal<CategorySelector> = signal<CategorySelector>({id: 0, position: 0});
 
+  destroy() {
+    this.list.set([{'id': 0, 'name': 'Select task category'}])
+    this.selectedCategory.set({id: 0, position: 0});
+  }
+
 
   async getList(): Promise<any[]> {
     const data = await this.backend.get<any[]>('categories/');
     if (data) this.list.set([...this.list(), ...data]);
-    console.log(this.list())
     return this.list();
   }
 }

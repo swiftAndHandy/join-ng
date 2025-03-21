@@ -1,4 +1,4 @@
-import {Component, signal, WritableSignal} from '@angular/core';
+import {Component, inject, signal, WritableSignal} from '@angular/core';
 import { PrioButtonsComponent } from '../prio-buttons/prio-buttons.component';
 import { UserSelectorComponent } from '../user-selector/user-selector.component';
 import { DatePickerComponent } from '../date-picker/date-picker.component';
@@ -6,6 +6,7 @@ import { TagSelectorComponent } from '../tag-selector/tag-selector.component';
 import { SubtaskFormComponent } from '../subtasks/subtask-form/subtask-form.component';
 import {JoinButtonDirective} from "../../../shared/directives/join-button.directive";
 import {InputSignalService} from "../../../shared/services/input-signal.service";
+import {TasksService} from "../../../shared/services/backend/tasks.service";
 
 @Component({
   selector: 'app-create-task',
@@ -23,17 +24,12 @@ import {InputSignalService} from "../../../shared/services/input-signal.service"
 })
 export class CreateTaskComponent {
 
-  constructor(public inputSignal: InputSignalService) {
-  }
+  public tasksService = inject(TasksService)
+  protected inputSignal: InputSignalService = inject(InputSignalService);
 
   taskTitle = signal('');
   taskDescription = signal('');
-  taskCategory = signal<number>(0);
-
-  updateCategory(category: number) {
-    this.taskCategory.set(category);
-  }
-
+  currentPriority = signal(1);
 
   priorityLevels: Array<'urgent' | 'medium' | 'low'> = [
     'urgent',
@@ -41,7 +37,9 @@ export class CreateTaskComponent {
     'low',
   ];
 
-  currentPriority = signal(1);
+  ngOnDestroy(): void {
+    this.tasksService.destroy();
+  }
 
   setPriorityTo(level: number) {
     this.currentPriority.set(level);
@@ -52,7 +50,7 @@ export class CreateTaskComponent {
       'taskTitle': this.taskTitle(),
       'taskDescription': this.taskDescription(),
       'priorityLevel': this.currentPriority(),
-      'category': this.taskCategory(),
+      'category': this.tasksService.categories.selectedCategory().id,
     });
   }
 

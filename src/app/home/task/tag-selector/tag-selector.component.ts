@@ -27,7 +27,6 @@ export class TagSelectorComponent {
 
   updateCategory(id: number, index: number) {
     this.categories.selectedCategory.set({'id': id, 'position': index});
-    console.log(this.categories.selectedCategory());
     this.setFocus(false);
   }
 

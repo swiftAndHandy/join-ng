@@ -17,6 +17,13 @@ export class ContactsService{
   public contactDetails = computed(() => this.selectedContact());
   public currentListIndex: WritableSignal<number> = signal(-1);
 
+  destroy() {
+    this.contacts.set([]);
+    this.selectedContact.set(null);
+    this.errors.set(null);
+    this.currentListIndex.set(-1);
+  }
+
   initials(contact: { first_name: string; surname: string; [key: string]: any }): string {
     return (contact.first_name.trim().charAt(0).toUpperCase() +
       contact.surname.trim().charAt(0).toUpperCase());
