@@ -1,4 +1,4 @@
-<div class="user-selector">
+<div class="person-selector">
   <input
     class="dropdown"
     type="text"
@@ -6,15 +6,22 @@
     (focus)="setFocus(true)"
     [value]="searchTerm()"
     (input)="inputSignal.updateInputElement($event, searchTerm)"
-    name="user-selector"
+    name="person-selector"
   />
-  <div class="user-list" [ngClass]="{ '--focused': isFocused }">
-    @for(person of filteredAssigned; track $index) {
-    <button class="user-row" (click)="toggleAssignedPerson(person.id)">
-      <div class="user-details">{{ person['first_name'] }} {{ person['surname']}}</div>
-      <div class="user-checkbox"></div>
-    </button>
+  <ul class="person-list" [ngClass]="{ '--focused': isFocused }">
+    @for(person of assigned(); track $index) {
+      @if (person.filtered) {
+        <li>
+          <button [ngClass]="{'--selected': person.selected}" class="person-row" (click)="toggleAssignedPerson(person.id)">
+            <div class="person__name-set">
+              <div class="person-avatar" [ngStyle]="{'background-color': person.badge_color}">{{contacts.initials(person)}}</div>
+              <div class="person-details">{{ person['first_name'] }} {{ person['surname']}}</div>
+            </div>
+            <div class="person-checkbox"></div>
+          </button>
+        </li>
+      }
     }
-  </div>
+  </ul>
 </div>
 <selected-users [shift]="false" (click)="setFocus(false)"></selected-users>

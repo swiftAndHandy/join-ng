@@ -11,11 +11,6 @@ export interface AssignedPerson {
   surname: string;
 }
 
-// export interface AssignedPersonsIndexAndId {
-//   id: number,
-//   index: number;
-// }
-
 @Component({
   selector: 'user-selector',
   standalone: true,
@@ -29,24 +24,22 @@ export class UserSelectorComponent {
 
   assigned = signal<any[]>([]);
 
-  filteredAssigned: AssignedPerson[] = [];
   searchTerm: WritableSignal<string> = signal('');
   isFocused = false;
 
   constructor(private elRef: ElementRef) {
     effect(() => {
-      console.log('Suchbegriff geändert:', this.searchTerm());
-    });
+      this.searchTermChanged();
+    }, { allowSignalWrites: true });
   }
 
-  updateSearchTerm() {
-
+  searchTermChanged() {
+    this.filterUsers();
   }
 
   async ngOnInit() {
     await this.contacts.initList();
-    this.assigned.set(this.contacts.list().map(contact => ({ ...contact, selected: false })));
-    this.filteredAssigned = [...this.assigned()];
+    this.assigned.set(this.contacts.list().map(contact => ({ ...contact, selected: false, filtered: true })));
   }
 
   setFocus(value: boolean) {
@@ -54,11 +47,15 @@ export class UserSelectorComponent {
   }
 
   filterUsers() {
-    // this.filteredAssigned = this.assigned().filter((ppl) =>
-    //   ppl.toLowerCase().includes(this.searchTerm().toLowerCase())
-    // );
-    console.log(this.searchTerm);
-    console.log(this.filteredAssigned);
+    const search = this.searchTerm().toLowerCase();
+
+    this.assigned.update(contacts =>
+      contacts.map(contact => ({
+        ...contact,
+        filtered: `${contact.first_name} ${contact.surname}`.toLowerCase().includes(search) ||
+          contact.email.toLowerCase().includes(search)
+      }))
+    );
   }
 
   toggleAssignedPerson(contactId: number) {

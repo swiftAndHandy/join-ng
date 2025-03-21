@@ -1,4 +1,4 @@
-.user-selector {
+.person-selector {
     position: relative;
     > input {
         border-radius: 10px;
@@ -22,8 +22,7 @@
         }
     }
 
-    .user-list {
-        display: flex;
+    .person-list {
         gap: 2px;
         position: absolute;
         top: 100%;
@@ -38,7 +37,7 @@
     }
 }
 
-.user-row {
+.person-row {
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -51,16 +50,49 @@
 
   cursor: pointer;
 
-  .user-details {
-    font-family: "Inter", Arial, Helvetica, sans-serif;
-    font-size: clamp(1rem, 6vw, 1.25rem);
+  .person__name-set {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    .person-avatar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      border-radius: 50%;
+      border: 2px solid white;
+      min-width: 40px;
+      width: 40px;
+      min-height: 40px;
+      height: 40px;
+    }
+
+    .person-details {
+      font-family: "Inter", Arial, Helvetica, sans-serif;
+      font-size: clamp(1rem, 6vw, 1.25rem);
+    }
   }
 
   &:hover {
     background-color: #0c2e621f;
   }
 
-  .user-checkbox {
+  &.--selected {
+    color: white;
+    background-color: var(--darkblue);
+    &:hover {
+      background-color: var(--dark-active-blue);
+    }
+  }
+
+  .person-checkbox {
     border: 1px solid black;
   }
+}
+
+ul {
+  list-style-type: none;
+  max-height: 200px;
+  overflow-y: auto;
 }
