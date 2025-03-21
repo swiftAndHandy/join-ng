@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import {Component, ElementRef, EventEmitter, HostListener, Output, signal} from '@angular/core';
+import {Component, ElementRef, EventEmitter, HostListener, inject, Output, signal} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {CategoriesService} from "../../../shared/services/backend/categories.service";
 
@@ -12,31 +12,22 @@ import {CategoriesService} from "../../../shared/services/backend/categories.ser
 })
 export class TagSelectorComponent {
   isFocused = false;
-  categories = signal(['Select task category'])
 
-  selectedCategory = signal<number>(0);
+  protected categories: CategoriesService = inject(CategoriesService);
 
-  @Output() categorySelected = new EventEmitter<number>();
-
-  constructor(private elRef: ElementRef, private backend: CategoriesService) {}
+  constructor(private elRef: ElementRef) {}
 
   ngOnInit() {
-    this.getCategories();
-  }
-
-  async getCategories() {
-    // const allCategories = await this.backend.getCategories();
-    // const categoryNames = allCategories.map((category: any) => category.name);
-    // this.categories.set([...this.categories(), ...categoryNames]);
+    this.categories.getList();
   }
 
   setFocus(value: boolean) {
     this.isFocused = value;
   }
 
-  updateCategory(index: number) {
-    this.selectedCategory.set(index);
-    this.categorySelected.emit(this.selectedCategory());
+  updateCategory(id: number, index: number) {
+    this.categories.selectedCategory.set({'id': id, 'position': index});
+    console.log(this.categories.selectedCategory());
     this.setFocus(false);
   }
 

@@ -1,23 +1,27 @@
-import { Injectable } from '@angular/core';
+import {inject, Injectable, signal, WritableSignal} from '@angular/core';
 import {BackendService} from "./backend.service";
+
+export interface CategorySelector {
+  "id": number,
+  "position": number
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoriesService extends BackendService {
 
-  // async getCategories(): Promise<any> {
-  //   return this.fetchData('categories/');
-  // }
+  private backend: BackendService = inject(BackendService);
+
+  public list: WritableSignal<{ [key: string]: any }[]> = signal([{'id': 0, 'name': 'Select task category'}])
+
+  public selectedCategory: WritableSignal<CategorySelector> = signal<CategorySelector>({id: 0, position: 0});
 
 
-  // async getCategories(categoryId: number | null = null): Promise<any> {
-  //   try {
-  //     const response: Response = await fetch(`${this.apiURL}/categories/`);
-  //     if (!response.ok) return;
-  //     return await response.json();
-  //   } catch(error) {
-  //     throw error;
-  //   }
-  // }
+  async getList(): Promise<any[]> {
+    const data = await this.backend.get<any[]>('categories/');
+    if (data) this.list.set([...this.list(), ...data]);
+    console.log(this.list())
+    return this.list();
+  }
 }

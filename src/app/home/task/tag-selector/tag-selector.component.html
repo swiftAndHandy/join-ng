@@ -3,18 +3,18 @@
     class="dropdown"
     type="text"
     [ngClass]="{ '--opened': isFocused }"
-    [placeholder]="categories()[selectedCategory()]"
-    [value]="categories()[selectedCategory()]"
+    [placeholder]="categories.list()[categories.selectedCategory().position]['name']"
+    [value]="categories.list()[categories.selectedCategory().position]['name']"
     name="tag-selector"
   />
   <div class="tag-list" [ngClass]="{ '--focused': isFocused }">
-    @for(category of categories(); track $index) { @if(!$first){
-    <div
+    @for(category of categories.list(); track $index) { @if(!$first){
+    <button
       class="tag-row"
-      (click)="updateCategory($index); $event.stopPropagation()"
+      (click)="updateCategory(category['id'], $index); $event.stopPropagation()"
     >
-      <div class="tag-details">{{ category }}</div>
-    </div>
+      <div class="tag-details">{{ category['name'] }}</div>
+    </button>
     } }
   </div>
 </div>
