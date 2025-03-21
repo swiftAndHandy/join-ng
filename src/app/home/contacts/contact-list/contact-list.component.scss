@@ -12,9 +12,13 @@
   bottom: 0;
 
   .add-contact {
-      position: fixed;
-
+    position: absolute;
+    left: 50%;
+    width: 100%;
       @media (max-width: 1199px) {
+        position: fixed;
+        transform: unset;
+        left: unset;
           right: 32px;
           bottom: 20px;
 
@@ -35,6 +39,7 @@
               }
           }
           &.landscape {
+            transform: translateX(-50%);
               @media (max-width: 1199px) {
                   display: none !important;
               }
