@@ -4,6 +4,7 @@
     <button (click)="contactMenu.showPopup(true)" class="add-contact-button portrait" [joinButton]="{bold: true, shape:'circle', buttonPadding: 'small'}"><img
       src="./assets/icons/person_add.svg" alt="add"></button>
   </div>
+  <div class="spacer"></div>
   <ul class="contact-list__body">
     @for(contact of contacts.list(); track contact.id) {
       <li class="contact-overview">

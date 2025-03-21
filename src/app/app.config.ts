@@ -24,6 +24,7 @@ export const appConfig: ApplicationConfig = {
           const storedLang =
             localStorage.getItem('language') ||
             navigator.language.split('-')[0];
+
           return availableLangs.includes(storedLang) ? storedLang : 'de';
         })(),
         // Remove this option if your application doesn't support changing language in runtime.

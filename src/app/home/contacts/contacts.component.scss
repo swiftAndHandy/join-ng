@@ -3,7 +3,7 @@
   overflow-x: clip;
   display: flex;
   @media (orientation: landscape) {
-    min-height: calc(100vh - 96px);
+    height: calc(100dvh - 90px);
   }
 
   @media (orientation: portrait) {
@@ -16,6 +16,7 @@
   .contact-list {
     width: 0;
     transition: width 0.1s ease-in-out;
+    overflow-y: clip;
 
       @media (min-width: 1200px) {
         display: unset;
