@@ -48,3 +48,10 @@
         }
     }
 }
+
+.arrow {
+  transition: all 200ms ease-in-out;
+  &.--rotate {
+    transform: rotate(180deg);
+  }
+}

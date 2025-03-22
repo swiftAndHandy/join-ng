@@ -19,14 +19,17 @@
         position: fixed;
         transform: unset;
         left: unset;
-          right: 32px;
-          bottom: 20px;
+        right: 32px;
+        bottom: 20px;
+        display: flex;
+        justify-content: right;
 
           @media (orientation: portrait) {
-              bottom: 116px;
-              @media (max-width: 380px) {
-                  bottom: 80px;
-              }
+            bottom: 116px;
+            @media (max-width: 380px) {
+                bottom: 80px;
+              right: 16px;
+            }
           }
       }
 

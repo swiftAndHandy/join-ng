@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {Component, ElementRef, EventEmitter, HostListener, inject, Output, signal} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {CategoriesService} from "../../../shared/services/backend/categories.service";
@@ -6,7 +6,7 @@ import {CategoriesService} from "../../../shared/services/backend/categories.ser
 @Component({
   selector: 'tag-selector',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, NgOptimizedImage],
   templateUrl: './tag-selector.component.html',
   styleUrl: './tag-selector.component.scss',
 })
