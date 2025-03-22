@@ -31,7 +31,10 @@ export class TagSelectorComponent {
   }
 
   tagSelectorState() {
-    return this.isFocused ? `Close Tag-Selector` : `Open Tag-Selector`;
+    const currentIndex = this.categories.selectedCategory().position;
+    if (currentIndex === 0) {}
+    const currentCategory = currentIndex === 0 ? 'Nothing' : this.categories.list()[currentIndex]['name'];
+    return this.isFocused ? `Close Tag-Selector; ${currentCategory} is chosen` : `Open Tag-Selector; ${currentCategory} is chosen`;
   }
 
   @HostListener('document:click', ['$event'])
