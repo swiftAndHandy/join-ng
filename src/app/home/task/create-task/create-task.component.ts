@@ -1,6 +1,6 @@
 import {Component, inject, signal, WritableSignal} from '@angular/core';
 import { PrioButtonsComponent } from '../prio-buttons/prio-buttons.component';
-import { UserSelectorComponent } from '../user-selector/user-selector.component';
+import { PersonSelectorComponent } from '../person-selector/person-selector.component';
 import { DatePickerComponent } from '../date-picker/date-picker.component';
 import { TagSelectorComponent } from '../tag-selector/tag-selector.component';
 import { SubtaskFormComponent } from '../subtasks/subtask-form/subtask-form.component';
@@ -13,7 +13,7 @@ import {TasksService} from "../../../shared/services/backend/tasks.service";
   standalone: true,
   imports: [
     PrioButtonsComponent,
-    UserSelectorComponent,
+    PersonSelectorComponent,
     DatePickerComponent,
     TagSelectorComponent,
     SubtaskFormComponent,

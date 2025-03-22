@@ -1,5 +1,5 @@
 import {Component, effect, ElementRef, HostListener, inject, Input, signal, WritableSignal} from '@angular/core';
-import { SelectedUsersComponent } from '../selected-users/selected-users.component';
+import { SelectedPersonsComponent } from '../selected-persons/selected-persons.component';
 import {CommonModule, NgOptimizedImage} from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {InputSignalService} from "../../../shared/services/input-signal.service";
@@ -12,13 +12,13 @@ export interface AssignedPerson {
 }
 
 @Component({
-  selector: 'user-selector',
+  selector: 'person-selector',
   standalone: true,
-  imports: [CommonModule, SelectedUsersComponent, FormsModule, NgOptimizedImage],
-  templateUrl: './user-selector.component.html',
-  styleUrl: './user-selector.component.scss',
+  imports: [CommonModule, SelectedPersonsComponent, FormsModule, NgOptimizedImage],
+  templateUrl: './person-selector.component.html',
+  styleUrl: './person-selector.component.scss',
 })
-export class UserSelectorComponent {
+export class PersonSelectorComponent {
   protected taskService: TasksService = inject(TasksService);
   protected inputSignal: InputSignalService = inject(InputSignalService);
 

@@ -1,12 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UserSelectorComponent } from './user-selector.component';
+import { PersonSelectorComponent } from './person-selector.component';
 import {provideHttpClient} from "@angular/common/http";
 import {provideHttpClientTesting} from "@angular/common/http/testing";
 
-describe('UserSelectorComponent', () => {
-  let component: UserSelectorComponent;
-  let fixture: ComponentFixture<UserSelectorComponent>;
+describe('PersonSelectorComponent', () => {
+  let component: PersonSelectorComponent;
+  let fixture: ComponentFixture<PersonSelectorComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -14,11 +14,11 @@ describe('UserSelectorComponent', () => {
         provideHttpClient(),
         provideHttpClientTesting()
       ],
-      imports: [UserSelectorComponent]
+      imports: [PersonSelectorComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(UserSelectorComponent);
+    fixture = TestBed.createComponent(PersonSelectorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -14,9 +14,7 @@
     }
     .arrow {
       transition: 200ms all ease-in-out;
-    }
-    &:has(input:focus-visible) {
-      .arrow {
+      &.--rotate {
         transform: rotate(180deg);
       }
     }

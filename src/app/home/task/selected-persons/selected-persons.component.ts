@@ -4,12 +4,12 @@ import { CommonModule } from '@angular/common';
 import {TasksService} from "../../../shared/services/backend/tasks.service";
 
 @Component({
-  selector: 'selected-users',
+  selector: 'selected-persons',
   standalone: true,
   imports: [CommonModule, UserAvatarComponent],
-  templateUrl: './selected-users.component.html',
-  styleUrl: './selected-users.component.scss',
+  templateUrl: './selected-persons.component.html',
+  styleUrl: './selected-persons.component.scss',
 })
-export class SelectedUsersComponent {
+export class SelectedPersonsComponent {
   protected taskService: TasksService = inject(TasksService);
 }
