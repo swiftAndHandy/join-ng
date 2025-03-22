@@ -9,12 +9,12 @@
     name="person-selector"
   />
   <ul class="person-list" [ngClass]="{ '--focused': isFocused }">
-    @for(person of assigned(); track $index) {
+    @for(person of taskService.assigned(); track $index) {
       @if (person.filtered) {
         <li>
-          <button [ngClass]="{'--selected': person.selected}" class="person-row" (click)="toggleAssignedPerson(person.id)">
-            <div class="person__name-set">
-              <div class="person-avatar" [ngStyle]="{'background-color': person.badge_color}">{{contacts.initials(person)}}</div>
+          <button [attr.aria-label]="ariaForSelectedPersons(person)" [ngClass]="{'--selected': person.selected}" class="person-row" (click)="toggleAssignedPerson(person.id)">
+            <div class="person__name-set" [attr.aria-hidden]="true">
+              <div class="person-avatar" [ngStyle]="{'background-color': person.badge_color}">{{taskService.contacts.initials(person)}}</div>
               <div class="person-details">{{ person['first_name'] }} {{ person['surname']}}</div>
             </div>
             <div class="person-checkbox"></div>
@@ -24,4 +24,4 @@
     }
   </ul>
 </div>
-<selected-users [shift]="false" (click)="setFocus(false)"></selected-users>
+<selected-users (click)="setFocus(false)"></selected-users>

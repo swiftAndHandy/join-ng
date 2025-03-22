@@ -2,8 +2,8 @@ import {Component, effect, ElementRef, HostListener, inject, Input, signal, Writ
 import { SelectedUsersComponent } from '../selected-users/selected-users.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import {ContactsService} from "../../../shared/services/backend/contacts.service";
 import {InputSignalService} from "../../../shared/services/input-signal.service";
+import {TasksService} from "../../../shared/services/backend/tasks.service";
 
 export interface AssignedPerson {
   id: number;
@@ -19,10 +19,8 @@ export interface AssignedPerson {
   styleUrl: './user-selector.component.scss',
 })
 export class UserSelectorComponent {
-  protected contacts: ContactsService = inject(ContactsService);
+  protected taskService: TasksService = inject(TasksService);
   protected inputSignal: InputSignalService = inject(InputSignalService);
-
-  assigned = signal<any[]>([]);
 
   searchTerm: WritableSignal<string> = signal('');
   isFocused = false;
@@ -38,18 +36,22 @@ export class UserSelectorComponent {
   }
 
   async ngOnInit() {
-    await this.contacts.initList();
-    this.assigned.set(this.contacts.list().map(contact => ({ ...contact, selected: false, filtered: true })));
+    await this.taskService.contacts.initList();
+    this.modifyContactsToAssignedPersons();
   }
 
   setFocus(value: boolean) {
     this.isFocused = value;
   }
 
+  modifyContactsToAssignedPersons() {
+    this.taskService.assigned.set(this.taskService.contacts.list().map(contact => ({ ...contact, selected: false, filtered: true })));
+  }
+
   filterUsers() {
     const search = this.searchTerm().toLowerCase();
 
-    this.assigned.update(contacts =>
+    this.taskService.assigned.update(contacts =>
       contacts.map(contact => ({
         ...contact,
         filtered: `${contact.first_name} ${contact.surname}`.toLowerCase().includes(search) ||
@@ -59,11 +61,18 @@ export class UserSelectorComponent {
   }
 
   toggleAssignedPerson(contactId: number) {
-    this.assigned.update(contacts =>
+    this.taskService.assigned.update(contacts =>
       contacts.map(contact =>
         contact.id === contactId ? { ...contact, selected: !contact.selected } : contact
       )
     );
+  }
+
+  ariaForSelectedPersons(person: {'selected': boolean, 'first_name': string, 'surname':string, [key: string]: any}): string {
+    if(person.selected) {
+      return `Remove ${person.first_name} ${person.surname} from assigned persons`;
+    }
+    return `Assign to ${person.first_name} ${person.surname}`;
   }
 
   @HostListener('document:click', ['$event'])

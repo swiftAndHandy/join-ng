@@ -1,13 +1,23 @@
-.selected-users {
+.selected-persons {
     display: flex;
     flex-wrap: wrap;
-    &:not(.--margin-left) {
-        gap: 8px;
-    }
+    gap: 4px;
 
-    & .user {
-        &.--margin-left:not(:first-child) {
-            margin-left: -16px;
+    & .person-avatar {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      min-height: 40px;
+      border: 2px solid white;
+       &:not(:first-child) {
+            //margin-left: -16px;
         }
     }
 }

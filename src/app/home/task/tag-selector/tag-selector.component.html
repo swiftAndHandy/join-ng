@@ -1,15 +1,12 @@
-<div class="tag-selector" (click)="setFocus(true)">
-  <input
+<button [attr.aria-label]="tagSelectorState()" class="tag-selector" (click)="setFocus(true)">
+  <span [attr.aria-hidden]="true"
     class="dropdown"
-    type="text"
     [ngClass]="{ '--opened': isFocused }"
-    [placeholder]="categories.list()[categories.selectedCategory().position]['name']"
-    [value]="categories.list()[categories.selectedCategory().position]['name']"
-    name="tag-selector"
-  />
+  >{{ categories.list()[categories.selectedCategory().position]['name'] }}</span>
   <div class="tag-list" [ngClass]="{ '--focused': isFocused }">
     @for(category of categories.list(); track $index) { @if(!$first){
     <button
+      [attr.aria-label]="'Tag as ' + category['name']"
       class="tag-row"
       (click)="updateCategory(category['id'], $index); $event.stopPropagation()"
     >
@@ -17,4 +14,4 @@
     </button>
     } }
   </div>
-</div>
+</button>

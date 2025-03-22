@@ -1,10 +1,8 @@
-<div class="selected-users">
-  @for(user of users; track $index) {
-  <user-avatar
-    [user]="user"
-    class="user"
-    [ngClass]="{ '--margin-left': shift }"
-    [whiteBorder]="true"
-  ></user-avatar>
+<section aria-label="Assigned Persons" class="selected-persons">
+  @for(person of taskService.assigned(); track $index) {
+    @if(person.selected) {
+      <div class="person-avatar" [attr.aria-label]="person.first_name + ' ' + person.surname" [ngStyle]="{'background-color': person.badge_color}">
+        <span [attr.aria-hidden]="true">{{ taskService.contacts.initials(person) }}</span></div>
+    }
   }
-</div>
+</section>

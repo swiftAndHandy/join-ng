@@ -1,4 +1,4 @@
-import {inject, Injectable} from '@angular/core';
+import {inject, Injectable, signal, WritableSignal} from '@angular/core';
 import {CategoriesService} from "./categories.service";
 import {ContactsService} from "./contacts.service";
 
@@ -8,10 +8,14 @@ import {ContactsService} from "./contacts.service";
 export class TasksService {
   public categories: CategoriesService = inject(CategoriesService);
   public contacts: ContactsService = inject(ContactsService);
+
+  public assigned: WritableSignal<any[]> = signal<any[]>([]);
+
   constructor() { }
 
   destroy() {
     this.categories.destroy();
     this.contacts.destroy();
+    this.assigned.set([]);
   }
 }

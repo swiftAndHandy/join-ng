@@ -30,6 +30,10 @@ export class TagSelectorComponent {
     this.setFocus(false);
   }
 
+  tagSelectorState() {
+    return this.isFocused ? `Close Tag-Selector` : `Open Tag-Selector`;
+  }
+
   @HostListener('document:click', ['$event'])
   onClickOutside(event: Event) {
     if (!this.elRef.nativeElement.contains(event.target)) {
