@@ -1,13 +1,16 @@
 <div class="person-selector">
-  <input
-    class="dropdown"
-    type="text"
-    [ngClass]="{ '--opened': isFocused }"
-    (focus)="setFocus(true)"
-    [value]="searchTerm()"
-    (input)="inputSignal.updateInputElement($event, searchTerm)"
-    name="person-selector"
-  />
+  <div class="input-field">
+    <input
+      class="dropdown"
+      type="text"
+      [ngClass]="{ '--opened': isFocused }"
+      (focus)="setFocus(true)"
+      [value]="searchTerm()"
+      (input)="inputSignal.updateInputElement($event, searchTerm)"
+      name="person-selector"
+    />
+    <img class="arrow" [ngClass]="{'--rotate': isFocused}" ngSrc="/assets/icons/arrow_drop_downaa.png" alt="" height="24" width="24">
+  </div>
   <ul class="person-list" [ngClass]="{ '--focused': isFocused }">
     @for(person of taskService.assigned(); track $index) {
       @if (person.filtered) {
