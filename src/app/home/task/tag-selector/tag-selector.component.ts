@@ -30,6 +30,10 @@ export class TagSelectorComponent {
     this.setFocus(false);
   }
 
+  handleKeyDown(event: KeyboardEvent, category: number, index: number) {
+    if (event.code === 'Space') this.updateCategory(category, index);
+  }
+
   tagSelectorState() {
     const currentIndex = this.categories.selectedCategory().position;
     if (currentIndex === 0) {}

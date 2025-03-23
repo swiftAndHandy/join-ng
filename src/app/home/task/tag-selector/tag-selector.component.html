@@ -10,7 +10,7 @@
             tabindex="0"
             [attr.aria-label]="'Tag as ' + category['name']"
             (click)="updateCategory(category['id'], $index); $event.stopPropagation()"
-            (keydown.space)="updateCategory(category['id'], $index); $event.stopPropagation()">{{ category['name'] }}</li>
+            (keydown)="handleKeyDown($event, category['id'], $index)">{{ category['name'] }}</li>
     } }
   </ul>
 </button>

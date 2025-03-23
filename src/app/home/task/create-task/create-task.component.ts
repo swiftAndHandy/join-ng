@@ -46,12 +46,14 @@ export class CreateTaskComponent {
   }
 
   pseudoObject() {
-    console.table({
+    const object = {
       'taskTitle': this.taskTitle(),
       'taskDescription': this.taskDescription(),
       'priorityLevel': this.currentPriority(),
       'category': this.tasksService.categories.selectedCategory().id,
-    });
+      'assigned': this.tasksService.assignedIds()
+    }
+    console.log(object);
   }
 
 }

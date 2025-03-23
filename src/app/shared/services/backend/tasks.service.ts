@@ -18,4 +18,8 @@ export class TasksService {
     this.contacts.destroy();
     this.assigned.set([]);
   }
+
+  assignedIds() {
+    return this.assigned().filter(persons => persons.selected).map(person => person.id)
+  }
 }
