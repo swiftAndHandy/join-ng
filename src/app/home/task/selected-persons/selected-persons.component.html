@@ -2,7 +2,9 @@
   @for(person of taskService.assigned(); track $index) {
     @if(person.selected) {
       <div class="person-avatar" [attr.aria-label]="person.first_name + ' ' + person.surname" [ngStyle]="{'background-color': person.badge_color}">
-        <span [attr.aria-hidden]="true">{{ taskService.contacts.initials(person) }}</span></div>
+        <span [attr.aria-hidden]="true">{{ taskService.contacts.initials(person) }}</span>
+        <span class="tooltip">{{ person.first_name }} {{ person.surname }}</span>
+      </div>
     }
   }
 </section>

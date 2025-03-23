@@ -2,9 +2,9 @@
   display: flex;
   flex-wrap: wrap;
   gap: 4px;
-  min-height: 40px;
 
     & .person-avatar {
+      position: relative;
       font-family: 'Inter', sans-serif;
       font-size: 0.75rem;
       display: flex;
@@ -17,5 +17,25 @@
       min-width: 40px;
       min-height: 40px;
       border: 2px solid white;
+      cursor: pointer;
+
+      &:hover {
+        .tooltip {
+          display: inline-block;
+        }
+      }
     }
+}
+
+.tooltip {
+  display: none;
+  position: absolute;
+  white-space: nowrap;
+  background-color: var(--lightblue);
+  bottom: 0;
+  left: 0;
+  padding: 4px;
+  border-radius: 4px;
+  z-index: 1;
+  transform: translateY(100%);
 }

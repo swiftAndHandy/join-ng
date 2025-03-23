@@ -60,8 +60,11 @@ export class ContactsService{
   async editContact(contactDetails: object, id: number): Promise<boolean> {
     try {
       const response = await this.backend.patch<any>(`contacts/${id}/`, contactDetails);
-      const updateContacts = this.contacts().map(contact => contact.id === id ? { ...contact, ...response } : contact);
+      const updateContacts = this.contacts().map(contact => contact.id === id ? { ...contact, ...response } : contact).sort((a, b) =>
+        a.first_name.localeCompare(b.first_name) || a.surname.localeCompare(b.surname)
+      );
       this.contacts.set(updateContacts);
+      this.currentListIndex.set(updateContacts.findIndex(contact => contact.id === response.id));
       this.selectedContact.set({ ...this.selectedContact(), ...response });
       return true;
     } catch (error: any) {

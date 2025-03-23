@@ -19,6 +19,13 @@
 }
 
 .task-view {
+  height: 100%;
+  max-height: calc(100dvh - 90px);
+  overflow-y: auto;
+  position: relative;
+
+
+
     .section {
         display: flex;
         flex-direction: column;
@@ -34,8 +41,9 @@
         display: flex;
         gap: 80px;
 
-        @media (orientation: portrait) {
-            flex-direction: column;
+        @media (orientation: portrait) or (width <= 970px) {
+          flex-direction: column;
+          gap: 32px;
         }
 
         &__left,
@@ -43,13 +51,17 @@
           display: flex;
           flex-direction: column;
           flex: 1;
+          gap: 16px;
         }
     }
 
     .task-view__footer {
-        display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      position: absolute;
+      left: 0;
+      right: 0;
 
         & > .required.description {
             display: flex;
