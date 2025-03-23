@@ -4,11 +4,11 @@
     <div class="task-view__body__left">
       <div class="section">
         <span class="subtitle required">Title</span>
-        <input [value]="taskTitle()" (input)="inputSignal.updateInputElement($event, taskTitle)" type="text" name="task-title" class="input" />
+        <input [value]="taskTitle()" (input)="inputSignal.setInputElement($event, taskTitle)" type="text" name="task-title" class="input" />
       </div>
       <div class="section">
         <span class="subtitle">Description</span>
-        <textarea [value]="taskDescription()" (input)="inputSignal.updateInputElement($event, taskDescription)"
+        <textarea [value]="taskDescription()" (input)="inputSignal.setInputElement($event, taskDescription)"
           name="task-description"
           class="input textarea"
         ></textarea>
