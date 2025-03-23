@@ -57,8 +57,17 @@ export class ContactsService{
     }
   }
 
-  async editContact(contactDetails: object): Promise<boolean> {
-    return true;
+  async editContact(contactDetails: object, id: number): Promise<boolean> {
+    try {
+      const response = await this.backend.patch<any>(`contacts/${id}/`, contactDetails);
+      const updateContacts = this.contacts().map(contact => contact.id === id ? { ...contact, ...response } : contact);
+      this.contacts.set(updateContacts);
+      this.selectedContact.set({ ...this.selectedContact(), ...response });
+      return true;
+    } catch (error: any) {
+      this.handleValidationErrors(error.error ?? {'unknown': 'unspecified error occurred'});
+      return false;
+    }
   }
 
   async deleteContact(contactId: number): Promise<void> {

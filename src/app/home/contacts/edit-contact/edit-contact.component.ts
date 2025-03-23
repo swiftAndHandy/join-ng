@@ -36,10 +36,11 @@ export class EditContactComponent {
   contactFormFields: WritableSignal<ContactFormFields> = signal(this.initContactForm());
 
   sendForm() {
+    const request = this.getContactFormFieldsAsObject();
     if(this.contactMenu.createModus()) {
-      this.createContact();
-    } else {
-      this.editContact();
+      this.createContact(request);
+    } else if(this.contactMenu.editModus()) {
+      this.editContact(request);
     }
   }
 
@@ -58,8 +59,8 @@ export class EditContactComponent {
     }
   }
 
-  async createContact() {
-    const request = {
+  getContactFormFieldsAsObject() {
+    return {
       first_name: this.contactFormFields().first_name,
       surname: this.contactFormFields().surname,
       street: this.contactFormFields().address.street,
@@ -68,13 +69,16 @@ export class EditContactComponent {
       phone: this.contactFormFields().phone,
       email: this.contactFormFields().email,
     };
+  }
+
+  private async createContact(request: object) {
     const success = await this.contacts.createContact(request);
     if (success) this.contactMenu.hidePopup();
   }
 
-  async editContact() {
-    const request = {}
-    const success = await this.contacts.editContact(request);
+  private async editContact(request: object) {
+    const targetContactsId = this.contacts.contactDetails().id;
+    const success = await this.contacts.editContact(request, targetContactsId);
     if (success) this.contactMenu.hidePopup();
   }
 
