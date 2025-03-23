@@ -7,6 +7,7 @@ export class ContactMenuService {
 
   private displayPopup = signal(false);
   public createModus = signal(true);
+  public editModus = computed(() => !this.createModus());
   public popupStatus = computed(() => this.displayPopup());
   public despawnPopup = signal(false);
 

@@ -4,7 +4,7 @@ import { SelectedPersonsComponent } from './selected-persons.component';
 import {provideHttpClient} from "@angular/common/http";
 import {provideHttpClientTesting} from "@angular/common/http/testing";
 
-describe('SelectedUsersComponent', () => {
+describe('SelectedPersonsComponent', () => {
   let component: SelectedPersonsComponent;
   let fixture: ComponentFixture<SelectedPersonsComponent>;
 

@@ -57,6 +57,10 @@ export class ContactsService{
     }
   }
 
+  async editContact(contactDetails: object): Promise<boolean> {
+    return true;
+  }
+
   async deleteContact(contactId: number): Promise<void> {
     try {
       const response = await this.backend.delete<any>(`contacts/${contactId}/`);
