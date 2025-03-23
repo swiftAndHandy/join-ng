@@ -9,17 +9,16 @@
       }
   </div>
   <div class="secondary">
-<!--    @if(contactMenu.createModus()) {-->
     <form class="contact-form" onsubmit="return false">
       <div class="contact-form__name custom-input">
-        <input class="contact-form__name__first-name" autocomplete="off" placeholder="First name" [value]="contactFormFields().firstName" (input)="signalService.updateInputElement($event, contactFormFields, 'firstName')" type="text" name="first-name">
+        <input class="contact-form__name__first-name" autocomplete="off" placeholder="First name" [value]="contactFormFields().first_name" (input)="signalService.updateInputElement($event, contactFormFields, 'first_name')" type="text" name="first-name">
         <div class="input-with-icon">
           <input class="contact-form__name__surname" autocomplete="off" placeholder="Surname" [value]="contactFormFields().surname" (input)="signalService.updateInputElement($event, contactFormFields, 'surname')" type="text" name="surname">
         </div>
       </div>
       <input class="custom-input" autocomplete="off" placeholder="Street" [value]="contactFormFields().address.street" (input)="signalService.updateInputElement($event, contactFormFields, 'address.street')" type="text" name="address">
       <div class="contact-form__city custom-input">
-        <input class="contact-form__city__zip-code" maxlength="5" autocomplete="off" placeholder="ZIP" [value]="contactFormFields().address.zipCode" (input)="signalService.updateInputElement($event, contactFormFields, 'address.zipCode')" type="text" name="address">
+        <input class="contact-form__city__zip-code" maxlength="5" autocomplete="off" placeholder="ZIP" [value]="contactFormFields().address.zip_code" (input)="signalService.updateInputElement($event, contactFormFields, 'address.zip_code')" type="text" name="address">
         <div class="input-with-icon">
           <input class="contact-form__city__city-name" autocomplete="off" placeholder="City" [value]="contactFormFields().address.city" (input)="signalService.updateInputElement($event, contactFormFields, 'address.city')" type="text" name="address">
         </div>

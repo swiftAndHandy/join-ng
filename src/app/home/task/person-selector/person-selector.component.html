@@ -1,4 +1,4 @@
-<div class="person-selector">
+<div class="person-selector" (keydown.escape)="setFocus(false)">
   <div class="input-field">
     <input
       class="dropdown"
@@ -6,7 +6,8 @@
       [ngClass]="{ '--opened': isFocused }"
       (focus)="setFocus(true)"
       [value]="searchTerm()"
-      (input)="inputSignal.updateInputElement($event, searchTerm)"
+      (input)="inputSignal.setInputElement($event, searchTerm)"
+      (keydown)="handleKeydown($event)"
       name="person-selector"
     />
     <img class="arrow" [ngClass]="{'--rotate': isFocused}" ngSrc="/assets/icons/arrow_drop_downaa.png" alt="" height="24" width="24">
@@ -14,14 +15,19 @@
   <ul class="person-list" [ngClass]="{ '--focused': isFocused }">
     @for(person of taskService.assigned(); track $index) {
       @if (person.filtered) {
-        <li>
-          <button [attr.aria-label]="ariaForSelectedPersons(person)" [ngClass]="{'--selected': person.selected}" class="person-row" (click)="toggleAssignedPerson(person.id)">
+        <li
+          tabindex="0"
+          [attr.aria-label]="ariaForSelectedPersons(person)"
+          [ngClass]="{'--selected': person.selected}"
+          class="person-row"
+          (click)="toggleAssignedPerson(person.id)"
+          (keydown.space)="toggleAssignedPerson(person.id); $event.preventDefault()"
+        >
             <div class="person__name-set" [attr.aria-hidden]="true">
               <div class="person-avatar" [ngStyle]="{'background-color': person.badge_color}">{{taskService.contacts.initials(person)}}</div>
               <div class="person-details">{{ person['first_name'] }} {{ person['surname']}}</div>
             </div>
             <div class="person-checkbox"></div>
-          </button>
         </li>
       }
     }

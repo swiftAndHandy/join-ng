@@ -1,17 +1,16 @@
-<button [attr.aria-label]="tagSelectorState()" class="tag-selector" (click)="setFocus(true)">
+<button [attr.aria-label]="tagSelectorState()" class="tag-selector" (click)="setFocus(true)" (keydown.escape)="setFocus(false)">
   <span [attr.aria-hidden]="true"
     [ngClass]="{ '--opened': isFocused }"
   >{{ categories.list()[categories.selectedCategory().position]['name'] }}</span>
   <img class="arrow" [ngClass]="{'--rotate': isFocused}" ngSrc="/assets/icons/arrow_drop_downaa.png" alt="" height="24" width="24">
-  <ul class="tag-list" [ngClass]="{ '--focused': isFocused }">
+  <ul class="tag-list" [ngClass]="{ '--focused': isFocused }" (keydown.escape)="setFocus(false)">
     @for(category of categories.list(); track $index) { @if(!$first){
-      <button
-        [attr.aria-label]="'Tag as ' + category['name']"
-        class="tag-row"
-        (click)="updateCategory(category['id'], $index); $event.stopPropagation()"
-      >
-        <li class="tag-details">{{ category['name'] }}</li>
-      </button>
+        <li class="tag-row"
+            role="option"
+            tabindex="0"
+            [attr.aria-label]="'Tag as ' + category['name']"
+            (click)="updateCategory(category['id'], $index); $event.stopPropagation()"
+            (keydown.space)="updateCategory(category['id'], $index); $event.stopPropagation()">{{ category['name'] }}</li>
     } }
   </ul>
 </button>

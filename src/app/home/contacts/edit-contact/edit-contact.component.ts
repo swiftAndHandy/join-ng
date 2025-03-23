@@ -6,12 +6,12 @@ import {ContactsService} from "../../../shared/services/backend/contacts.service
 
 interface Address {
   street: string;
-  zipCode: string;
+  zip_code: string;
   city: string;
 }
 
 interface ContactFormFields {
-  firstName: string;
+  first_name: string;
   surname: string;
   address: Address;
   email: string;
@@ -33,17 +33,7 @@ export class EditContactComponent {
   public signalService = inject(InputSignalService)
   private contacts = inject(ContactsService);
 
-  contactFormFields: WritableSignal<ContactFormFields> = signal({
-    firstName: '',
-    surname: '',
-    address: {
-      street: '',
-      zipCode: '',
-      city: '',
-    },
-    email: '',
-    phone: ''
-  });
+  contactFormFields: WritableSignal<ContactFormFields> = signal(this.initContactForm());
 
   sendForm() {
     if(this.contactMenu.createModus()) {
@@ -53,19 +43,27 @@ export class EditContactComponent {
     }
   }
 
-  async ngOnInit() {
-    if(this.contactMenu.editModus()) {
-      // this.contactFormFields.set()
-      console.table(this.contacts.contactDetails())
+  initContactForm(): ContactFormFields {
+    if(this.contactMenu.editModus()) return this.contacts.contactDetails()
+    return {
+      first_name: '',
+      surname: '',
+      address: {
+        street: '',
+        zip_code: '',
+        city: '',
+      },
+      email: '',
+      phone: ''
     }
   }
 
   async createContact() {
     const request = {
-      first_name: this.contactFormFields().firstName,
+      first_name: this.contactFormFields().first_name,
       surname: this.contactFormFields().surname,
       street: this.contactFormFields().address.street,
-      zip_code: this.contactFormFields().address.zipCode,
+      zip_code: this.contactFormFields().address.zip_code,
       city: this.contactFormFields().address.city,
       phone: this.contactFormFields().phone,
       email: this.contactFormFields().email,

@@ -15,7 +15,6 @@ export class InputSignalService {
   updateInputElement(event: Event, targetSignal: WritableSignal<any>, key: string) {
     const input = event.target as HTMLInputElement;
     targetSignal.update(values => this.setNestedValue({ ...values }, key, input.value));
-    console.table(targetSignal());
   }
 
   private setNestedValue(obj: any, path: string, value: any): any {

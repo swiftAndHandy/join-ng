@@ -75,6 +75,12 @@ export class PersonSelectorComponent {
     return `Assign to ${person.first_name} ${person.surname}`;
   }
 
+  handleKeydown(event: KeyboardEvent) {
+    if (event.key !== 'Tab') {
+      this.isFocused = true;
+    }
+  }
+
   @HostListener('document:click', ['$event'])
   onClickOutside(event: Event) {
     if (!this.elRef.nativeElement.contains(event.target)) {
