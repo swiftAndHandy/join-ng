@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AnimationObject } from '../shared/interfaces/animation-object';
+import { AnimationObjectInterface } from '../shared/interfaces/animation-object.interface';
 import { CommonModule } from '@angular/common';
 import { LogInComponent } from './log-in/log-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
@@ -20,7 +20,7 @@ import { RouterModule } from '@angular/router';
   styleUrl: './landing-page.component.scss',
 })
 export class LandingPageComponent {
-  animationState: AnimationObject | string | null =
+  animationState: AnimationObjectInterface | string | null =
     localStorage.getItem('animationState');
 
   joinAnimationState!: boolean;
@@ -35,7 +35,7 @@ export class LandingPageComponent {
   }
 
   updateAnimationState() {
-    let animationObject: AnimationObject;
+    let animationObject: AnimationObjectInterface;
 
     if (this.animationState) {
       animationObject = JSON.parse(this.animationState as string);

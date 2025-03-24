@@ -1,4 +1,4 @@
-export interface AnimationObject {
+export interface AnimationObjectInterface {
   joinAnimation: boolean;
   welcomeAnimation: number;
 }
