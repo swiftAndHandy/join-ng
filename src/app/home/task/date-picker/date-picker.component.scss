@@ -1,0 +1,20 @@
+.date-picker {
+  position: absolute;
+  left: 0;
+  top: 0;
+  visibility: hidden;
+}
+
+.date-field {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  background-color: white;
+  border: 1px solid var(--greyD1);
+  padding: 12px 21px;
+  border-radius: 10px;
+  width: 100%;
+  text-align: left;
+}

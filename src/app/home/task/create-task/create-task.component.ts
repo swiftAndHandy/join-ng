@@ -50,6 +50,7 @@ export class CreateTaskComponent {
       'taskTitle': this.taskTitle(),
       'taskDescription': this.taskDescription(),
       'priorityLevel': this.currentPriority(),
+      'end_date': this.tasksService.selectedDate(),
       'category': this.tasksService.categories.selectedCategory().id,
       'assigned': this.tasksService.assignedIds()
     }

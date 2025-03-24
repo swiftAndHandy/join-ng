@@ -47,7 +47,7 @@ export class PersonSelectorComponent {
   }
 
   modifyContactsToAssignedPersons() {
-    this.taskService.assigned.set(this.taskService.contacts.list().map(contact => ({ ...contact, selected: false, filtered: true })));
+    this.taskService.assigned.set(this.taskService.contacts.list().map(contact => ({ ...contact, origin: 'contact', selected: false, filtered: true })));
   }
 
   filterUsers() {

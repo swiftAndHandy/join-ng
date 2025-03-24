@@ -10,6 +10,7 @@ export class TasksService {
   public contacts: ContactsService = inject(ContactsService);
 
   public assigned: WritableSignal<any[]> = signal<any[]>([]);
+  public selectedDate: WritableSignal<string|null> = signal(null);
 
   constructor() { }
 
@@ -17,6 +18,7 @@ export class TasksService {
     this.categories.destroy();
     this.contacts.destroy();
     this.assigned.set([]);
+    this.selectedDate.set(null);
   }
 
   assignedIds() {
