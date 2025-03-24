@@ -27,7 +27,8 @@
               <div class="person-avatar" [ngStyle]="{'background-color': person.badge_color}">{{taskService.contacts.initials(person)}}</div>
               <div class="person-details" [innerHTML]="displayPersonDetails(person)"></div>
             </div>
-            <div class="person-checkbox"></div>
+            <div class="person-checkbox" [innerHTML]="drawCheckboxSvg(person)">
+            </div>
         </li>
       }
     }

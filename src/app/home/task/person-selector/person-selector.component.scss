@@ -54,6 +54,7 @@
   display: flex;
   width: 100%;
   justify-content: space-between;
+  align-items: center;
   background-color: unset;
   border: none;
 
@@ -102,7 +103,12 @@
   }
 
   .person-checkbox {
-    border: 1px solid black;
+    width: 24px;
+    height: 24px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 

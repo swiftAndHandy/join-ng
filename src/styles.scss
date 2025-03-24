@@ -40,3 +40,15 @@ body {
   background-color: yellow;
   color: black
 }
+
+.checkmark {
+  stroke-dasharray: 50;
+  stroke-dashoffset: 50;
+  animation: drawCheckmark 700ms ease forwards;
+}
+
+@keyframes drawCheckmark {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
