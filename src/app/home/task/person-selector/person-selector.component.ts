@@ -81,6 +81,21 @@ export class PersonSelectorComponent {
     }
   }
 
+  displayPersonDetails(person: {'first_name': string, surname: string, email: string, [key: string]: any }): any {
+    const personFullName = `${person.first_name} ${person.surname}`.trim();
+    const searchTerm = this.searchTerm().trim();
+
+    if (!searchTerm) return `${person.first_name} ${person.surname}`;
+
+    const highlight = (text: string) => {
+      const regex = new RegExp(`(${searchTerm})`, 'gi');
+      return text.replace(regex, '<span class="highlight__search">$1</span>');
+    }
+
+    const highlightedName = highlight(personFullName);
+    return highlightedName === personFullName ? `${highlight(person.email.trim())}` : highlightedName;
+  }
+
   @HostListener('document:click', ['$event'])
   onClickOutside(event: Event) {
     if (!this.elRef.nativeElement.contains(event.target)) {
