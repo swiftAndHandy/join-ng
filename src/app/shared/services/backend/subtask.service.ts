@@ -11,19 +11,39 @@ export class SubtasksEditService {
   newSubtaskDescription: WritableSignal<string | null> = signal(null);
   currentSubtasksPosition: WritableSignal<number> = signal(-1);
 
+
   constructor() { }
   backend: BackendService = inject(BackendService);
+
 
    async getSubtaskByTaskId(id: number | null = null): Promise<void> {
      if(id) {
        const data = await this.backend.get<any>(`tasks/${id}/subtasks`);
-       if (data) this.currentTasksSubtasks.set(data);
+       if (data) {
+         this.currentTasksSubtasks.set(
+           data.map((subtask: SubtaskObject) => ({
+             ...subtask,
+             edited_description: subtask.description,
+             edit_mode: false
+           }))
+         );
+       }
      }
   }
 
   updateCurrentSubtasks(subtaskObject: SubtaskObject, id: number = -1): boolean {
       this.currentTasksSubtasks.update(current => [...current, subtaskObject]);
       return true;
+  }
+
+  activateEditMode(id: number) {
+    this.currentTasksSubtasks()[id].edit_mode = true;
+    console.log('activateEditMode');
+  }
+
+  deactivateEditMode(id: number) {
+    this.currentTasksSubtasks()[id].edit_mode = false;
+    console.log('deactivateEditMode');
   }
 
   destroy (): void {

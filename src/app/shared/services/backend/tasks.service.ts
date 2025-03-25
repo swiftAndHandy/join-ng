@@ -20,6 +20,7 @@ export class TasksService {
   destroy() {
     this.categories.destroy();
     this.contacts.destroy();
+    this.subtasks.destroy();
     this.assigned.set([]);
     this.selectedDate.set(null);
     this.currentTaskId.set(null);

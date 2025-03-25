@@ -52,7 +52,8 @@ export class CreateTaskComponent {
       'priorityLevel': this.currentPriority(),
       'end_date': this.tasksService.selectedDate(),
       'category': this.tasksService.categories.selectedCategory().id,
-      'assigned': this.tasksService.assignedIds()
+      'assigned': this.tasksService.assignedIds(),
+      'subtasks': this.tasksService.subtasks.currentTasksSubtasks()
     }
     console.log(object);
   }

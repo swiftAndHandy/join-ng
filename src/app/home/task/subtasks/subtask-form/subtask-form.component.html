@@ -1,16 +1,22 @@
 <section>
   <div class="input__new-subtask" role="presentation" (click)="newSubtaskInputField.focus()">
-    <input aria-label="Input new Subtask" #newSubtaskInputField type="text" (focus)="setFocusAtNewSubtaskInput()" (blur)="blurFocusAtNewSubtaskInput()">
+    <input placeholder="Add new subtask" aria-label="Input new Subtask" #newSubtaskInputField type="text" (focus)="setFocusAtNewSubtaskInput()" (blur)="blurFocusAtNewSubtaskInput()">
     <div class="icons">
-      <img class="input__plus-icon" aria-label="Clear new subtask-input" role="button" ngSrc="/assets/icons/add.svg" width="24" height="24" (mousedown)="$event.preventDefault()" (click)="clickedAtNewTaskPlusIcon()" alt="">
-      <img class="input__confirm-icon" role="button" aria-label="Submit new subtask" ngSrc="/assets/icons/checkmark_regular.svg" width="24" height="24" (mousedown)="$event.preventDefault()" (click)="clickedAtNewTaskSubmit()" alt="">
+      <img class="input__plus-icon" alt="Clear new subtask-input" role="button" ngSrc="/assets/icons/add.svg" width="24" height="24" (mousedown)="$event.preventDefault()" (click)="clickedAtNewTaskPlusIcon()">
+      <img class="input__confirm-icon" role="button" alt="Submit new subtask" ngSrc="/assets/icons/checkmark_regular.svg" width="24" height="24" (mousedown)="$event.preventDefault()" (click)="clickedAtNewTaskSubmit()">
     </div>
   </div>
   <ul class="subtask-list">
-    <li>
-      @for(task of subtaskService.currentTasksSubtasks(); track task.id) {
-        {{task.description}}
-      }
+    @for(task of subtaskService.currentTasksSubtasks(); track $index) {
+    <li (click)="editInput.focus();subtaskService.activateEditMode($index)" [ngClass]="{'--edit-mode': task.edit_mode}" class="input__edit-subtask">
+      <span class="bullet" [ngClass]="{'--edit-mode': task.edit_mode}">&bull;</span>
+      <input #editInput [ngClass]="{'--edit-mode': task.edit_mode}" [value]="task.edited_description">
+      <div class="icons">
+        <img [ngClass]="{'--edit-mode': task.edit_mode}" class="input__edit-icon" role="button" ngSrc="/assets/icons/pencil.svg" width="24" height="24" (mousedown)="$event.preventDefault()" alt="Edit this subtask">
+        <img [ngClass]="{'--edit-mode': task.edit_mode}" class="input__delete-icon"  role="button" ngSrc="/assets/icons/delete.svg" width="24" height="24" (mousedown)="$event.preventDefault()" (click)="handleTrashClick(task, $index, editInput);$event.stopPropagation()" [attr.alt]="trashIconAltText(task.edit_mode)">
+        <img [ngClass]="{'--edit-mode': task.edit_mode}" class="input__confirm-icon" role="button" ngSrc="/assets/icons/checkmark_regular.svg" width="24" height="24" (click)="subtaskService.deactivateEditMode($index);submitEdit($index, editInput);$event.stopPropagation()" alt="Confirm subtask changes">
+      </div>
     </li>
+    }
   </ul>
 </section>
