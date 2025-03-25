@@ -1,1 +1,16 @@
-<p>subtask-form works!</p>
+<section>
+  <div class="input__new-subtask" role="presentation" (click)="newSubtaskInputField.focus()">
+    <input aria-label="Input new Subtask" #newSubtaskInputField type="text" (focus)="setFocusAtNewSubtaskInput()" (blur)="blurFocusAtNewSubtaskInput()">
+    <div class="icons">
+      <img class="input__plus-icon" aria-label="Clear new subtask-input" role="button" ngSrc="/assets/icons/add.svg" width="24" height="24" (mousedown)="$event.preventDefault()" (click)="clickedAtNewTaskPlusIcon()" alt="">
+      <img class="input__confirm-icon" role="button" aria-label="Submit new subtask" ngSrc="/assets/icons/checkmark_regular.svg" width="24" height="24" (mousedown)="$event.preventDefault()" (click)="clickedAtNewTaskSubmit()" alt="">
+    </div>
+  </div>
+  <ul class="subtask-list">
+    <li>
+      @for(task of subtaskService.currentTasksSubtasks(); track task.id) {
+        {{task.description}}
+      }
+    </li>
+  </ul>
+</section>

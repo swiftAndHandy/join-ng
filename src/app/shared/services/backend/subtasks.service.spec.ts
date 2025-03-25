@@ -1,13 +1,18 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SubtasksService } from './subtasks.service';
+import { SubtasksEditService } from './subtask.service';
+import {provideHttpClient} from "@angular/common/http";
 
-describe('SubtasksService', () => {
-  let service: SubtasksService;
+describe('SubtasksEditService', () => {
+  let service: SubtasksEditService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(SubtasksService);
+    TestBed.configureTestingModule({
+      providers: [
+        provideHttpClient(),
+      ]
+    });
+    service = TestBed.inject(SubtasksEditService);
   });
 
   it('should be created', () => {
