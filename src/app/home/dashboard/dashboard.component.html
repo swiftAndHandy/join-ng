@@ -3,9 +3,10 @@
     <h1 class="page-title">Board</h1>
     <div class="task-control">
       <searchbar></searchbar>
-      <join-button [bold]="true" [add]="ButtonSymbol.plus"
-        >Add task</join-button
-      >
+      <button [joinButton]="{}"
+        >Add task
+        <img src="/assets/icons/add.svg" alt="">
+      </button>
     </div>
   </div>
   <div class="board__body">

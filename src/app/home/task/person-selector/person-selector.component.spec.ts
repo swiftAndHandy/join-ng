@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PersonSelectorComponent } from './person-selector.component';
 import {provideHttpClient} from "@angular/common/http";
-import {provideHttpClientTesting} from "@angular/common/http/testing";
+
 
 describe('PersonSelectorComponent', () => {
   let component: PersonSelectorComponent;
@@ -12,7 +12,6 @@ describe('PersonSelectorComponent', () => {
     await TestBed.configureTestingModule({
       providers: [
         provideHttpClient(),
-        provideHttpClientTesting()
       ],
       imports: [PersonSelectorComponent]
     })

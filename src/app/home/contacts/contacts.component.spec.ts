@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ContactsComponent } from './contacts.component';
 import {provideHttpClient} from "@angular/common/http";
-import {provideHttpClientTesting} from "@angular/common/http/testing";
+
 
 describe('ContactsComponent', () => {
   let component: ContactsComponent;
@@ -11,7 +11,6 @@ describe('ContactsComponent', () => {
     await TestBed.configureTestingModule({
       providers: [
         provideHttpClient(),
-        provideHttpClientTesting()
       ],
       imports: [
         ContactsComponent]

@@ -62,6 +62,7 @@ export class JoinButtonDirective {
     }
   }
 
+  @HostListener('mouseup')
   @HostListener('mouseenter') onMouseEnter() {
     this.renderer.setStyle(this.el.nativeElement, 'box-shadow', '0px 4px 4px 0px #00000040');
 
@@ -74,7 +75,6 @@ export class JoinButtonDirective {
   }
 
   @HostListener('mouseleave')
-  @HostListener('mouseup')
   resetActiveStyle() {
     this.renderDefaultStyle();
   }

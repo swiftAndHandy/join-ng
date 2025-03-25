@@ -1,4 +1,4 @@
-  <button (click)="datePicker.showPicker()" class="date-field">
+  <button #datePickerBtn (click)="openDatePicker()" class="date-field">
     {{ dateFieldContent() }}
     <input #datePicker class="date-picker" required type="date"
            [min]="this.getCurrentDate('yyyymmdd')" (change)="dateChanged(datePicker)">

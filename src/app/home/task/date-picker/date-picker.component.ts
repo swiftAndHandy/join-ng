@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, ElementRef, HostListener, inject, ViewChild} from '@angular/core';
 import {TasksService} from "../../../shared/services/backend/tasks.service";
 
 @Component({
@@ -9,11 +9,12 @@ import {TasksService} from "../../../shared/services/backend/tasks.service";
   styleUrl: './date-picker.component.scss',
 })
 export class DatePickerComponent {
+  @ViewChild('datePicker') datePicker!: ElementRef;
+  @ViewChild('datePickerBtn') datePickerBtn!: ElementRef;
+
   taskService = inject(TasksService);
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   dateFieldContent() {
     if (this.taskService.selectedDate() === null) {
@@ -41,6 +42,24 @@ export class DatePickerComponent {
       case 'mmddyyyy':
         return `${dd}${separator}${mm}${separator}${yyyy}`;
     }
-}
+  }
+
+  openDatePicker() {
+    this.datePicker.nativeElement.showPicker();
+  }
+
+  @HostListener('document:click', ['$event'])
+  closeDatePicker(event: Event) {
+    if (
+      this.datePicker &&
+      !this.datePicker.nativeElement.contains(event.target as Node) &&
+      !this.datePickerBtn.nativeElement.contains(event.target as Node)
+    ) {
+      this.datePicker.nativeElement.style.display = 'none';
+      setTimeout(() => {
+        this.datePicker.nativeElement.style.display = 'inline-block';
+      }, 10)
+    }
+  }
 
 }

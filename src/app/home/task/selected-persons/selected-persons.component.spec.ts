@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SelectedPersonsComponent } from './selected-persons.component';
 import {provideHttpClient} from "@angular/common/http";
-import {provideHttpClientTesting} from "@angular/common/http/testing";
+
 
 describe('SelectedPersonsComponent', () => {
   let component: SelectedPersonsComponent;
@@ -12,7 +12,6 @@ describe('SelectedPersonsComponent', () => {
     await TestBed.configureTestingModule({
       providers: [
         provideHttpClient(),
-        provideHttpClientTesting()
       ],
       imports: [SelectedPersonsComponent]
     })

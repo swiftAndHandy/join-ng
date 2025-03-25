@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SingleContactBodyComponent } from './single-contact-body.component';
 import {provideHttpClient} from "@angular/common/http";
-import {provideHttpClientTesting} from "@angular/common/http/testing";
+
 
 describe('SingleContactBodyComponent', () => {
   let component: SingleContactBodyComponent;
@@ -12,7 +12,6 @@ describe('SingleContactBodyComponent', () => {
     await TestBed.configureTestingModule({
       providers: [
         provideHttpClient(),
-        provideHttpClientTesting()
       ],
       imports: [SingleContactBodyComponent]
     })

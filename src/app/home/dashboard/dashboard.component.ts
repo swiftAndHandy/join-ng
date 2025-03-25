@@ -4,11 +4,12 @@ import {
   ButtonSymbol,
 } from '../../shared/components/button/button.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
+import {JoinButtonDirective} from "../../shared/directives/join-button.directive";
 
 @Component({
   selector: 'dashboard',
   standalone: true,
-  imports: [ButtonComponent, SearchbarComponent],
+  imports: [ButtonComponent, SearchbarComponent, JoinButtonDirective],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
 })
