@@ -1,5 +1,5 @@
   <button #datePickerBtn (click)="openDatePicker()" class="date-field">
-    {{ dateFieldContent() }}
+    <span [attr.aria-label]="'Deadline: ' + datePicker.value">{{ dateFieldContent() }}</span>
     <input #datePicker class="date-picker" required type="date"
            [min]="this.getCurrentDate('yyyymmdd')" (change)="dateChanged(datePicker)">
     <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
