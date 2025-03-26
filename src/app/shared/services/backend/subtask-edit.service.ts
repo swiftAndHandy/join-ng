@@ -8,6 +8,7 @@ import {SubtaskObject} from "../../interfaces/subtask.interface";
 export class SubtasksEditService {
 
   currentTasksSubtasks: WritableSignal<SubtaskObject[]>  = signal<SubtaskObject[]>([]);
+  currentTaskId: number | null = null;
 
   constructor() { }
   backend: BackendService = inject(BackendService);
@@ -15,6 +16,7 @@ export class SubtasksEditService {
 
    async getSubtaskByTaskId(id: number | null = null): Promise<void> {
      if(id) {
+       this.currentTaskId = id;
        const data = await this.backend.get<any>(`tasks/${id}/subtasks`);
        if (data) {
          this.currentTasksSubtasks.set(

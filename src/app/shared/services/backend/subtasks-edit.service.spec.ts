@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SubtasksEditService } from './subtask.service';
+import { SubtasksEditService } from './subtask-edit.service';
 import {provideHttpClient} from "@angular/common/http";
 
 describe('SubtasksEditService', () => {

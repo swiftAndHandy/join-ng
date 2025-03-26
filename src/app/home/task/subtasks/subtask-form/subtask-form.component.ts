@@ -1,5 +1,5 @@
 import {Component, ElementRef, inject, signal, ViewChild} from '@angular/core';
-import {SubtasksEditService} from "../../../../shared/services/backend/subtask.service";
+import {SubtasksEditService} from "../../../../shared/services/backend/subtask-edit.service";
 import {NgClass, NgOptimizedImage} from "@angular/common";
 import {SubtaskObject} from "../../../../shared/interfaces/subtask.interface";
 
@@ -19,8 +19,7 @@ export class SubtaskFormComponent {
   @ViewChild('newSubtaskInputField') newSubtaskInputField!: ElementRef;
 
   async ngOnInit(): Promise<void> {
-    await this.subtaskService.getSubtaskByTaskId(1);
-    console.log(this.subtaskService.currentTasksSubtasks());
+    await this.subtaskService.getSubtaskByTaskId(null);
   }
 
   setFocusAtNewSubtaskInput() {
@@ -31,7 +30,7 @@ export class SubtaskFormComponent {
     this.newSubtaskInputFieldFocused.set(false);
   }
 
-  clickedAtNewTaskPlusIcon() {
+  clickedAtNewTaskCross() {
     if(!this.newSubtaskInputFieldFocused()) {
       this.setFocusAtNewSubtaskInput();
       this.newSubtaskInputField.nativeElement.focus();
@@ -41,16 +40,17 @@ export class SubtaskFormComponent {
   }
 
   clickedAtNewTaskSubmit() {
-    console.log("submitted");
     const newSubtask = this.newSubtaskInputField.nativeElement;
-    if (newSubtask.value.trim().length) {
-    this.subtaskService.updateCurrentSubtasks(
-      {
-        description: newSubtask.value,
-        edited_description: newSubtask.value,
-        edit_mode: false,
-        completed: false,
-      })
+    newSubtask.value = newSubtask.value.trim();
+    if (newSubtask.value.length) {
+      this.subtaskService.updateCurrentSubtasks(
+        {
+          description: newSubtask.value,
+          edited_description: newSubtask.value,
+          edit_mode: false,
+          completed: false,
+        });
+      newSubtask.value = '';
     }
   }
 
@@ -59,22 +59,34 @@ export class SubtaskFormComponent {
   }
 
   handleTrashClick(subtaskObject: SubtaskObject, index: number, input: HTMLInputElement, event: Event): void {
-    const current = this.subtaskService.currentTasksSubtasks();
+    event.stopPropagation();
     if (subtaskObject.edit_mode) {
-      input.value = current[index].description;
-      current[index].edit_mode = false;
-      this.blockHoverCSS(event);
-      input.blur();
+      this.discardEditInput(index, input, event);
     } else {
-      current.splice(index, 1);
-      this.subtaskService.currentTasksSubtasks.set([...current]);
-      console.log(this.subtaskService.currentTasksSubtasks());
+      this.deleteSubtask(index);
     }
+  }
+
+  discardEditInput(index: number, input: HTMLInputElement, event: Event) {
+    const current = this.subtaskService.currentTasksSubtasks();
+    input.value = current[index].description;
+    current[index].edit_mode = false;
+    this.blockHoverCSS(event);
+    input.blur();
+  }
+
+  deleteSubtask(index: number): void {
+    const current = this.subtaskService.currentTasksSubtasks();
+    current.splice(index, 1);
+    this.subtaskService.currentTasksSubtasks.set([...current]);
+    console.log(this.subtaskService.currentTasksSubtasks());
   }
 
   submitEdit(index: number, input: HTMLInputElement) {
     const current = this.subtaskService.currentTasksSubtasks();
-    input.value.trim();
+    input.blur();
+    this.subtaskService.deactivateEditMode(index);
+    input.value = input.value.trim();
     if (input.value.length) {
       current[index].description = input.value;
     } else {

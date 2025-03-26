@@ -1,22 +1,22 @@
 <section>
   <div class="input__new-subtask" role="presentation" (click)="newSubtaskInputField.focus()">
-    <input placeholder="Add new subtask" aria-label="Input new Subtask" #newSubtaskInputField type="text" (focus)="setFocusAtNewSubtaskInput()" (blur)="blurFocusAtNewSubtaskInput()">
+    <input (keydown.escape)="clickedAtNewTaskCross()" (keydown.enter)="clickedAtNewTaskSubmit()" placeholder="Add new subtask" aria-label="Input new Subtask" #newSubtaskInputField type="text" (focus)="setFocusAtNewSubtaskInput()" (blur)="blurFocusAtNewSubtaskInput()">
     <div class="icons">
-      <img class="input__plus-icon" alt="Clear new subtask-input" role="button" ngSrc="/assets/icons/add.svg" width="24" height="24" (mousedown)="$event.preventDefault()" (click)="clickedAtNewTaskPlusIcon()">
+      <img class="input__plus-icon" alt="Clear new subtask-input" role="button" ngSrc="/assets/icons/add.svg" width="24" height="24" (mousedown)="$event.preventDefault()" (click)="clickedAtNewTaskCross()">
       <img class="input__confirm-icon" role="button" alt="Submit new subtask" ngSrc="/assets/icons/checkmark_regular.svg" width="24" height="24" (mousedown)="$event.preventDefault()" (click)="clickedAtNewTaskSubmit()">
     </div>
   </div>
   <ul class="subtask-list">
     @for(task of subtaskService.currentTasksSubtasks(); track $index) {
-    <li (click)="editInput.focus();subtaskService.activateEditMode($index)" [ngClass]="{'--edit-mode': task.edit_mode}" class="input__edit-subtask">
-      <span class="bullet" [ngClass]="{'--edit-mode': task.edit_mode}">&bull;</span>
-      <input #editInput [ngClass]="{'--edit-mode': task.edit_mode}" [value]="task.edited_description">
-      <div class="icons">
-        <img [ngClass]="{'--edit-mode': task.edit_mode}" class="input__edit-icon" role="button" ngSrc="/assets/icons/pencil.svg" width="24" height="24" (mousedown)="$event.preventDefault()" alt="Edit this subtask">
-        <img [ngClass]="{'--edit-mode': task.edit_mode}" class="input__delete-icon"  role="button" ngSrc="/assets/icons/delete.svg" width="24" height="24" (mousedown)="$event.preventDefault()" (click)="handleTrashClick(task, $index, editInput, $event);" [attr.alt]="trashIconAltText(task.edit_mode)">
-        <img [ngClass]="{'--edit-mode': task.edit_mode}" class="input__confirm-icon" role="button" ngSrc="/assets/icons/checkmark_regular.svg" width="24" height="24" (click)="subtaskService.deactivateEditMode($index);submitEdit($index, editInput);$event.stopPropagation()" alt="Confirm subtask changes">
-      </div>
-    </li>
+      <li (click)="editInput.focus()" [ngClass]="{'--edit-mode': task.edit_mode}" class="input__edit-subtask">
+        <span class="bullet" [ngClass]="{'--edit-mode': task.edit_mode}">&bull;</span>
+        <input #editInput (focus)="subtaskService.activateEditMode($index)" (keydown.enter)="submitEdit($index, editInput)" (keydown.escape)="discardEditInput($index, editInput, $event)" [ngClass]="{'--edit-mode': task.edit_mode}" [value]="task.edited_description">
+        <div class="icons">
+          <img [ngClass]="{'--edit-mode': task.edit_mode}" class="input__edit-icon" role="button" ngSrc="/assets/icons/pencil.svg" width="24" height="24" (mousedown)="$event.preventDefault()" alt="Edit this subtask">
+          <img [ngClass]="{'--edit-mode': task.edit_mode}" class="input__delete-icon"  role="button" ngSrc="/assets/icons/delete.svg" width="24" height="24" (mousedown)="$event.preventDefault()" (click)="handleTrashClick(task, $index, editInput, $event);" [attr.alt]="trashIconAltText(task.edit_mode)">
+          <img [ngClass]="{'--edit-mode': task.edit_mode}" class="input__confirm-icon" role="button" ngSrc="/assets/icons/checkmark_regular.svg" width="24" height="24" (click)="submitEdit($index, editInput);$event.stopPropagation()" alt="Confirm subtask changes">
+        </div>
+      </li>
     }
   </ul>
 </section>

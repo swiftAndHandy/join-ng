@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SubtaskFormComponent } from './subtask-form.component';
+import {provideHttpClient} from "@angular/common/http";
 
 describe('SubtaskFormComponent', () => {
   let component: SubtaskFormComponent;
@@ -8,6 +9,9 @@ describe('SubtaskFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      providers: [
+        provideHttpClient(),
+      ],
       imports: [SubtaskFormComponent]
     })
     .compileComponents();

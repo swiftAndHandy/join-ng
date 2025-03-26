@@ -1,7 +1,7 @@
 import {inject, Injectable, signal, WritableSignal} from '@angular/core';
 import {CategoriesService} from "./categories.service";
 import {ContactsService} from "./contacts.service";
-import {SubtasksEditService} from "./subtask.service";
+import {SubtasksEditService} from "./subtask-edit.service";
 
 @Injectable({
   providedIn: 'root'
