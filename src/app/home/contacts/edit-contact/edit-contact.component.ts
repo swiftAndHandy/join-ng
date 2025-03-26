@@ -45,7 +45,10 @@ export class EditContactComponent {
   }
 
   initContactForm(): ContactFormFields {
-    if(this.contactMenu.editModus()) return this.contacts.contactDetails()
+    if(this.contactMenu.editModus()) {
+      return structuredClone(this.contacts.contactDetails());
+    }
+
     return {
       first_name: '',
       surname: '',
