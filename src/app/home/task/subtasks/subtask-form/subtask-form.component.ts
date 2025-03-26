@@ -36,32 +36,35 @@ export class SubtaskFormComponent {
       this.setFocusAtNewSubtaskInput();
       this.newSubtaskInputField.nativeElement.focus();
     } else {
-      console.log("deleted")
+      this.newSubtaskInputField.nativeElement.value = '';
     }
   }
 
   clickedAtNewTaskSubmit() {
     console.log("submitted");
+    const newSubtask = this.newSubtaskInputField.nativeElement;
+    if (newSubtask.value.trim().length) {
     this.subtaskService.updateCurrentSubtasks(
       {
-        id: -1,
-        description: this.newSubtaskInputField.nativeElement.value,
-        edited_description: this.newSubtaskInputField.nativeElement.value,
+        description: newSubtask.value,
+        edited_description: newSubtask.value,
         edit_mode: false,
         completed: false,
-        taskId: -1
       })
-    console.log(this.subtaskService.currentTasksSubtasks());
+    }
   }
 
   trashIconAltText(editing: boolean | undefined): string {
     return editing ? 'Discard changes' : 'Delete this subtask';
   }
 
-  handleTrashClick(subtaskObject: SubtaskObject, index: number, input: HTMLInputElement): void {
+  handleTrashClick(subtaskObject: SubtaskObject, index: number, input: HTMLInputElement, event: Event): void {
     const current = this.subtaskService.currentTasksSubtasks();
     if (subtaskObject.edit_mode) {
       input.value = current[index].description;
+      current[index].edit_mode = false;
+      this.blockHoverCSS(event);
+      input.blur();
     } else {
       current.splice(index, 1);
       this.subtaskService.currentTasksSubtasks.set([...current]);
@@ -78,5 +81,14 @@ export class SubtaskFormComponent {
       input.value = current[index].description;
     }
     console.log(this.subtaskService.currentTasksSubtasks());
+  }
+
+  blockHoverCSS(event: Event) {
+    event.stopPropagation();
+    const target = event.target as HTMLElement;
+    target.classList.add('--hover-is-blocked');
+    setTimeout(() => {
+      target.classList.remove('--hover-is-blocked');
+    }, 400)
   }
 }

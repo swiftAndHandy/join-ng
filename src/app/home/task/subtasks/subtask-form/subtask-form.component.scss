@@ -23,7 +23,7 @@ input {
   filter: brightness(0) saturate(1);
   transition: transform 250ms ease-in-out, opacity 300ms ease-in-out, filter 225ms ease-in-out;
   cursor: pointer;
-  &:hover {
+  &:hover:not(.--hover-is-blocked) {
     filter: brightness(0) saturate(1) invert(60%) sepia(28%) saturate(1218%) hue-rotate(155deg) brightness(93%) contrast(91%);
   }
 }

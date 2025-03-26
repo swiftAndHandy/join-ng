@@ -13,7 +13,7 @@
       <input #editInput [ngClass]="{'--edit-mode': task.edit_mode}" [value]="task.edited_description">
       <div class="icons">
         <img [ngClass]="{'--edit-mode': task.edit_mode}" class="input__edit-icon" role="button" ngSrc="/assets/icons/pencil.svg" width="24" height="24" (mousedown)="$event.preventDefault()" alt="Edit this subtask">
-        <img [ngClass]="{'--edit-mode': task.edit_mode}" class="input__delete-icon"  role="button" ngSrc="/assets/icons/delete.svg" width="24" height="24" (mousedown)="$event.preventDefault()" (click)="handleTrashClick(task, $index, editInput);$event.stopPropagation()" [attr.alt]="trashIconAltText(task.edit_mode)">
+        <img [ngClass]="{'--edit-mode': task.edit_mode}" class="input__delete-icon"  role="button" ngSrc="/assets/icons/delete.svg" width="24" height="24" (mousedown)="$event.preventDefault()" (click)="handleTrashClick(task, $index, editInput, $event);" [attr.alt]="trashIconAltText(task.edit_mode)">
         <img [ngClass]="{'--edit-mode': task.edit_mode}" class="input__confirm-icon" role="button" ngSrc="/assets/icons/checkmark_regular.svg" width="24" height="24" (click)="subtaskService.deactivateEditMode($index);submitEdit($index, editInput);$event.stopPropagation()" alt="Confirm subtask changes">
       </div>
     </li>

@@ -1,8 +1,8 @@
 export interface SubtaskObject {
-  id: number;
+  id?: number;
   description: string;
   edited_description?: string;
   edit_mode?: boolean;
   completed: boolean;
-  taskId: number;
+  taskId?: number;
 }

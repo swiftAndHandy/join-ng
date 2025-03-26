@@ -8,9 +8,6 @@ import {SubtaskObject} from "../../interfaces/subtask.interface";
 export class SubtasksEditService {
 
   currentTasksSubtasks: WritableSignal<SubtaskObject[]>  = signal<SubtaskObject[]>([]);
-  newSubtaskDescription: WritableSignal<string | null> = signal(null);
-  currentSubtasksPosition: WritableSignal<number> = signal(-1);
-
 
   constructor() { }
   backend: BackendService = inject(BackendService);
@@ -48,7 +45,6 @@ export class SubtasksEditService {
 
   destroy (): void {
      this.currentTasksSubtasks.set([]);
-     this.newSubtaskDescription.set(null);
   }
 
 }
