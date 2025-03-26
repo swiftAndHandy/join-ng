@@ -1,5 +1,6 @@
 import {computed, inject, Injectable, signal, WritableSignal} from '@angular/core';
 import {BackendService} from "./backend.service";
+import {ErrorService} from "./error.service";
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ export class ContactsService{
   private selectedContact = signal<any | null>(null);
 
   private errors = signal<Record<string, string[]> | null>(null);
+  private errorService: ErrorService = inject(ErrorService);
 
   public list = computed(() => this.contacts());
   public contactDetails = computed(() => this.selectedContact());
@@ -52,7 +54,7 @@ export class ContactsService{
       this.selectedContact.set(response)
       return true;
     } catch (error: any) {
-      this.handleValidationErrors(error.error ?? {'unknown': 'unspecified error occurred'});
+      this.errorService.validateErrors(error.error ?? {'unknown': 'unspecified error occurred'});
       return false;
     }
   }
@@ -68,7 +70,7 @@ export class ContactsService{
       this.selectedContact.set({ ...this.selectedContact(), ...response });
       return true;
     } catch (error: any) {
-      this.handleValidationErrors(error.error ?? {'unknown': 'unspecified error occurred'});
+      this.errors.set(this.errorService.validateErrors(error.error ?? {'unknown': 'unspecified error occurred'}));
       return false;
     }
   }
@@ -82,13 +84,6 @@ export class ContactsService{
     } catch (error: any) {
       throw error.error;
     }
-  }
-
-  private handleValidationErrors(errors: Record<string, string[]>) {
-    for (const [field, message] of Object.entries(errors)) {
-      console.warn(`Error at ${field}: ${message}`);
-    }
-    this.errors.set(errors);
   }
 
   private getRandomBadgeColor() {

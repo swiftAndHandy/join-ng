@@ -26,7 +26,7 @@ export class TasksService {
     this.currentTaskId.set(null);
   }
 
-  assignedIds() {
-    return this.assigned().filter(persons => persons.selected).map(person => person.id)
+  assignedIds(origin: 'contacts' | 'users') {
+    return this.assigned().filter(person => person.selected && person.origin === origin).map(person => person.id)
   }
 }
