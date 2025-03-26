@@ -19,7 +19,7 @@ export class SubtaskFormComponent {
   @ViewChild('newSubtaskInputField') newSubtaskInputField!: ElementRef;
 
   async ngOnInit(): Promise<void> {
-    await this.subtaskService.getSubtaskByTaskId(null);
+    await this.subtaskService.getSubtaskByTaskId(1);
   }
 
   setFocusAtNewSubtaskInput() {
@@ -46,7 +46,6 @@ export class SubtaskFormComponent {
       this.subtaskService.updateCurrentSubtasks(
         {
           description: newSubtask.value,
-          edited_description: newSubtask.value,
           edit_mode: false,
           completed: false,
         });

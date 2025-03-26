@@ -22,4 +22,6 @@ export class ContactListComponent {
   activateContactButton(index: number) {
     this.contacts.currentListIndex.set(index);
   }
+
+
 }

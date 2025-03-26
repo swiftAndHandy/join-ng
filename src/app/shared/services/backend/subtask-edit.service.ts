@@ -22,7 +22,6 @@ export class SubtasksEditService {
          this.currentTasksSubtasks.set(
            data.map((subtask: SubtaskObject) => ({
              ...subtask,
-             edited_description: subtask.description,
              edit_mode: false
            }))
          );

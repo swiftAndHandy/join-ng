@@ -10,7 +10,7 @@
     @for(task of subtaskService.currentTasksSubtasks(); track $index) {
       <li (click)="editInput.focus()" [ngClass]="{'--edit-mode': task.edit_mode}" class="input__edit-subtask">
         <span class="bullet" [ngClass]="{'--edit-mode': task.edit_mode}">&bull;</span>
-        <input #editInput (focus)="subtaskService.activateEditMode($index)" (keydown.enter)="submitEdit($index, editInput)" (keydown.escape)="discardEditInput($index, editInput, $event)" [ngClass]="{'--edit-mode': task.edit_mode}" [value]="task.edited_description">
+        <input #editInput (focus)="subtaskService.activateEditMode($index)" (keydown.enter)="submitEdit($index, editInput)" (keydown.escape)="discardEditInput($index, editInput, $event)" [ngClass]="{'--edit-mode': task.edit_mode}" [value]="task.description">
         <div class="icons">
           <img [ngClass]="{'--edit-mode': task.edit_mode}" class="input__edit-icon" role="button" ngSrc="/assets/icons/pencil.svg" width="24" height="24" (mousedown)="$event.preventDefault()" alt="Edit this subtask">
           <img [ngClass]="{'--edit-mode': task.edit_mode}" class="input__delete-icon"  role="button" ngSrc="/assets/icons/delete.svg" width="24" height="24" (mousedown)="$event.preventDefault()" (click)="handleTrashClick(task, $index, editInput, $event);" [attr.alt]="trashIconAltText(task.edit_mode)">
