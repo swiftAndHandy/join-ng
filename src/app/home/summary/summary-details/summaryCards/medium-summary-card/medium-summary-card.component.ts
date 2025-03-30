@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import {Component, input, Input, signal} from '@angular/core';
+
+type CardIcon = 'backlog' | 'task_done' | 'unset';
 
 @Component({
   selector: 'summary-card-medium',
@@ -9,11 +11,11 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./medium-summary-card.component.scss', './../summary-card.scss'],
 })
 export class MediumSummaryCardComponent {
-  @Input() icon: 'backlog' | 'task_done' | 'unset' = 'unset';
+  icon = input<CardIcon>('unset');
 
-  isHovered: boolean = false;
+  isHovered = signal(false);
 
   setHoveredTo(value: boolean) {
-    this.isHovered = value;
+    this.isHovered.set(value);
   }
 }

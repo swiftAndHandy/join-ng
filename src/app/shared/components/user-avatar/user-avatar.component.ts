@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import {Component, input} from '@angular/core';
 
 @Component({
   selector: 'user-avatar',
@@ -9,14 +9,14 @@ import { Component, Input } from '@angular/core';
   styleUrl: './user-avatar.component.scss',
 })
 export class UserAvatarComponent {
-  @Input() isMenu: boolean = false;
-  @Input() user: string = ''; //CAVE: Add Datatype UserData
-  @Input() size: string = '';
-  @Input() whiteBorder: boolean = false;
+  isMenu = input(false);
+  user = input<string>(); //CAVE: Add Datatype UserData
+  size = input<string>('');
+  whiteBorder = input<boolean>(false);
 
   get avatarSize() {
-    if (this.size !== '') {
-      return this.size;
+    if (this.size() !== '') {
+      return this.size();
     } else {
       return '40px';
     }

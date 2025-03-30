@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import {Component, input, Input} from '@angular/core';
+
+type PriorityLevel = 'low' | 'medium' | 'urgent';
 
 @Component({
   selector: 'prio-button',
@@ -9,11 +11,10 @@ import { Component, Input } from '@angular/core';
   styleUrl: './prio-buttons.component.scss',
 })
 export class PrioButtonsComponent {
-  @Input() level: 'low' | 'medium' | 'urgent' = 'medium';
-  @Input() active: boolean = false;
+  level  = input<PriorityLevel>('medium');
+  active = input<boolean>(false);
 
   get priority(): string {
-    let result = this.level.charAt(0).toLocaleUpperCase() + this.level.slice(1);
-    return result;
+    return this.level().charAt(0).toLocaleUpperCase() + this.level().slice(1);
   }
 }

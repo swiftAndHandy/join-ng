@@ -1,12 +1,12 @@
-<button type="button" [class]="level" [ngClass]="{ active: active }">
+<button type="button" [class]="level()" [ngClass]="{ active: active() }">
   <span>{{ priority }}</span>
   <img
-    src="/assets/icons/prio_{{ level }}.png"
+    src="/assets/icons/prio_{{ level() }}.png"
     alt=""
     srcset="
-    /assets/icons/prio_{{ level }}.png    1x,
-    /assets/icons/prio_{{ level }}@2x.png 2x,
-    /assets/icons/prio_{{ level }}@3x.png 3x
+    /assets/icons/prio_{{ level() }}.png    1x,
+    /assets/icons/prio_{{ level() }}@2x.png 2x,
+    /assets/icons/prio_{{ level() }}@3x.png 3x
   "
   />
 </button>

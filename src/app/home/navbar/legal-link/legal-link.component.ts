@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import {Component, input, Input} from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -9,9 +9,5 @@ import { RouterModule } from '@angular/router';
   styleUrl: './legal-link.component.scss',
 })
 export class LegalLinkComponent {
-  @Input() to: string = '';
-
-  get target() {
-    return this.to;
-  }
+  target = input<string>('', {alias: 'to'});
 }

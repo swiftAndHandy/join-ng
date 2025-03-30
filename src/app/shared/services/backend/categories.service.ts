@@ -13,6 +13,8 @@ export class CategoriesService extends BackendService {
 
   private backend: BackendService = inject(BackendService);
 
+  demo = ''
+
   public list: WritableSignal<{ [key: string]: any }[]> = signal([{'id': 0, 'name': 'Select task category'}])
 
   public selectedCategory: WritableSignal<CategorySelector> = signal<CategorySelector>({id: 0, position: 0});

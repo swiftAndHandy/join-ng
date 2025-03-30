@@ -6,26 +6,26 @@
   <!-- @if (isHovered) { -->
   <div class="icon">
     <img
-      src="/assets/icons/{{ icon }}.png"
+      src="/assets/icons/{{ icon() }}.png"
       alt=""
       class="icon-image"
       srcset="
-    /assets/icons/{{ icon }}.png    1x,
-    /assets/icons/{{ icon }}@2x.png 2x,
-    /assets/icons/{{ icon }}@3x.png 3x
+    /assets/icons/{{ icon() }}.png    1x,
+    /assets/icons/{{ icon() }}@2x.png 2x,
+    /assets/icons/{{ icon() }}@3x.png 3x
   "
-      [ngClass]="{ '--hovered': isHovered }"
+      [ngClass]="{ '--hovered': isHovered() }"
     />
     <img
-      src="/assets/icons/{{ icon }}_hovered.png"
+      src="/assets/icons/{{ icon() }}_hovered.png"
       alt=""
       class="icon-hovered"
       srcset="
-    /assets/icons/{{ icon }}_hovered.png    1x,
-    /assets/icons/{{ icon }}_hovered@2x.png 2x,
-    /assets/icons/{{ icon }}_hovered@3x.png 3x
+    /assets/icons/{{ icon() }}_hovered.png    1x,
+    /assets/icons/{{ icon() }}_hovered@2x.png 2x,
+    /assets/icons/{{ icon() }}_hovered@3x.png 3x
   "
-      [ngClass]="{ '--hovered': !isHovered }"
+      [ngClass]="{ '--hovered': !isHovered() }"
     />
   </div>
   <!-- } @else {

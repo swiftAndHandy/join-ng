@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import {Component, input} from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -9,10 +9,10 @@ import { RouterModule } from '@angular/router';
   styleUrl: './navlink.component.scss',
 })
 export class NavlinkComponent {
-  @Input() to: string = '';
+  to = input<string>('');
 
   get target(): string {
-    return this.to;
+    return this.to();
   }
 
   get icon(): string {

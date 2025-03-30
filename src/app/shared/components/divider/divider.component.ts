@@ -1,4 +1,6 @@
-import { Component, Input } from '@angular/core';
+import {Component, input} from '@angular/core';
+
+type DividerFlow = 'horizontal' | 'vertical';
 
 @Component({
   selector: 'divider',
@@ -8,6 +10,6 @@ import { Component, Input } from '@angular/core';
   styleUrl: './divider.component.scss',
 })
 export class DividerComponent {
-  @Input() flow: 'horizontal' | 'vertical' = 'horizontal';
-  @Input() size: number = 100;
+  flow = input<DividerFlow>('horizontal');
+  size = input<number>(100);
 }

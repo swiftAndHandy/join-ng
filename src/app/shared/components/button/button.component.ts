@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import {Component, ElementRef, Input, Renderer2} from '@angular/core';
+import {Component, ElementRef, input, Input, Renderer2} from '@angular/core';
 
 type ButtonType = 'button' | 'submit' | 'reset';
 export enum ButtonSymbol {
@@ -10,6 +10,9 @@ export enum ButtonSymbol {
   plus = 'add',
 }
 
+type ButtonShape = 'regular' | 'circle';
+type ButtonPadding = 'small' | 'regular';
+
 @Component({
   selector: 'join-button',
   standalone: true,
@@ -19,14 +22,14 @@ export enum ButtonSymbol {
 })
 export class ButtonComponent {
 
-  @Input() type: ButtonType = 'button';
-  @Input() primary: boolean = true;
-  @Input() bold: boolean = false;
-  @Input() add: ButtonSymbol = ButtonSymbol.unset;
-  @Input() shape: 'regular' | 'circle' = 'regular';
-  @Input() buttonPadding: 'small' | 'regular' = 'regular';
+  type = input<ButtonType>('button');
+  primary = input<boolean>(true);
+  bold = input<boolean>(false);
+  add = input<ButtonSymbol>(ButtonSymbol.unset);
+  shape = input<ButtonShape>('regular')
+  buttonPadding = input<ButtonPadding>('regular');
 
   get icon(): ButtonSymbol {
-    return this.add;
+    return this.add();
   }
 }

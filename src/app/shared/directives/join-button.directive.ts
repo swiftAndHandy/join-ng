@@ -1,6 +1,6 @@
-import {Directive, ElementRef, HostListener, Input, Renderer2} from '@angular/core';
+import {Directive, ElementRef, HostListener, input, Input, Renderer2} from '@angular/core';
 
-export interface ButtonConfig {
+type ButtonConfig = {
   primary?: boolean;
   bold?: boolean;
   shape?: 'regular' |'circle';
@@ -12,18 +12,17 @@ export interface ButtonConfig {
   standalone: true
 })
 export class JoinButtonDirective {
-  @Input() joinButton!: ButtonConfig;
-  private styles!: {[key: string]: string};
+  joinButton = input.required<ButtonConfig>({});
 
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 
 
   ngOnInit(): void {
-    if (this.joinButton === undefined) return;
-    this.joinButton.primary = this.joinButton.primary ?? true;
-    this.joinButton.bold = this.joinButton.bold ?? false;
-    this.joinButton.shape = this.joinButton.shape ?? 'regular';
-    this.joinButton.buttonPadding = this.joinButton.buttonPadding ?? 'regular';
+    if (this.joinButton() === undefined) return;
+    this.joinButton().primary = this.joinButton().primary ?? true;
+    this.joinButton().bold = this.joinButton().bold ?? false;
+    this.joinButton().shape = this.joinButton().shape ?? 'regular';
+    this.joinButton().buttonPadding = this.joinButton().buttonPadding ?? 'regular';
 
     this.renderer.setStyle(this.el.nativeElement, 'border', 'none');
     this.renderer.setStyle(this.el.nativeElement, 'font-family', 'Inter, sans-serif');
@@ -34,15 +33,15 @@ export class JoinButtonDirective {
     this.renderer.setStyle(this.el.nativeElement, 'justify-content', 'center');
     this.renderer.setStyle(this.el.nativeElement, 'font-size', '1.3rem');
 
-    if (this.joinButton.bold) this.renderer.setStyle(this.el.nativeElement, 'font-weight', '700');
+    if (this.joinButton().bold) this.renderer.setStyle(this.el.nativeElement, 'font-weight', '700');
 
-    if (this.joinButton.buttonPadding === 'regular') {
+    if (this.joinButton().buttonPadding === 'regular') {
       this.renderer.setStyle(this.el.nativeElement, 'padding', '15px 24px');
-    } else if (this.joinButton.buttonPadding === 'small') {}
+    } else if (this.joinButton().buttonPadding === 'small') {}
 
-    if (this.joinButton.shape === 'regular') {
+    if (this.joinButton().shape === 'regular') {
       this.renderer.setStyle(this.el.nativeElement, 'border-radius', '8px');
-    } else if (this.joinButton.shape === 'circle') {
+    } else if (this.joinButton().shape === 'circle') {
       this.renderer.setStyle(this.el.nativeElement, 'border-radius', '50%');
       this.renderer.setStyle(this.el.nativeElement, 'padding', '12px');
     }
@@ -52,7 +51,7 @@ export class JoinButtonDirective {
 
   renderDefaultStyle(): void {
     this.renderer.setStyle(this.el.nativeElement, 'box-shadow', 'unset');
-    if (this.joinButton.primary) {
+    if (this.joinButton().primary) {
       this.renderer.setStyle(this.el.nativeElement, 'background-color', 'var(--darkblue)');
       this.renderer.setStyle(this.el.nativeElement, 'color', '#fff');
     } else {
@@ -66,7 +65,7 @@ export class JoinButtonDirective {
   @HostListener('mouseenter') onMouseEnter() {
     this.renderer.setStyle(this.el.nativeElement, 'box-shadow', '0px 4px 4px 0px #00000040');
 
-    if (this.joinButton.primary) {
+    if (this.joinButton().primary) {
       this.renderer.setStyle(this.el.nativeElement, 'background-color', 'var(--lightblue)');
     } else {
       this.renderer.setStyle(this.el.nativeElement, 'color', 'var(--lightblue)');
@@ -80,7 +79,7 @@ export class JoinButtonDirective {
   }
 
   @HostListener('mousedown') onClick() {
-    if (this.joinButton.primary) {
+    if (this.joinButton().primary) {
       this.renderer.setStyle(this.el.nativeElement, 'background-color', 'var(--dark-active-blue)');
     } else {
       this.renderer.setStyle(this.el.nativeElement, 'color', 'var(--dark-active-blue)');

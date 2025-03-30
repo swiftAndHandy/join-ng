@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, input, Input, Renderer2 } from '@angular/core';
+import {afterNextRender, Component, input, Input, Renderer2, signal} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -10,32 +10,39 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './text-input.component.scss',
 })
 export class TextInputComponent {
-  @Input() name: string = '';
-  @Input() ariaLabel: string = '';
-  @Input() ariaHidden: boolean = false;
-  @Input() icon: string = '';
-  @Input() size: number = 24;
-  @Input() placeholder: string = '';
-  @Input() error: boolean = false;
-  @Input() autocomplete: string = '';
-  textValue: string = '';
-  isHidden = true;
+  name = input<string>('');
+  ariaLabel = input<string>('');
+  ariaHidden = input<boolean>(false);
+  icon = input<string>('');
+  size = input<number>(24);
+  placeholder = input<string>('');
+  error = input<boolean>(false);
+  autocomplete = input<string>('');
+  textValue = signal<string>('');
+  isHidden = input<boolean>(true);
+  #isHidden= signal<boolean>(true);
 
-  constructor(private renderer: Renderer2) {}
+  constructor(private renderer: Renderer2) {
+    afterNextRender(() => this.#isHidden.set(this.isHidden()));
+  }
 
   get type(): string {
-    if (this.icon === 'lock' && this.isHidden) {
+    if (this.icon() === 'lock' && this.#isHidden()) {
       return 'password';
     }
     return 'text';
   }
 
   toggleVisibility(inputElement: HTMLInputElement) {
-    this.isHidden = !this.isHidden;
+    this.#isHidden.set(!this.#isHidden());
     this.setFocus(inputElement);
   }
 
   setFocus(inputElement: HTMLInputElement) {
     this.renderer.selectRootElement(inputElement).focus();
+  }
+
+  updateTextValue($event: any) {
+    this.textValue.set($event);
   }
 }
