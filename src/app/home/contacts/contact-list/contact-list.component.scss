@@ -3,7 +3,9 @@
   flex-direction: column;
   gap: 75px;
   position: relative;
-  background-color: #fff;
+  &:not(.--dimmed){
+    background-color: #fff;
+  }
   box-shadow: 4px 0px 6px 0px #00000014;
   height: 100%;
   width: 100%;
@@ -99,6 +101,9 @@
 }
 
 .spacer {
+  @media (width < 1200px) {
+    display: none;
+  }
 }
 
 .contact-list__body {

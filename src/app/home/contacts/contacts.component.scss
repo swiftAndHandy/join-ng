@@ -47,14 +47,14 @@
 }
 
 .edit-contact {
-  position: absolute;
+  position: fixed;
   z-index: 10;
 
-  @media (min-width: 1200px) {
+  @media (width >= 1200px) {
     top: 50%;
     animation: fadeSideToCenter 300ms ease-in-out forwards;
   }
-  @media (max-width: 1199px) {
+  @media (width < 1200px) {
     bottom: 0;
     left: 50%;
     transform: translate(-50%, 100%);
@@ -62,10 +62,10 @@
   }
 
   &.--despawn {
-    @media (min-width: 1200px) {
+    @media (width >= 1200px) {
       animation: fadeCenterToSide 300ms ease-in-out forwards;
     }
-    @media (max-width: 1199px) {
+    @media (width < 1200px) {
       animation: fadeCenterToBottom 300ms ease-in-out forwards;
     }
   }

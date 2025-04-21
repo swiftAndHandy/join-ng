@@ -3,6 +3,7 @@ import {JoinButtonDirective} from "../../../shared/directives/join-button.direct
 import {ContactMenuService} from "../contact-menu.service";
 import {ContactsService} from "../../../shared/services/backend/contacts.service";
 import {NgClass, NgStyle} from "@angular/common";
+import {DimmerService} from "../../../shared/services/dimmer.service";
 
 @Component({
   selector: 'contact-list',
@@ -14,6 +15,7 @@ import {NgClass, NgStyle} from "@angular/common";
 export class ContactListComponent {
   public contactMenu: ContactMenuService = inject(ContactMenuService);
   protected contacts: ContactsService = inject(ContactsService);
+  protected dimmer = inject(DimmerService);
 
   constructor() {
       this.contacts.initList();

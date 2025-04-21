@@ -9,6 +9,7 @@
       }
   </div>
   <div class="secondary">
+    <img class="avatar" src="/assets/icons/avatar.svg" alt="">
     <form class="contact-form" onsubmit="return false">
       <div class="contact-form__name custom-input">
         <input class="contact-form__name__first-name" autocomplete="off" placeholder="First name" [value]="contactFormFields().first_name" (input)="signalService.updateInputElement($event, contactFormFields, 'first_name');" type="text" name="first-name">
@@ -25,7 +26,7 @@
       </div>
       <input class="custom-input" autocomplete="off" placeholder="E-Mail" [value]="contactFormFields().email" (input)="signalService.updateInputElement($event, contactFormFields,'email')" type="email" name="email">
       <input class="custom-input" autocomplete="off" placeholder="Phone" [value]="contactFormFields().phone" (input)="signalService.updateInputElement($event, contactFormFields,'phone')" type="tel" name="phone">
+    <button (click)="sendForm()" [joinButton]="{}">Send</button>
     </form>
-  <button (click)="sendForm()" [joinButton]="{}">Send</button>
   </div>
 </section>

@@ -26,10 +26,11 @@
   color: white;
 
   border-top-left-radius: 30px;
-  @media(min-width: 1081px) {
+  @media(width > 1080px) {
     border-bottom-left-radius: 30px;
+    width: 33%;
   }
-  @media(max-width: 1080px) {
+  @media(width <= 1080px) {
     border-top-right-radius: 30px;
   }
 
@@ -46,15 +47,33 @@
   flex: 1;
   border-bottom-right-radius: 30px;
 
-  @media(min-width: 1081px) {
+  display: flex;
+  justify-content: space-around;
+
+  @media( width > 1080px) {
     border-top-right-radius: 30px;
+    padding: 66px 46px 66px 0;
   }
-  @media(max-width: 1080px) {
+  @media(width <= 1080px) {
+    flex-direction: column;
     border-bottom-left-radius: 30px;
+    padding: 66px 46px 66px 46px;
   }
 
   background-color: #fff;
-  padding: 66px 46px 66px 0;
+
+  .avatar {
+    width: 120px;
+    height: 120px;
+    place-self: center;
+
+    @media (width <= 1080px) {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
 }
 
 .contact-form {
