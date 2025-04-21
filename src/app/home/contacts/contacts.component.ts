@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import {Component, computed, effect, inject} from '@angular/core';
 import { ContactListComponent } from './contact-list/contact-list.component';
 import { ContactDetailsComponent } from './contact-details/contact-details.component';
 import {EditContactComponent} from "./edit-contact/edit-contact.component";
 import {ContactMenuService} from "./contact-menu.service";
 import {NgClass} from "@angular/common";
+import {ContactsService} from "../../shared/services/backend/contacts.service";
 
 @Component({
   selector: 'contacts-view',
@@ -14,10 +15,22 @@ import {NgClass} from "@angular/common";
 })
 export class ContactsComponent {
 
-  constructor(public contactService: ContactMenuService) {}
+  contactsService = inject(ContactsService);
+  contactsMenu = inject(ContactMenuService)
+
+  detailsDisplayed = computed<boolean>(() => {
+    return !!this.contactsService.contactDetails();
+  });
+
+  constructor() {
+    effect(() => {
+      console.log(this.detailsDisplayed());
+    });
+  }
 
   ngOnDestroy() {
-    this.contactService.hidePopup();
+    this.contactsMenu.hidePopup();
+    this.contactsService.destroy();
   }
 
 }

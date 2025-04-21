@@ -14,20 +14,35 @@
   }
 
   .contact-list {
-    width: 0;
-    transition: width 0.1s ease-in-out;
-    overflow-y: clip;
+    @media (max-width: 1199px) {
+      width: 100%;
+      &.--hide-list {
+        width: 0;
+        overflow-y: clip;
+      }
+    }
 
       @media (min-width: 1200px) {
+        transition: width 0.1s ease-in-out;
         display: unset;
         width: clamp(min(25vw, 400px), min(25vw, 400px), min(25vw, 400px));
       }
   }
 
   .contact-details {
-    display: flex;
-    align-items: flex-start;
-    flex: 1;
+    width: 0;
+
+    @media (width < 1200px) {
+      &.--display-details {
+        width: 100%;
+      }
+    }
+
+    @media (width >= 1200px) {
+      display: flex;
+      align-items: flex-start;
+      flex: 1;
+    }
   }
 }
 

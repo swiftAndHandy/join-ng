@@ -1,7 +1,7 @@
 <section class="contact-view">
-  @if(contactService.popupStatus()) {
-    <edit-contact [ngClass]="{'--despawn': contactService.despawnPopup()}" class="edit-contact --fade-in"></edit-contact>
+  @if(contactsMenu.popupStatus()) {
+    <edit-contact [ngClass]="{'--despawn': contactsMenu.despawnPopup()}" class="edit-contact --fade-in"></edit-contact>
   }
-  <contact-list class="contact-list"></contact-list>
-  <contact-details class="contact-details"></contact-details>
+  <contact-list [ngClass]="{'--hide-list': detailsDisplayed()}" class="contact-list"></contact-list>
+  <contact-details [ngClass]="{'--display-details': detailsDisplayed()}" class="contact-details"></contact-details>
 </section>
