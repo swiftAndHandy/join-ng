@@ -1,4 +1,4 @@
-import {Component, inject, OnInit, signal, WritableSignal} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {JoinButtonDirective} from "../../../shared/directives/join-button.directive";
 import {ContactMenuService} from "../contact-menu.service";
 import {ContactsService} from "../../../shared/services/backend/contacts.service";
@@ -16,6 +16,7 @@ export class ContactListComponent {
   public contactMenu: ContactMenuService = inject(ContactMenuService);
   protected contacts: ContactsService = inject(ContactsService);
   protected dimmer = inject(DimmerService);
+  currentLetter: string | null = null
 
   constructor() {
       this.contacts.initList();
@@ -25,5 +26,16 @@ export class ContactListComponent {
     this.contacts.currentListIndex.set(index);
   }
 
+  contactNamesFirstLetterAsUppercase(contact: any) {
+    return contact.toLocaleUpperCase().slice(0, 1);
+  }
 
+  newLetter(contact: any) {
+    let currentNamesFirstLetter = this.contactNamesFirstLetterAsUppercase(contact.first_name);
+    if (currentNamesFirstLetter !== this.currentLetter) {
+      this.currentLetter = currentNamesFirstLetter;
+      return true;
+    }
+    return false;
+  }
 }

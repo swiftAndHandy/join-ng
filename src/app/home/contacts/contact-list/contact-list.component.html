@@ -7,6 +7,12 @@
   <div class="spacer"></div>
   <ul class="contact-list__body">
     @for(contact of contacts.list(); track contact.id) {
+      @if (newLetter(contact)) {
+        <div class="letter-separator">
+          {{contactNamesFirstLetterAsUppercase(contact.first_name)}}
+          <hr>
+        </div>
+      }
       <li class="contact-overview">
         <button class="contact-overview__button" [ngClass]="{'--active': $index == contacts.currentListIndex()}" (click)="contacts.selectContactById(contact.id); activateContactButton($index)"
                 attr.aria-label="Open contact details for {{ contact.first_name }} {{ contact.surname }}"

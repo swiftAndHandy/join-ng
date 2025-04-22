@@ -23,9 +23,6 @@ export class ContactsComponent {
   });
 
   constructor() {
-    effect(() => {
-      console.log(this.detailsDisplayed());
-    });
   }
 
   ngOnDestroy() {
