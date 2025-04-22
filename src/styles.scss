@@ -67,3 +67,11 @@ body {
     stroke-dashoffset: 0;
   }
 }
+
+.navbar {
+  max-height: 100dvh;
+}
+
+.base_padding {
+  padding: min(20px, 2%) min(30px, 3%);
+}

@@ -1,26 +1,26 @@
 .contact-header {
-    font-family: "Inter", Arial, Helvetica, sans-serif;
-    font-size: 1rem;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-size: 1rem;
 
+  display: flex;
+  align-items: center;
+  gap: 54px;
+
+  .user-overview {
     display: flex;
-    align-items: center;
-    gap: 54px;
-
-    .user-overview {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-        .contact-actions {
+    flex-direction: column;
+    gap: 8px;
+      .contact-actions {
+        display: flex;
+        gap: 12px;
+        > button {
           display: flex;
-          gap: 12px;
-          > button {
-            display: flex;
-            border: none;
-            background-color: inherit;
-            cursor: pointer;
-          }
+          border: none;
+          background-color: inherit;
+          cursor: pointer;
         }
-    }
+      }
+  }
 }
 
 .contact-avatar {

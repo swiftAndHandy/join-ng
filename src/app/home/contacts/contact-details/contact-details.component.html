@@ -1,4 +1,7 @@
-<section class="contact-details">
+<section class="contact-details base_padding">
+  <button class="back-btn" [ngClass]="{'mobile-only': contacts.contactDetails()}" (click)="closeContactDetails()">
+    back
+  </button>
   <div class="contact-details__headline">
     <h1>Contacts</h1>
     <span class="divider--landscape"></span>

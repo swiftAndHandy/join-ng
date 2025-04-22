@@ -1,4 +1,5 @@
 .contact-details {
+  position: relative;
     .contact-details__headline {
         display: flex;
         align-items: center;
@@ -45,4 +46,10 @@
             }
         }
     }
+}
+
+.back-btn.mobile-only {
+  position: absolute;
+  top: 0;
+  right: 0;
 }

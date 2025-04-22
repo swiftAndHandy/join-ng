@@ -42,6 +42,10 @@ export class ContactsService{
     if (data) this.selectedContact.set(data);
   }
 
+  deselectContact() {
+    this.selectedContact.set(null);
+  }
+
   async createContact(contactDetails: object): Promise<boolean> {
     const newContactDetails = { ...contactDetails, badge_color: this.getRandomBadgeColor() };
     try {
