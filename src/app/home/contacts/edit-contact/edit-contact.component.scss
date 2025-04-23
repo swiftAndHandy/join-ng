@@ -88,6 +88,7 @@
   input {
     border: 1px solid transparent;
     border-radius: 10px;
+    width: max(90px, 100%);
     &:focus-visible {
       outline: none;
       &:is(.custom-input) {
@@ -122,6 +123,7 @@
   &__city {
     display: flex;
     &__zip-code {
+      width: 75px !important;
       &:focus-visible {
         border: 1px solid var(--lightblue) !important;
         border-radius: 10px 0 0 10px !important;

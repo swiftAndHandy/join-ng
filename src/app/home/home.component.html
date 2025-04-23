@@ -1,6 +1,6 @@
 <main>
   <navbar class="navbar"></navbar>
-  <section id="content-view">
+  <section id="content-view" [ngStyle]="{'background-color:': getBackgroundColor()}">
     <join-header></join-header>
     <div class="main-content-view">
       <router-outlet />
