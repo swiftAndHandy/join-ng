@@ -17,6 +17,7 @@
     position: absolute;
     left: 50%;
     width: 100%;
+    pointer-events: none;
       @media (max-width: 1199px) {
         position: fixed;
         transform: unset;
@@ -38,14 +39,15 @@
       .add-contact-button {
         position: relative;
         bottom: 0;
+        pointer-events: auto;
           &.portrait {
-              @media (min-width: 1200px) {
+              @media (width >= 1200px) {
                   display: none !important;
               }
           }
           &.landscape {
             transform: translateX(-50%);
-              @media (max-width: 1199px) {
+              @media (width < 1200px) {
                   display: none !important;
               }
           }

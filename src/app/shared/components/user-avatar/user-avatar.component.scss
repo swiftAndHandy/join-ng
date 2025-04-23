@@ -21,20 +21,27 @@
 }
 
 .menu-body {
-  position: fixed;
-  top: 70px;
-  right: 70px;
-  z-index: 10;
-  list-style-type: none;
-  background-color: rgba(42, 54, 71, 1);
-  color: rgba(205, 205, 205, 1);
-  border-radius: 20px 0 20px 20px;
-  padding: 10px;
-  >li {
-    padding: 8px 16px;
-    cursor: pointer;
-    &:hover {
-      background-color: var(--dark-hover-blue);
+  >ul {
+    position: fixed;
+    top: 70px;
+    right: 70px;
+    z-index: 10;
+    list-style-type: none;
+    background-color: rgba(42, 54, 71, 1);
+    border-radius: 20px 0 20px 20px;
+    padding: 10px;
+    >li {
+      padding: 8px 16px;
+      cursor: pointer;
+      &:hover {
+        background-color: var(--dark-hover-blue);
+      }
+      >a {
+        text-decoration: none;
+        color: rgba(205, 205, 205, 1);
+        width: 100%;
+        display: block;
+      }
     }
   }
 }

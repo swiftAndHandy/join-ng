@@ -48,8 +48,14 @@
     }
 }
 
-.back-btn.mobile-only {
-  position: absolute;
-  top: 0;
-  right: 0;
+.back-btn {
+  display: none;
+  &.mobile-only {
+    @media (width < 1200px) {
+      display: unset;
+      position: absolute;
+      top: 90px;
+      right: clamp(5px, 8%, 40px);
+    }
+  }
 }

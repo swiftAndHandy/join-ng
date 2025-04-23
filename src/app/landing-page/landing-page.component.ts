@@ -30,7 +30,6 @@ export class LandingPageComponent {
   animateJoinLogo() {
     if (this.animationState) {
       this.animationState = JSON.parse(this.animationState as string);
-      console.log(this.animationState);
     }
   }
 

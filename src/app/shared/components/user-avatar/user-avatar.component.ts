@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import {afterNextRender, Component, ElementRef, inject, input, OnDestroy, Renderer2, signal} from '@angular/core';
+import {Router, RouterLink} from "@angular/router";
 
 @Component({
   selector: 'user-avatar',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './user-avatar.component.html',
   styleUrl: './user-avatar.component.scss',
 })
@@ -14,6 +15,8 @@ export class UserAvatarComponent implements OnDestroy {
   size = input<string>('');
   whiteBorder = input<boolean>(false);
   menuIsActive = signal<boolean>(false);
+
+  router = inject(Router);
 
   elRef = inject(ElementRef);
   renderer = inject(Renderer2);
@@ -48,5 +51,13 @@ export class UserAvatarComponent implements OnDestroy {
 
   toggleMenu() {
     this.menuIsActive.set(!this.menuIsActive());
+  }
+
+  logout() {
+    const uid = localStorage.getItem('uid');
+    if (uid) {
+      localStorage.removeItem('uid');
+    }
+    this.router.navigate(['/']);
   }
 }

@@ -1,0 +1,10 @@
+.single-contact {
+  @media (orientation: portrait) {
+    margin-top: 30px;
+  }
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 21px;
+}

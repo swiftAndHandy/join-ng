@@ -44,6 +44,7 @@ export class ContactsService{
 
   deselectContact() {
     this.selectedContact.set(null);
+    this.currentListIndex.set(-1);
   }
 
   async createContact(contactDetails: object): Promise<boolean> {
