@@ -1,6 +1,16 @@
-<div
-  [ngStyle]="{ width: avatarSize, height: avatarSize }"
-  [ngClass]="{ 'white-border': whiteBorder(), menu: isMenu() }"
->
-  {{ usernameInitials }}
-</div>
+<section class="avatar-menu" (click)="toggleMenu()">
+  <div
+    [ngStyle]="{ width: avatarSize, height: avatarSize }"
+    [ngClass]="{ 'white-border': whiteBorder(), menu: isMenu() }"
+    class="avatar"
+  >
+    {{ initials() }}
+  </div>
+  @if (menuIsActive()){
+    <ul class="menu-body">
+      <li>Legal Notice</li>
+      <li>Privacy Policy</li>
+      <li>Log out</li>
+    </ul>
+  }
+</section>

@@ -14,7 +14,4 @@ import {NgClass, NgStyle} from "@angular/common";
 })
 export class HomeComponent {
 
-  getBackgroundColor() {
-    return `background-color: var(--greyBG);`;
-  }
 }
