@@ -1,5 +1,5 @@
 <section class="contact-editor">
-  <button class="close-btn" (click)="contactMenu.hidePopup()" [joinButton]="{}">Close</button>
+  <img class="close-btn" (click)="contactMenu.hidePopup()" src="/assets/icons/cancel_regular.svg" alt="">
   <div class="primary">
       @if(contactMenu.createModus()) {
         <h2>Add contact</h2>
@@ -18,10 +18,16 @@
           <img src="/assets/icons/person.svg" alt="">
         </div>
       </div>
-      <input class="custom-input" autocomplete="off" placeholder="Street" [value]="contactFormFields().address.street" (input)="signalService.updateInputElement($event, contactFormFields, 'address.street')" type="text" name="street">
+      <div class="input-with-icon">
+        <input class="" autocomplete="off" placeholder="Street" [value]="contactFormFields().address.street" (input)="signalService.updateInputElement($event, contactFormFields, 'address.street')" type="text" name="street">
+        <img src="/assets/icons/street.svg" alt="">
+      </div>
       <div class="contact-form__city custom-input">
         <input class="contact-form__city__zip-code" maxlength="5" autocomplete="off" placeholder="ZIP" [value]="contactFormFields().address.zip_code" (input)="signalService.updateInputElement($event, contactFormFields, 'address.zip_code')" type="text" name="zip-code">
-        <input class="contact-form__city__city-name" autocomplete="off" placeholder="City" [value]="contactFormFields().address.city" (input)="signalService.updateInputElement($event, contactFormFields, 'address.city')" type="text" name="city">
+        <div class="input-with-icon">
+          <input class="contact-form__city__city-name" maxlength="30" autocomplete="off" placeholder="City" [value]="contactFormFields().address.city" (input)="signalService.updateInputElement($event, contactFormFields, 'address.city')" type="text" name="city">
+          <img height="24" width="24" src="/assets/icons/city.svg" alt="">
+        </div>
       </div>
       <div class="input-with-icon">
         <input autocomplete="off" placeholder="E-Mail" [value]="contactFormFields().email" (input)="signalService.updateInputElement($event, contactFormFields,'email')" type="email" name="email">
