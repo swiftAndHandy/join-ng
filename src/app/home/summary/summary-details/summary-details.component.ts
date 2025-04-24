@@ -43,11 +43,6 @@ export class SummaryDetailsComponent {
           console.error(err);
         });
     });
-    effect(() => {
-      console.log('todo: ', this.tasksToDo());
-      console.log('done: ', this.tasksDone());
-      console.log('urgentandopen: ', this.tasksUrgentAndOpen());
-    });
   }
 
 

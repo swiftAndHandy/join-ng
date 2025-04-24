@@ -15,18 +15,30 @@
         <input class="contact-form__name__first-name" autocomplete="off" placeholder="First name" [value]="contactFormFields().first_name" (input)="signalService.updateInputElement($event, contactFormFields, 'first_name');" type="text" name="first-name">
         <div class="input-with-icon">
           <input class="contact-form__name__surname" autocomplete="off" placeholder="Surname" [value]="contactFormFields().surname" (input)="signalService.updateInputElement($event, contactFormFields, 'surname')" type="text" name="surname">
+          <img src="/assets/icons/person.svg" alt="">
         </div>
       </div>
       <input class="custom-input" autocomplete="off" placeholder="Street" [value]="contactFormFields().address.street" (input)="signalService.updateInputElement($event, contactFormFields, 'address.street')" type="text" name="street">
       <div class="contact-form__city custom-input">
         <input class="contact-form__city__zip-code" maxlength="5" autocomplete="off" placeholder="ZIP" [value]="contactFormFields().address.zip_code" (input)="signalService.updateInputElement($event, contactFormFields, 'address.zip_code')" type="text" name="zip-code">
-        <div class="input-with-icon">
-          <input class="contact-form__city__city-name" autocomplete="off" placeholder="City" [value]="contactFormFields().address.city" (input)="signalService.updateInputElement($event, contactFormFields, 'address.city')" type="text" name="city">
-        </div>
+        <input class="contact-form__city__city-name" autocomplete="off" placeholder="City" [value]="contactFormFields().address.city" (input)="signalService.updateInputElement($event, contactFormFields, 'address.city')" type="text" name="city">
       </div>
-      <input class="custom-input" autocomplete="off" placeholder="E-Mail" [value]="contactFormFields().email" (input)="signalService.updateInputElement($event, contactFormFields,'email')" type="email" name="email">
-      <input class="custom-input" autocomplete="off" placeholder="Phone" [value]="contactFormFields().phone" (input)="signalService.updateInputElement($event, contactFormFields,'phone')" type="tel" name="phone">
-    <button (click)="sendForm()" [joinButton]="{}">Send</button>
+      <div class="input-with-icon">
+        <input autocomplete="off" placeholder="E-Mail" [value]="contactFormFields().email" (input)="signalService.updateInputElement($event, contactFormFields,'email')" type="email" name="email">
+        <img src="/assets/icons/mail.svg" alt="">
+      </div>
+      <div class="input-with-icon">
+        <input autocomplete="off" placeholder="Phone" [value]="contactFormFields().phone" (input)="signalService.updateInputElement($event, contactFormFields,'phone')" type="tel" name="phone">
+        <img src="/assets/icons/phone.svg" alt="">
+      </div>
+      <div class="action-options">
+        @if(contactMenu.createModus()) {
+          <button class="secondary-btn --hide-mobile" (click)="contactMenu.hidePopup()" [joinButton]="{primary: false}">Cancel</button>
+        } @else {
+          <button class="secondary-btn --hide-mobile" (click)="contactMenu.hidePopup()" [joinButton]="{primary: false}">Delete</button>
+        }
+        <button (click)="sendForm()" [joinButton]="{}">@if(contactMenu.createModus()){Create contact}@else{Save}<img src="/assets/icons/checkmark_regular.svg"></button>
+      </div>
     </form>
   </div>
 </section>

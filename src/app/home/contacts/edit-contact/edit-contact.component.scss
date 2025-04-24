@@ -46,13 +46,14 @@
   position: relative;
   flex: 1;
   border-bottom-right-radius: 30px;
+  gap: 12px;
 
   display: flex;
   justify-content: space-around;
 
   @media( width > 1080px) {
     border-top-right-radius: 30px;
-    padding: 66px 46px 66px 0;
+    padding: 66px 46px 66px 16px;
   }
   @media(width <= 1080px) {
     flex-direction: column;
@@ -89,6 +90,9 @@
     border: 1px solid transparent;
     border-radius: 10px;
     width: max(90px, 100%);
+    &.custom-input {
+      padding: 13px clamp(2px, 1.5dvw, 21px);
+    }
     &:focus-visible {
       outline: none;
       &:is(.custom-input) {
@@ -106,17 +110,21 @@
     display: flex;
     &__first-name {
       flex: 1;
+      padding: 13px clamp(2px, 1.5dvw, 21px);
       &:focus-visible {
         border: 1px solid var(--lightblue) !important;
         border-radius: 10px 0 0 10px !important;
       }
     }
-    &__surname {
-      flex: 1;
-      &:focus-visible {
+    .input-with-icon {
+      border: 1px solid transparent;
+      border-radius: 0 10px 10px 0 !important;
+      &:has(.contact-form__name__surname:focus-visible) {
         border: 1px solid var(--lightblue) !important;
-        border-radius: 0 10px 10px 0 !important;
       }
+    }
+    .contact-form__name__surname {
+      flex: 1;
     }
   }
 
@@ -124,6 +132,7 @@
     display: flex;
     &__zip-code {
       width: 75px !important;
+      padding: 13px clamp(2px, 1.5dvw, 21px);
       &:focus-visible {
         border: 1px solid var(--lightblue) !important;
         border-radius: 10px 0 0 10px !important;
@@ -131,10 +140,39 @@
     }
     &__city-name {
       flex: 1;
+      padding: 13px clamp(2px, 1.5dvw, 21px);
       &:focus-visible {
         border: 1px solid var(--lightblue) !important;
         border-radius: 0 10px 10px 0 !important;
       }
     }
+  }
+}
+
+.action-options {
+  display: flex;
+  justify-content: flex-end;
+  gap: clamp(2px, 4dvw, 24px);
+  @media(width <440px) {
+    & .--hide-mobile {
+      display: none !important;
+    }
+    button {
+      flex: 1;
+    }
+  }
+
+}
+
+.input-with-icon {
+  border: 1px solid var(--greyD1);
+  border-radius: 10px;
+  padding: 13px clamp(2px, 1.5dvw, 21px);
+  >input {
+    width: max(70px, 100%);
+    border-radius: 0;
+  }
+  &:has(input:focus-visible) {
+    border: 1px solid var(--lightblue);
   }
 }

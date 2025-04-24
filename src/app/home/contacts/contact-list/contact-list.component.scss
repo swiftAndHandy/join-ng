@@ -84,6 +84,9 @@
     padding: 15px 24px;
     text-align: left;
     gap: 35px;
+    @media (width >= 1200px) {
+      gap: 12px;
+    }
     width: 100%;
 
     &:hover:not(.--active) {
@@ -91,14 +94,19 @@
 
     }
 
-    &.--active {
-      background-color: var(--darkblue);
-      color: white;
-    }
-
     .contact__mail {
       color: #007CEE;
     }
+
+    &.--active {
+      background-color: var(--darkblue);
+      color: white;
+
+      .contact__mail {
+        color: var(--lightblue);
+      }
+    }
+
   }
 }
 
@@ -123,5 +131,15 @@
   padding: 17px 36px;
   > hr {
     margin-top: 12px;
+  }
+}
+
+.contact-overview__summary {
+  >p {
+    text-overflow: ellipsis;
+    overflow-x: clip;
+    @media (width >= 1200px) {
+      max-width: 200px;
+    }
   }
 }

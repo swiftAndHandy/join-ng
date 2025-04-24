@@ -32,11 +32,12 @@ export class JoinButtonDirective {
     this.renderer.setStyle(this.el.nativeElement, 'align-items', 'center');
     this.renderer.setStyle(this.el.nativeElement, 'justify-content', 'center');
     this.renderer.setStyle(this.el.nativeElement, 'font-size', '1.3rem');
+    this.renderer.setStyle(this.el.nativeElement, 'white-space', 'nowrap');
 
     if (this.joinButton().bold) this.renderer.setStyle(this.el.nativeElement, 'font-weight', '700');
 
     if (this.joinButton().buttonPadding === 'regular') {
-      this.renderer.setStyle(this.el.nativeElement, 'padding', '15px 24px');
+      this.renderer.setStyle(this.el.nativeElement, 'padding', 'clamp(4px,2dvw, 15px) clamp(2px, 2dvw, 24px');
     } else if (this.joinButton().buttonPadding === 'small') {}
 
     if (this.joinButton().shape === 'regular') {
