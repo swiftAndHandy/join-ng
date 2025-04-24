@@ -41,40 +41,40 @@
     }
 
     .task-view__body {
+      margin-top: 16px;
+      display: flex;
+      gap: clamp(32px, 5.5dvw, 80px);
+
+      @media (orientation: portrait) or (width <= 970px) {
+        flex-direction: column;
+        gap: 32px;
+      }
+
+      &__left,
+      &__right {
         display: flex;
-        gap: 80px;
-
-        @media (orientation: portrait) or (width <= 970px) {
-          flex-direction: column;
-          gap: 32px;
-        }
-
-        &__left,
-        &__right {
-          display: flex;
-          flex-direction: column;
-          flex: 1;
-          gap: 16px;
-        }
+        flex-direction: column;
+        flex: 1;
+        gap: 16px;
+      }
     }
 
     .task-view__footer {
       display: flex;
       align-items: flex-end;
       justify-content: space-between;
-      //position: absolute;
-      //left: 0;
-      //right: 0;
+      margin-top: 32px;
 
         & > .required.description {
-            display: flex;
-            font-family: "Inter", Arial, Helvetica, sans-serif;
-            font-size: 1rem;
-            font-weight: 400;
-            &::before {
-                content: "*";
-                color: #ff8190;
-            }
+          display: flex;
+          align-self: center;
+          font-family: "Inter", Arial, Helvetica, sans-serif;
+          font-size: 1rem;
+          font-weight: 400;
+          &::before {
+              content: "*";
+              color: #ff8190;
+          }
         }
 
         .footer-buttons {

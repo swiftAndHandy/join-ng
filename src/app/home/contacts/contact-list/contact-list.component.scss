@@ -122,7 +122,9 @@
   width: inherit;
   overflow-x: clip;
   overflow-y: auto;
-
+  >li:last-child {
+    margin-bottom: 24px;
+  }
 }
 
 .letter-separator {
