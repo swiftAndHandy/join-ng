@@ -6,8 +6,8 @@
     <div class="user-overview">
       <h2>{{contact.contactDetails().first_name}} {{contact.contactDetails().surname}}</h2>
       <div class="contact-actions">
-        <button (click)="contactMenu.showPopup(false)" type="button">Edit</button>
-        <button (click)="contact.deleteContact(contact.contactDetails().id)" type="button">Delete</button>
+        <button (click)="contactMenu.showPopup(false)" type="button"><img src="/assets/icons/pencil.svg" alt="">Edit</button>
+        <button (click)="contact.deleteContact(contact.contactDetails().id)" type="button"><img src="/assets/icons/delete.svg" alt="">Delete</button>
       </div>
   </div>
 </div>

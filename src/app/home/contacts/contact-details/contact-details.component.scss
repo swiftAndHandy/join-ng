@@ -50,9 +50,18 @@
 
 .back-btn {
   display: none;
+  border: unset;
+  background-color: unset;
+  border-radius: 50%;
+  &:hover {
+    background-color: #2a3d59;
+    cursor: pointer;
+  }
   &.mobile-only {
     @media (width < 1200px) {
-      display: unset;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       position: absolute;
       top: 90px;
       right: clamp(5px, 8%, 40px);
