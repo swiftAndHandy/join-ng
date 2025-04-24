@@ -15,12 +15,14 @@
 
   .add-contact {
     position: absolute;
+    top: 12px;
     left: 50%;
     width: 100%;
     pointer-events: none;
-      @media (max-width: 1199px) {
+      @media (width < 1200px) {
         position: fixed;
         transform: unset;
+        top: unset;
         left: unset;
         right: 32px;
         bottom: 20px;
