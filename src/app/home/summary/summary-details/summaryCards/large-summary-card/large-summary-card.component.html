@@ -13,13 +13,13 @@
       />
     </div>
     <div class="details">
-      <span class="counter">6</span>
+      <span class="counter">{{counter()}}</span>
       <span class="description"><ng-content></ng-content></span>
     </div>
   </div>
   <div class="spacer"></div>
   <div class="right">
-    <span class="date">October 16, 2022</span>
+    <span class="date">{{shortestDeadline()}}</span>
     <span class="state">Upcoming Deadline</span>
   </div>
 </div>

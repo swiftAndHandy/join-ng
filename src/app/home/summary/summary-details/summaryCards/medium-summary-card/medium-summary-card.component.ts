@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import {Component, input, Input, signal} from '@angular/core';
+import {Component, computed, input, Input, signal} from '@angular/core';
+import {Summary} from "../../../../../shared/interfaces/summary.model";
 
 type CardIcon = 'backlog' | 'task_done' | 'unset';
 
@@ -12,8 +13,10 @@ type CardIcon = 'backlog' | 'task_done' | 'unset';
 })
 export class MediumSummaryCardComponent {
   icon = input<CardIcon>('unset');
-
   isHovered = signal(false);
+
+  tasks = input.required<Summary>();
+  counter = computed(() => this.tasks()?.length ?? 0)
 
   setHoveredTo(value: boolean) {
     this.isHovered.set(value);

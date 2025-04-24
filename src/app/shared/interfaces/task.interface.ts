@@ -3,6 +3,7 @@ export interface TaskObject {
   'title': string,
   'description'?: string,
   'priority': number,
+  'state': number,
   'end_date': string,
   'category': number,
   'assigned_users': number[],

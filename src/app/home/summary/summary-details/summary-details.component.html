@@ -1,12 +1,12 @@
 <div class="summary-grid">
-  <summary-card-medium icon="backlog" class="card card-a"
+  <summary-card-medium [tasks]="tasksToDo()" icon="backlog" class="card card-a"
     >To-do</summary-card-medium
   >
-  <summary-card-medium icon="task_done" class="card card-b"
+  <summary-card-medium [tasks]="tasksDone()" icon="task_done" class="card card-b"
     >Done</summary-card-medium
   >
-  <summary-card-large class="card card-c">Urgent</summary-card-large>
-  <summary-card-small class="card card-d">Tasks in board</summary-card-small>
-  <summary-card-small class="card card-e">Tasks in progress</summary-card-small>
-  <summary-card-small class="card card-f">Awaiting feedback</summary-card-small>
+  <summary-card-large [tasks]="tasksUrgentAndOpen()" class="card card-c">Urgent</summary-card-large>
+  <summary-card-small [tasks]="tasks()" class="card card-d">Tasks in board</summary-card-small>
+  <summary-card-small [tasks]="tasksInProgress()" class="card card-e">Tasks in progress</summary-card-small>
+  <summary-card-small [tasks]="tasksAwaitingFeedback()" class="card card-f">Awaiting feedback</summary-card-small>
 </div>

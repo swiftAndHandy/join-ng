@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import {afterNextRender, Component, computed, effect, inject, signal} from '@angular/core';
 import { SmallSummaryCardComponent } from './summaryCards/small-summary-card/small-summary-card.component';
 import { LargeSummaryCardComponent } from './summaryCards/large-summary-card/large-summary-card.component';
 import { MediumSummaryCardComponent } from './summaryCards/medium-summary-card/medium-summary-card.component';
+import {BackendService} from "../../../shared/services/backend/backend.service";
+import {Summary} from "../../../shared/interfaces/summary.model";
 
 @Component({
   selector: 'summary-details',
@@ -14,4 +16,39 @@ import { MediumSummaryCardComponent } from './summaryCards/medium-summary-card/m
   templateUrl: './summary-details.component.html',
   styleUrl: './summary-details.component.scss',
 })
-export class SummaryDetailsComponent {}
+export class SummaryDetailsComponent {
+  backend = inject(BackendService);
+  tasks = signal<Summary>([]);
+  tasksToDo = computed(() =>
+    this.tasks()?.filter(task => task.state === 0) as Summary ?? []
+  );
+  tasksDone = computed(() =>
+    this.tasks()?.filter(task => task.state === 3) as Summary ?? []
+  );
+  tasksUrgentAndOpen = computed(() =>
+    this.tasks()?.filter(task => (task.state !== 3 && task.priority === 0)) as Summary ?? []
+  );
+  tasksInProgress = computed(() =>
+    this.tasks()?.filter(task => task.state === 1) as Summary ?? []
+  );
+  tasksAwaitingFeedback = computed(() =>
+    this.tasks()?.filter(task => task.state === 2) as Summary ?? []
+  );
+
+  constructor() {
+    afterNextRender(() => {
+      this.backend.get<Summary>('summary/')
+        .then(data => this.tasks.set(data))
+        .catch(err => {
+          console.error(err);
+        });
+    });
+    effect(() => {
+      console.log('todo: ', this.tasksToDo());
+      console.log('done: ', this.tasksDone());
+      console.log('urgentandopen: ', this.tasksUrgentAndOpen());
+    });
+  }
+
+
+}

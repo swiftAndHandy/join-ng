@@ -51,19 +51,6 @@ export class CreateTaskComponent {
     this.currentPriority.set(level);
   }
 
-  pseudoObject() {
-    const mainTask = {
-      'taskTitle': this.taskTitle(),
-      'taskDescription': this.taskDescription(),
-      'priorityLevel': this.currentPriority(),
-      'end_date': this.taskService.selectedDate(),
-      'category': this.taskService.categories.selectedCategory().id,
-      'assigned_users': this.taskService.assignedIds('users'),
-      'assigned_contacts': this.taskService.assignedIds('contacts'),
-
-    };
-  }
-
   async submitTask() {
     try {
       const task: TaskObject = await this.createMainTask();
@@ -82,6 +69,7 @@ export class CreateTaskComponent {
       'priority': this.currentPriority(),
       'end_date': this.taskService.selectedDate(),
       'category': this.taskService.categories.selectedCategory().id,
+      'state': 0,
       'assigned_users': this.taskService.assignedIds('users'),
       'assigned_contacts': this.taskService.assignedIds('contacts'),
     };

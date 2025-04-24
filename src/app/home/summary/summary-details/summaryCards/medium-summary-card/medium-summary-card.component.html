@@ -3,7 +3,6 @@
   (mouseenter)="setHoveredTo(true)"
   (mouseleave)="setHoveredTo(false)"
 >
-  <!-- @if (isHovered) { -->
   <div class="icon">
     <img
       src="/assets/icons/{{ icon() }}.png"
@@ -28,20 +27,9 @@
       [ngClass]="{ '--hovered': !isHovered() }"
     />
   </div>
-  <!-- } @else {
-    <img
-    src="/assets/icons/{{ icon }}_hovered.png"
-    alt=""
-    srcset="
-      /assets/icons/{{ icon }}_hovered.png    1x,
-      /assets/icons/{{ icon }}_hovered@2x.png 2x,
-      /assets/icons/{{ icon }}_hovered@3x.png 3x
-    "
-    [ngClass]="{ '--hovered': isHovered }"
-  />
-}-->
+
   <div class="details">
-    <span class="counter">6</span>
+    <span class="counter">{{counter()}}</span>
     <span class="description"><ng-content></ng-content></span>
   </div>
 </div>
