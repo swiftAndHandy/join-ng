@@ -20,21 +20,21 @@ export class TextInputComponent {
   autocomplete = input<string>('');
   textValue = signal<string>('');
   isHidden = input<boolean>(true);
-  #isHidden= signal<boolean>(true);
+  _isHidden= signal<boolean>(true);
 
   constructor(private renderer: Renderer2) {
-    afterNextRender(() => this.#isHidden.set(this.isHidden()));
+    afterNextRender(() => this._isHidden.set(this.isHidden()));
   }
 
   get type(): string {
-    if (this.icon() === 'lock' && this.#isHidden()) {
+    if (this.icon() === 'lock' && this._isHidden()) {
       return 'password';
     }
     return 'text';
   }
 
   toggleVisibility(inputElement: HTMLInputElement) {
-    this.#isHidden.set(!this.#isHidden());
+    this._isHidden.set(!this._isHidden());
     this.setFocus(inputElement);
   }
 

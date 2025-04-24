@@ -18,7 +18,7 @@
     [style.max-height]="size + 'px'"
     (click)="toggleVisibility(inputRef)"
   >
-    @if (!isHidden()) {
+    @if (!_isHidden()) {
     <img
       class="password --focused"
       src="/assets/icons/visibility.png"
