@@ -24,6 +24,7 @@ export class TasksService {
     this.assigned.set([]);
     this.selectedDate.set(null);
     this.currentTaskId.set(null);
+    this.assigned.set(this.contacts.list().map(contact => ({ ...contact, selected: false, filtered: true })));
   }
 
   assignedIds(origin: 'contacts' | 'users') {

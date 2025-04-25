@@ -82,14 +82,14 @@ export class CreateTaskComponent {
       await Promise.all(
         subtasks.map(subtask => this.backend.post<any>('subtasks/', subtask))
       );
+      this.destroy();
     } catch (error: any) {
       throw error;
     }
   }
 
   destroy() {
-    // debugger;
-    this.taskService.assigned.set(this.taskService.contacts.list().map(contact => ({ ...contact, selected: false, filtered: true })));
+    this.taskService.destroy();
     this.currentPriority.set(1);
     this.taskTitle.set('');
     this.taskDescription.set('');

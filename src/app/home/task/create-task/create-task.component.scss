@@ -65,9 +65,17 @@
       justify-content: space-between;
       margin-top: 32px;
 
+      @media (width < 450px) {
+        flex-direction: column;
+        gap: 12px;
+      }
+
         & > .required.description {
           display: flex;
           align-self: center;
+          @media (width < 450px) {
+            align-self: flex-start;
+          }
           font-family: "Inter", Arial, Helvetica, sans-serif;
           font-size: 1rem;
           font-weight: 400;
@@ -78,7 +86,13 @@
         }
 
         .footer-buttons {
-            display: flex;
+          display: flex;
+          gap: 16px;
+          //@media (width < 560px) {
+          //  gap: 4px;
+          //  align-self: center;
+          //  flex-direction: column-reverse;
+          //}
         }
     }
 }
