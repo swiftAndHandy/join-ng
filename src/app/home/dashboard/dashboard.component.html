@@ -1,4 +1,5 @@
 <section class="board base_padding">
+@if (loading()) {<loading-spinner />}
   <div class="board__header">
     <h1 class="page-title">Board</h1>
     <div class="task-control">
@@ -15,16 +16,53 @@
       <div class="category__header">
         <h2>{{ category }}</h2>
         @if (!$last) {
-        <button type="button">
+        <button>
           <img
             src="/assets/icons/add.svg"
             style="filter: brightness(0)"
-            alt=""
+            alt="Add task"
           />
         </button>
         }
       </div>
-      <div class="category__body">No tasks to do</div>
+      @switch (category) {
+        @case ('To do') {
+          @if (tasksToDo().length) {
+            @for (task of tasksToDo(); track task.id) {
+              <!--task-card-->
+            }
+          } @else {
+            <div class="category__body">No tasks to do</div>
+          }
+        }
+        @case ('In progress') {
+          @if (tasksInProgress().length) {
+            @for (task of tasksInProgress(); track task.id) {
+              <!--task-card-->
+            }
+          } @else {
+            <div class="category__body">No tasks in progress</div>
+          }
+        }
+        @case ('Await feedback') {
+          @if (tasksAwaitingFeedback().length) {
+            @for (task of tasksAwaitingFeedback(); track task.id) {
+              <!--task-card-->
+            }
+          } @else {
+            <div class="category__body">No feedback awaited</div>
+          }
+        }
+        @case ('Done') {
+          @if (tasksDone().length) {
+            @for (task of tasksDone(); track task.id) {
+              <!--task-card-->
+            }
+          } @else {
+            <div class="category__body">No tasks done</div>
+          }
+        }
+      }
     </div>
     }
   </div>

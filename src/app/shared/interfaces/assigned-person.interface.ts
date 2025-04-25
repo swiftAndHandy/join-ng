@@ -4,4 +4,5 @@ export interface AssignedPerson {
   surname: string,
   selected: boolean,
   email: string,
+  badge_color: string,
 }

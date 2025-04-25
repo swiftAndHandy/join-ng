@@ -14,6 +14,7 @@ describe('SmallSummaryCardComponent', () => {
 
     fixture = TestBed.createComponent(SmallSummaryCardComponent);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('tasks', [{}]);
     fixture.detectChanges();
   });
 

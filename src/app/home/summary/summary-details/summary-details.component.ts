@@ -37,13 +37,18 @@ export class SummaryDetailsComponent {
 
   constructor() {
     afterNextRender(() => {
+      const storage = localStorage.getItem('summary');
+      if (storage) this.tasks.set(JSON.parse(storage));
       this.backend.get<Summary>('summary/')
         .then(data => this.tasks.set(data))
         .catch(err => {
           console.error(err);
         });
     });
-  }
 
+    effect(() => {
+      localStorage.setItem('summary', JSON.stringify(this.tasks()));
+    });
+  }
 
 }
