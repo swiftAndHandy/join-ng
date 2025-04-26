@@ -28,11 +28,13 @@
       @switch (category) {
         @case ('To do') {
           @if (tasksToDo().length) {
+            <div class="category__body --regular">
             @for (task of tasksToDo(); track task.id) {
-              <!--task-card-->
+              <task-card class="task-card" [task]="task"></task-card>
             }
+            </div>
           } @else {
-            <div class="category__body">No tasks to do</div>
+            <div class="category__body --bordered">No tasks to do</div>
           }
         }
         @case ('In progress') {
@@ -41,7 +43,7 @@
               <!--task-card-->
             }
           } @else {
-            <div class="category__body">No tasks in progress</div>
+            <div class="category__body --bordered">No tasks in progress</div>
           }
         }
         @case ('Await feedback') {
@@ -50,7 +52,7 @@
               <!--task-card-->
             }
           } @else {
-            <div class="category__body">No feedback awaited</div>
+            <div class="category__body --bordered">No feedback awaited</div>
           }
         }
         @case ('Done') {
@@ -59,7 +61,7 @@
               <!--task-card-->
             }
           } @else {
-            <div class="category__body">No tasks done</div>
+            <div class="category__body --bordered">No tasks done</div>
           }
         }
       }

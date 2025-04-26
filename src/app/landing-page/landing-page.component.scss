@@ -1,31 +1,32 @@
 main {
-    position: relative;
-    background-color: #f6f7f8;
-    min-height: 100vh;
-    min-width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    flex-direction: column;
+  position: relative;
+  background-color: #f6f7f8;
+  min-height: 100dvh;
+  max-height: 100dvh;
+  min-width: 100dvw;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
 
-    .joinAnimation {
-        position: absolute;
-        top: 0%;
-        left: 0%;
-        transform: translate(-25%, -25%) scale(0.25);
-        z-index: 100;
-        &.--animate {
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            @media (orientation: landscape) {
-                animation: joinLogo 1000ms 200ms forwards;
-            }
-            @media (orientation: portrait) {
-                animation: joinLogo 1500ms 200ms forwards;
-            }
-        }
+  .joinAnimation {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    transform: translate(-25%, -25%) scale(0.25);
+    z-index: 100;
+    &.--animate {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      @media (orientation: landscape) {
+          animation: joinLogo 1000ms 200ms forwards;
+      }
+      @media (orientation: portrait) {
+          animation: joinLogo 1500ms 200ms forwards;
+      }
     }
+  }
 }
 
 .intro__background.--animate {

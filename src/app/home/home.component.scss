@@ -1,33 +1,29 @@
 main {
+  display: flex;
+  min-height: 100dvh;
+  max-height: 100dvh;
+  @media (orientation: portrait) {
+      flex-direction: column-reverse;
+  }
+
+  > #content-view {
+    flex: 1;
     display: flex;
+    flex-direction: column;
+    background-color: var(--greyBG);
+    min-height: 100%;
+    .main-content-view {
+      flex: 1;
+      height: 100%;
+      width: min(100%, 1220px);
 
-    @media (orientation: portrait) {
-        flex-direction: column-reverse;
-        min-height: 100vh;
-    }
-
-    @media (orientation: landscape) {
-        min-height: 100vh;
-    }
-
-    > #content-view {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        background-color: var(--greyBG);
-        min-height: 100%;
-        .main-content-view {
-          flex: 1;
-          height: 100%;
-          width: min(100%, 1220px);
-
-          @media (orientation: portrait) {
-            overflow: auto;
-            max-height: calc(100dvh - 170px);
-            @media (width <= 380px) {
-              max-height: calc(100dvh - 141px);
-            }
-          }
+      @media (orientation: portrait) {
+        overflow: auto;
+        max-height: calc(100dvh - 170px);
+        @media (width <= 380px) {
+          max-height: calc(100dvh - 141px);
         }
+      }
     }
+  }
 }

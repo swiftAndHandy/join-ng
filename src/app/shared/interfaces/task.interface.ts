@@ -1,4 +1,6 @@
 import {AssignedPerson} from "./assigned-person.interface";
+import {CategoryObject} from "./category.model";
+import {SubtaskObject} from "./subtask.interface";
 
 export type TaskObject = {
   'id'?: number,
@@ -12,13 +14,6 @@ export type TaskObject = {
   'assigned_contacts': number[]
 }
 
-export type SubtaskObject = {
-  id: number,
-  description: string,
-  completed: boolean,
-  task: number
-}
-
 export type RenderedTaskObject = {
   id: number,
   title: string,
@@ -26,7 +21,8 @@ export type RenderedTaskObject = {
   priority: number,
   state: number,
   end_date: string,
-  category: number,
+  category: CategoryObject,
+  subtasks: SubtaskObject[],
   assigned_users: AssignedPerson[],
   assigned_contacts: AssignedPerson[],
 }

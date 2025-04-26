@@ -1,4 +1,4 @@
-export interface SubtaskObject {
+export type SubtaskObject = {
   id?: number;
   description: string;
   edit_mode?: boolean;

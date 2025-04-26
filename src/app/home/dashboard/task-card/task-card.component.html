@@ -1,1 +1,13 @@
-<p>task-card works!</p>
+<div class="card">
+  <div class="tag" [ngStyle]="{'background-color': task().category.color}">{{ task().category.name }}</div>
+  <article>
+    <h1 class="title">{{ task().title }}</h1>
+    <p class="description">{{ task().description }}</p>
+  </article>
+  @if (task().subtasks.length) {
+    <div class="subtask-overview">
+      <div class="progress-bar" [ngStyle]="{'--progress-bar-width': (doneSubtasks().length/task().subtasks.length*100) + '%'}"></div>
+      <span class="counter">{{doneSubtasks().length}}/{{task().subtasks.length}} Subtasks</span>
+    </div>
+  }
+</div>
