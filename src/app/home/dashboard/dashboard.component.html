@@ -40,7 +40,11 @@
         @case ('In progress') {
           @if (tasksInProgress().length) {
             @for (task of tasksInProgress(); track task.id) {
-              <!--task-card-->
+              <div class="category__body --regular">
+                @for (task of tasksInProgress(); track task.id) {
+                  <task-card class="task-card" [task]="task"></task-card>
+                }
+              </div>
             }
           } @else {
             <div class="category__body --bordered">No tasks in progress</div>
@@ -49,7 +53,11 @@
         @case ('Await feedback') {
           @if (tasksAwaitingFeedback().length) {
             @for (task of tasksAwaitingFeedback(); track task.id) {
-              <!--task-card-->
+              <div class="category__body --regular">
+                @for (task of tasksAwaitingFeedback(); track task.id) {
+                  <task-card class="task-card" [task]="task"></task-card>
+                }
+              </div>
             }
           } @else {
             <div class="category__body --bordered">No feedback awaited</div>
@@ -58,7 +66,11 @@
         @case ('Done') {
           @if (tasksDone().length) {
             @for (task of tasksDone(); track task.id) {
-              <!--task-card-->
+              <div class="category__body --regular">
+                @for (task of tasksDone(); track task.id) {
+                  <task-card class="task-card" [task]="task"></task-card>
+                }
+              </div>
             }
           } @else {
             <div class="category__body --bordered">No tasks done</div>

@@ -2,6 +2,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  gap: 32px;
   padding-bottom: 0;
   max-height: calc(100dvh - 90px);
   @media (orientation: portrait) {
@@ -27,6 +28,7 @@
 .board__body {
   display: flex;
   flex: 1;
+  gap: 24px;
   overflow-x: auto;
   overflow-y: clip;
 
@@ -35,13 +37,8 @@
       display: flex;
       flex-direction: column;
       flex: 0 0 auto;
-      //gap: 12px;
+      gap: 8px;
       overflow: clip;
-      //padding-right: 12px;
-      //
-      //.task-card:last-of-type {
-      //  margin-bottom: 12px;
-      //}
 
       &__header {
         display: flex;
@@ -67,8 +64,8 @@
       }
 
       &__body {
-        background-color: #e7e7e7;
-
+        //background-color: #e7e7e7;
+        padding: 5px;
         &.--regular {
           display: flex;
           flex: 1;
