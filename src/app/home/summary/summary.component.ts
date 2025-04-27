@@ -1,4 +1,4 @@
-import {afterNextRender, Component, ElementRef, inject, signal, viewChild} from '@angular/core';
+import {afterNextRender, Component, effect, ElementRef, inject, signal, viewChild} from '@angular/core';
 import { SummaryDetailsComponent } from './summary-details/summary-details.component';
 import {ViewportService} from "../../shared/services/viewport.service";
 
@@ -17,15 +17,13 @@ export class SummaryComponent {
   viewport = inject(ViewportService);
 
   constructor() {
-    afterNextRender(() => {
-      const totalHeight = this.viewport.innerHeight;
+    effect(() => {
+      const totalHeight = this.viewport.innerHeight();
       const maxSummaryHeight = totalHeight - this.viewport.headerSize() - this.viewport.footerSize();
       const headlineHeight = this.headlineRef()?.nativeElement.offsetHeight || 0;
-
-      const maxCardsHeight = maxSummaryHeight - headlineHeight; //this.summaryRef()?.nativeElement.offsetHeight || 0;
-      this.remainingHeight.set(maxCardsHeight - 60);
-      console.log('Remaining height for cards:', this.remainingHeight());
-    })
+      const maxCardsHeight = maxSummaryHeight - headlineHeight;
+      this.remainingHeight.set(maxCardsHeight - 40);
+    }, {allowSignalWrites: true});
   }
 
   greet() {

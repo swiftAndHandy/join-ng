@@ -18,10 +18,10 @@ nav {
         flex-direction: column;
         justify-content: space-between;
         flex: 1;
-        margin: 64px 0;
+        padding: 64px 0;
 
         @media (orientation: portrait) or (pointer: coarse) {
-            margin: 0;
+            padding: 0;
         }
 
         .upper-bar {

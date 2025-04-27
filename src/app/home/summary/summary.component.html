@@ -6,7 +6,7 @@
     <span class="divider--portrait"></span>
   </div>
   <div class="summary__body">
-    <div class="summary__cards" [style.height.px]="remainingHeight()">
+    <div class="summary__cards" [style.max-height.px]="remainingHeight()">
       <summary-details></summary-details>
     </div>
     <div class="summary__greeting">{{ greet() }} <span>{{ user() }}</span></div>

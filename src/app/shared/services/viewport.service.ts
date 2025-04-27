@@ -1,9 +1,9 @@
-import {Injectable, signal} from '@angular/core';
+import {computed, Injectable, OnDestroy, signal} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ViewportService {
+export class ViewportService implements OnDestroy {
 
   private _headerSize = signal<number>(0);
   headerSize = this._headerSize.asReadonly();
@@ -11,9 +11,21 @@ export class ViewportService {
   private _footerSize = signal<number>(0);
   footerSize = this._footerSize.asReadonly();
 
-  innerHeight = window.innerHeight;
+  private _innerHeight = signal<number>(window.innerHeight);
+  innerHeight = this._innerHeight.asReadonly();
 
-  constructor() { }
+
+  constructor() {
+    window.addEventListener('resize', this.onResize.bind(this));
+  }
+
+  ngOnDestroy() {
+    window.removeEventListener('resize', this.onResize.bind(this));
+  }
+
+  private onResize() {
+    this._innerHeight.set(window.innerHeight);
+  }
 
   setHeaderSize(offsetHeight: number | undefined) {
     if (offsetHeight) this._headerSize.set(offsetHeight);
