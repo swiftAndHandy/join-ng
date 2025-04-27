@@ -1,4 +1,4 @@
-import {Directive, ElementRef, HostListener, input, Input, Renderer2} from '@angular/core';
+import {Directive, ElementRef, HostListener, input, Renderer2} from '@angular/core';
 
 type ButtonConfig = {
   primary?: boolean;

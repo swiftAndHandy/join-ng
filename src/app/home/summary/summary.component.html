@@ -1,12 +1,12 @@
-<section class="summary base_padding">
-  <div class="summary__headline">
+<section #summary class="summary base_padding">
+  <div #headline class="summary__headline">
     <h1>Join 360</h1>
     <span class="divider--landscape"></span>
     <span class="subtitle">Key Metrics at a Glance</span>
     <span class="divider--portrait"></span>
   </div>
   <div class="summary__body">
-    <div class="summary__cards">
+    <div class="summary__cards" [style.height.px]="remainingHeight()">
       <summary-details></summary-details>
     </div>
     <div class="summary__greeting">{{ greet() }} <span>{{ user() }}</span></div>

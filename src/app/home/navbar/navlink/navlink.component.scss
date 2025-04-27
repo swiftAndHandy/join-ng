@@ -11,7 +11,7 @@ a {
     text-decoration: none;
     text-align: center;
 
-    @media (orientation: portrait) {
+    @media (orientation: portrait) or (pointer: coarse) {
         flex-direction: column;
         padding: 15px;
         border-radius: 8px;

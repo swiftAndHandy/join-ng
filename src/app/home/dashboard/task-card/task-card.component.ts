@@ -25,4 +25,22 @@ export class TaskCardComponent {
       console.log(this.assignedPersons())
     });
   }
+
+  showPriorityImage() {
+    let priorityAsName;
+    switch (this.task().priority) {
+      case 0: {
+        priorityAsName = "urgent";
+        break;
+      }
+      case 1: {
+        priorityAsName = "medium";
+        break;
+      }
+      case 2: {
+        priorityAsName = "low";
+      }
+    }
+    return `assets/icons/prio_${priorityAsName}.png`
+  }
 }

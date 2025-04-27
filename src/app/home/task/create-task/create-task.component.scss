@@ -49,7 +49,7 @@
       display: flex;
       gap: clamp(32px, 5.5dvw, 80px);
 
-      @media (orientation: portrait) or (width <= 970px) {
+      @media (orientation: portrait) or (pointer: coarse) or (width <= 970px) {
         flex-direction: column;
         gap: 32px;
       }

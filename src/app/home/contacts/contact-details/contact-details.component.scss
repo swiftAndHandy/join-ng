@@ -5,7 +5,7 @@
         align-items: center;
         gap: 30px;
 
-        @media (orientation: portrait) {
+        @media (orientation: portrait) or (pointer: coarse) {
             flex-direction: column;
             gap: 15px;
             align-items: unset;
@@ -17,7 +17,7 @@
 
         h1 {
             font-size: clamp(1.25rem, 7.5vw, 3.8rem);
-            @media (orientation: portrait) {
+            @media (orientation: portrait) or (pointer: coarse) {
                 margin-block: 0;
             }
         }
@@ -38,7 +38,7 @@
 
             &--portrait {
                 display: none;
-                @media (orientation: portrait) {
+                @media (orientation: portrait) or (pointer: coarse) {
                     display: unset;
                     border: 1.5px solid var(--lightblue);
                     width: 90px;

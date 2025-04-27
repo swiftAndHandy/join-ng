@@ -22,7 +22,7 @@ main {
       @media (orientation: landscape) {
           animation: joinLogo 1000ms 200ms forwards;
       }
-      @media (orientation: portrait) {
+      @media (orientation: portrait) or (pointer: coarse) {
           animation: joinLogo 1500ms 200ms forwards;
       }
     }
@@ -38,7 +38,7 @@ main {
         background-color: white;
         animation: joinLogoBackground 1200ms 200ms forwards;
     }
-    @media (orientation: portrait) {
+    @media (orientation: portrait) or (pointer: coarse){
         background-color: white; // posible adjustments on color swap for logo
         animation: joinLogoBackground 2000ms 200ms forwards;
     }

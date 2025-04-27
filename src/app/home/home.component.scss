@@ -2,7 +2,7 @@ main {
   display: flex;
   min-height: 100dvh;
   max-height: 100dvh;
-  @media (orientation: portrait) {
+  @media (orientation: portrait) or (pointer: coarse) {
       flex-direction: column-reverse;
   }
 
@@ -16,8 +16,9 @@ main {
       flex: 1;
       height: 100%;
       width: min(100%, 1220px);
+      max-height: calc(100vh - 90px);
 
-      @media (orientation: portrait) {
+      @media (orientation: portrait) or (pointer: coarse) {
         overflow: auto;
         max-height: calc(100dvh - 170px);
         @media (width <= 380px) {

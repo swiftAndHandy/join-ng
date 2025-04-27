@@ -7,7 +7,7 @@ nav {
     background-color: #2a3647;
     box-shadow: 0px 0px 4px 0px #0000001a;
 
-    @media (orientation: portrait) {
+    @media (orientation: portrait) or (pointer: coarse) {
         height: unset;
         width: 100vw;
     }
@@ -20,7 +20,7 @@ nav {
         flex: 1;
         margin: 64px 0;
 
-        @media (orientation: portrait) {
+        @media (orientation: portrait) or (pointer: coarse) {
             margin: 0;
         }
 
@@ -34,7 +34,7 @@ nav {
                 width: 100px;
                 align-self: center;
                 margin-bottom: 112px;
-                @media (orientation: portrait) {
+                @media (orientation: portrait) or (pointer: coarse) {
                     display: none;
                 }
             }
@@ -44,8 +44,8 @@ nav {
         .legal-links {
             display: flex;
             flex-direction: column;
-            @media (orientation: portrait) {
-                flex-direction: row-reverse;
+            @media (orientation: portrait) or (pointer: coarse) {
+                flex-direction: row;
                 justify-content: space-around;
             }
         }
@@ -53,7 +53,7 @@ nav {
         .legal-links {
             margin-left: 56px;
             gap: 8px;
-            @media (orientation: portrait) {
+            @media (orientation: portrait) or (pointer: coarse) {
                 display: none;
             }
         }

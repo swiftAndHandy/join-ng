@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {afterNextRender, Component, ElementRef, inject, signal, viewChild} from '@angular/core';
 import { SummaryDetailsComponent } from './summary-details/summary-details.component';
+import {ViewportService} from "../../shared/services/viewport.service";
 
 @Component({
   selector: 'app-summary',
@@ -9,6 +10,24 @@ import { SummaryDetailsComponent } from './summary-details/summary-details.compo
   styleUrl: './summary.component.scss',
 })
 export class SummaryComponent {
+  headlineRef = viewChild<ElementRef>('headline');
+  summaryRef = viewChild<ElementRef>('summary');
+  remainingHeight = signal<number>(0)
+
+  viewport = inject(ViewportService);
+
+  constructor() {
+    afterNextRender(() => {
+      const totalHeight = this.viewport.innerHeight;
+      const maxSummaryHeight = totalHeight - this.viewport.headerSize() - this.viewport.footerSize();
+      const headlineHeight = this.headlineRef()?.nativeElement.offsetHeight || 0;
+
+      const maxCardsHeight = maxSummaryHeight - headlineHeight; //this.summaryRef()?.nativeElement.offsetHeight || 0;
+      this.remainingHeight.set(maxCardsHeight - 60);
+      console.log('Remaining height for cards:', this.remainingHeight());
+    })
+  }
+
   greet() {
     const hour = new Date().getHours();
     if (hour >= 5 && hour < 12) {

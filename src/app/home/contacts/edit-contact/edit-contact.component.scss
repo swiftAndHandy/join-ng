@@ -5,7 +5,7 @@
 .contact-editor {
   width: min(70dvw, 1000px);
   height: min(80dvh, 100%);;
-  @media (orientation: portrait) {
+  @media (orientation: portrait) or (pointer: coarse){
     width: min(90dvw, 1000px);
     height: min(90dvh, 100%);
   }
